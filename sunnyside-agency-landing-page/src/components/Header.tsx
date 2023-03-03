@@ -1,12 +1,23 @@
+import React from "react";
+
 export default function Header() {
+  const [burgerActive, setBurgerActive] = React.useState(false);
+
   return (
     <header className="header">
       <h1>We Are Creatives</h1>
 
       <nav>
         <img className="logo" src="images/logo.svg" alt="logo"></img>
-        <img className="hamburger" src="images/icon-hamburger.svg" alt=""></img>
-        <ul>
+        <img
+          onClick={() => {
+            setBurgerActive((prev) => !prev);
+          }}
+          className={`hamburger ${burgerActive ? "active" : ""}`}
+          src="images/icon-hamburger.svg"
+          alt=""
+        ></img>
+        <ul className={burgerActive ? "" : "inactive"}>
           <li>
             <a>About</a>
           </li>

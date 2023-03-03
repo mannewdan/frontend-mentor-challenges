@@ -54,7 +54,7 @@ li {
   --fs-700: 2rem;
   --fs-900: 2.5rem;
 }
-@media (min-width: 500px) {
+@media (min-width: 800px) {
   :root {
     --fs-700: 2.5rem;
     --fs-900: 3.5rem;
@@ -65,7 +65,7 @@ li {
   display: grid;
   position: relative;
   background-image: url("images/image-header.jpg");
-  background-size: 200%;
+  background-size: min(750px, 200%);
   background-position-x: center;
   background-position-y: bottom;
   background-repeat: no-repeat;
@@ -88,12 +88,36 @@ li {
   margin-top: 1.5em;
   margin-bottom: 1.15em;
 }
+.header .arrow {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 8.25em;
+}
+.header .active {
+  opacity: 50%;
+}
+.header .inactive {
+  display: none;
+}
+@media (min-width: 800px) {
+  .header .hamburger {
+    display: none;
+  }
+  .header nav {
+    padding-left: 2.5em;
+    padding-right: 3em;
+  }
+  .header .inactive {
+    display: flex;
+  }
+}
 .header ul {
   --margin-size: 1em;
   position: absolute;
   top: 6.625rem;
   right: var(--margin-size);
   width: calc(100% - 2 * var(--margin-size));
+  max-width: 350px;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -128,8 +152,24 @@ li {
   border-radius: 10rem;
   background-color: var(--c-bg-accent3);
 }
-.header .arrow {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 8.25em;
+@media (min-width: 800px) {
+  .header ul {
+    position: initial;
+    background: none;
+    flex-direction: row;
+    justify-content: right;
+    gap: 3em;
+    padding: 0;
+    max-width: 100%;
+  }
+  .header ul li {
+    color: var(--c-text-white);
+    font-size: var(--fs-400);
+  }
+  .header ul::before {
+    display: none;
+  }
+  .header ul .contact {
+    background-color: white;
+  }
 }/*# sourceMappingURL=main.css.map */

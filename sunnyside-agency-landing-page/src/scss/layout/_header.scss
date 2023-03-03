@@ -1,9 +1,11 @@
+@use "../globals/breakpoints" as *;
+
 .header {
   display: grid;
   position: relative;
 
   background-image: url("images/image-header.jpg");
-  background-size: 200%;
+  background-size: min(750px, 200%);
   background-position-x: center;
   background-position-y: bottom;
   background-repeat: no-repeat;
@@ -28,6 +30,30 @@
     margin-top: 1.5em;
     margin-bottom: 1.15em;
   }
+  .arrow {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 8.25em;
+  }
+  .active {
+    opacity: 50%;
+  }
+  .inactive {
+    display: none;
+  }
+  @media (min-width: $bp-small) {
+    .hamburger {
+      display: none;
+    }
+    nav {
+      padding-left: 2.5em;
+      padding-right: 3em;
+    }
+    .inactive {
+      display: flex;
+    }
+  }
+
   ul {
     --margin-size: 1em;
 
@@ -35,6 +61,7 @@
     top: 6.625rem;
     right: var(--margin-size);
     width: calc(100% - 2 * var(--margin-size));
+    max-width: 350px;
     background-color: white;
 
     display: flex;
@@ -72,10 +99,26 @@
       border-radius: 10rem;
       background-color: var(--c-bg-accent3);
     }
-  }
-  .arrow {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 8.25em;
+    @media (min-width: $bp-small) {
+      position: initial;
+      background: none;
+      flex-direction: row;
+      justify-content: right;
+      gap: 3em;
+
+      padding: 0;
+      max-width: 100%;
+
+      li {
+        color: var(--c-text-white);
+        font-size: var(--fs-400);
+      }
+      &::before {
+        display: none;
+      }
+      .contact {
+        background-color: white;
+      }
+    }
   }
 }
