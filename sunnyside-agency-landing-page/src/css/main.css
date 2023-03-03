@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--ff-main);
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--ff-fancy);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+:root {
+  --c-text-main: hsl(212, 27%, 19%);
+  --c-text-medium: hsl(213, 9%, 39%);
+  --c-text-light: hsl(232, 10%, 55%);
+  --c-text-verylight: hsl(210, 4%, 67%);
+  --c-text-white: hsl(0, 100%, 100%);
+  --c-text-accent1: hsl(167, 40%, 24%);
+  --c-text-accent1-light: hsl(168, 34%, 41%);
+  --c-text-accent2: hsl(198, 62%, 26%);
+  --c-bg-accent1: hsl(168, 44%, 70%);
+  --c-bg-accent2: hsl(200, 100%, 62%);
+  --c-bg-accent3: hsl(51, 100%, 49%);
+}
+
+:root {
+  --ff-main: "Barlow", sans-serif;
+  --ff-fancy: "Fraunces", serif;
+  --fs-100: 0.875rem;
+  --fs-200: 0.9375rem;
+  --fs-300: 1rem;
+  --fs-400: 1.125rem;
+  --fs-500: 1.25rem;
+  --fs-600: 1.75rem;
+  --fs-700: 2rem;
+  --fs-900: 2.5rem;
+}
+@media (min-width: 500px) {
+  :root {
+    --fs-700: 2.5rem;
+    --fs-900: 3.5rem;
+  }
+}
+
+.header {
+  display: grid;
+  background-image: url("images/image-header.jpg");
+  background-size: 200%;
+  background-position-x: center;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+  background-color: var(--c-bg-accent2);
+}
+.header nav {
+  order: -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 1.5em;
+}
+.header h1 {
+  color: var(--c-text-white);
+  font-size: var(--fs-900);
+  font-weight: 900;
+  letter-spacing: 6.25px;
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 1.5em;
+  margin-bottom: 1.15em;
+}
+.header ul {
+  display: none;
+}
+.header .arrow {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 8.25em;
+}/*# sourceMappingURL=main.css.map */

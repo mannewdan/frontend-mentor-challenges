@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--ff-main);
+}
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--ff-fancy);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
