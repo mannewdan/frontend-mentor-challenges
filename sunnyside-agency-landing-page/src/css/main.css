@@ -21,6 +21,13 @@ p {
   margin: 0;
 }
 
+ul,
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --c-text-main: hsl(212, 27%, 19%);
   --c-text-medium: hsl(213, 9%, 39%);
@@ -56,6 +63,7 @@ p {
 
 .header {
   display: grid;
+  position: relative;
   background-image: url("images/image-header.jpg");
   background-size: 200%;
   background-position-x: center;
@@ -81,7 +89,44 @@ p {
   margin-bottom: 1.15em;
 }
 .header ul {
-  display: none;
+  --margin-size: 1em;
+  position: absolute;
+  top: 6.625rem;
+  right: var(--margin-size);
+  width: calc(100% - 2 * var(--margin-size));
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+  padding: 2.5em;
+}
+.header ul::before {
+  position: absolute;
+  top: -24px;
+  right: 0;
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-top: 24px solid transparent;
+  border-bottom: 24px solid white;
+  border-right: 24px solid white;
+}
+.header ul li {
+  color: var(--c-text-light);
+  text-align: center;
+  font-size: var(--fs-500);
+}
+.header ul .contact {
+  font-family: var(--ff-fancy);
+  text-transform: uppercase;
+  font-size: var(--fs-200);
+  color: var(--c-text-main);
+  font-weight: 700;
+  padding: 1.25em 2em;
+  border-radius: 10rem;
+  background-color: var(--c-bg-accent3);
 }
 .header .arrow {
   margin-left: auto;

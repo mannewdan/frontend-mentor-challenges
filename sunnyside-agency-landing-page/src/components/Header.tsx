@@ -16,7 +16,7 @@ export default function Header() {
           <li>
             <a>Projects</a>
           </li>
-          <li>
+          <li className="contact">
             <a>Contact</a>
           </li>
         </ul>
