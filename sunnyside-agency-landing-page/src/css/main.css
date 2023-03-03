@@ -64,7 +64,7 @@ li {
 .header {
   display: grid;
   position: relative;
-  background-image: url("images/image-header.jpg");
+  background-image: url("../images/image-header.jpg");
   background-size: min(750px, 200%);
   background-position-x: center;
   background-position-y: bottom;
