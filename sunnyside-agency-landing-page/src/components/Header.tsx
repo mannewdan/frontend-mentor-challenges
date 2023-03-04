@@ -17,7 +17,7 @@ export default function Header() {
           src="images/icon-hamburger.svg"
           alt=""
         ></img>
-        <ul className={burgerActive ? "" : "inactive"}>
+        <ul className={burgerActive ? "open" : "inactive"}>
           <li>
             <a href="#">About</a>
           </li>

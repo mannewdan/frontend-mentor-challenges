@@ -40,9 +40,6 @@
   .active {
     opacity: 50%;
   }
-  .inactive {
-    display: none;
-  }
   @media (min-width: $bp-medium) {
     .hamburger {
       display: none;
@@ -50,9 +47,6 @@
     nav {
       padding-left: 2.5em;
       padding-right: 3em;
-    }
-    .inactive {
-      display: flex;
     }
   }
 
@@ -71,6 +65,44 @@
     align-items: center;
     gap: 2em;
     padding: 2.5em;
+
+    &.inactive {
+      transform: translateY(-60%) scaleY(0%);
+    }
+    &.open {
+      animation: show;
+      animation-duration: 250ms;
+      animation-delay: 100ms;
+      animation-fill-mode: both;
+    }
+    @keyframes show {
+      0% {
+        transform: translateY(-60%) scaleY(0%);
+      }
+      100% {
+        transform: translateY(0%) scaleY(100%);
+      }
+    }
+    &.open li {
+      animation: grow;
+      animation-delay: 125ms;
+      animation-duration: 250ms;
+      animation-fill-mode: both;
+      animation-timing-function: cubic-bezier();
+    }
+    @keyframes grow {
+      0% {
+        transform: scaleY(0%);
+      }
+      100% {
+        transform: scaleY(100%);
+      }
+    }
+    @for $i from 1 through 4 {
+      &.open li:nth-of-type(#{$i}) {
+        animation-delay: ($i * 65ms) + 125ms;
+      }
+    }
 
     &::before {
       position: absolute;
@@ -101,6 +133,11 @@
       border-radius: 10rem;
       background-color: var(--c-bg-accent3);
       cursor: pointer;
+
+      transition: background-color 100ms;
+      &:hover {
+        background-color: var(--c-bg-accent3-light);
+      }
     }
     @media (min-width: $bp-medium) {
       position: initial;
@@ -112,6 +149,9 @@
       padding: 0;
       max-width: 100%;
 
+      &.inactive {
+        transform: translateY(0%) scaleY(100%);
+      }
       li {
         color: var(--c-text-white);
         font-size: var(--fs-400);
@@ -121,6 +161,12 @@
       }
       .contact {
         background-color: white;
+        transition: color 100ms, background-color 100ms;
+        &:hover {
+          color: white;
+          text-shadow: 0 0 1px hsla(0, 0%, 0%, 25%);
+          background-color: hsla(0, 100%, 100%, 45%);
+        }
       }
     }
   }

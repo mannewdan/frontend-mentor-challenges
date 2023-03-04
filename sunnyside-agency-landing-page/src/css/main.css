@@ -45,6 +45,7 @@ li {
   --c-bg-accent1: hsl(168, 44%, 70%);
   --c-bg-accent2: hsl(200, 100%, 62%);
   --c-bg-accent3: hsl(51, 100%, 49%);
+  --c-bg-accent3-light: hsl(51, 100%, 77%);
 }
 
 :root {
@@ -117,9 +118,6 @@ li {
 .header .active {
   opacity: 50%;
 }
-.header .inactive {
-  display: none;
-}
 @media (min-width: 800px) {
   .header .hamburger {
     display: none;
@@ -127,9 +125,6 @@ li {
   .header nav {
     padding-left: 2.5em;
     padding-right: 3em;
-  }
-  .header .inactive {
-    display: flex;
   }
 }
 .header ul {
@@ -145,6 +140,50 @@ li {
   align-items: center;
   gap: 2em;
   padding: 2.5em;
+}
+.header ul.inactive {
+  transform: translateY(-60%) scaleY(0%);
+}
+.header ul.open {
+  animation: show;
+  animation-duration: 250ms;
+  animation-delay: 100ms;
+  animation-fill-mode: both;
+}
+@keyframes show {
+  0% {
+    transform: translateY(-60%) scaleY(0%);
+  }
+  100% {
+    transform: translateY(0%) scaleY(100%);
+  }
+}
+.header ul.open li {
+  animation: grow;
+  animation-delay: 125ms;
+  animation-duration: 250ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier();
+}
+@keyframes grow {
+  0% {
+    transform: scaleY(0%);
+  }
+  100% {
+    transform: scaleY(100%);
+  }
+}
+.header ul.open li:nth-of-type(1) {
+  animation-delay: 190ms;
+}
+.header ul.open li:nth-of-type(2) {
+  animation-delay: 255ms;
+}
+.header ul.open li:nth-of-type(3) {
+  animation-delay: 320ms;
+}
+.header ul.open li:nth-of-type(4) {
+  animation-delay: 385ms;
 }
 .header ul::before {
   position: absolute;
@@ -173,6 +212,10 @@ li {
   border-radius: 10rem;
   background-color: var(--c-bg-accent3);
   cursor: pointer;
+  transition: background-color 100ms;
+}
+.header ul .contact:hover {
+  background-color: var(--c-bg-accent3-light);
 }
 @media (min-width: 800px) {
   .header ul {
@@ -184,6 +227,9 @@ li {
     padding: 0;
     max-width: 100%;
   }
+  .header ul.inactive {
+    transform: translateY(0%) scaleY(100%);
+  }
   .header ul li {
     color: var(--c-text-white);
     font-size: var(--fs-400);
@@ -193,5 +239,11 @@ li {
   }
   .header ul .contact {
     background-color: white;
+    transition: color 100ms, background-color 100ms;
+  }
+  .header ul .contact:hover {
+    color: white;
+    text-shadow: 0 0 1px hsla(0, 0%, 0%, 0.25);
+    background-color: hsla(0, 100%, 100%, 0.45);
   }
 }/*# sourceMappingURL=main.css.map */
