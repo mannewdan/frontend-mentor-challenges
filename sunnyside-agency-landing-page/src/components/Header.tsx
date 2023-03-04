@@ -19,16 +19,16 @@ export default function Header() {
         ></img>
         <ul className={burgerActive ? "" : "inactive"}>
           <li>
-            <a>About</a>
+            <a href="#">About</a>
           </li>
           <li>
-            <a>Services</a>
+            <a href="#">Services</a>
           </li>
           <li>
-            <a>Projects</a>
+            <a href="#">Projects</a>
           </li>
           <li className="contact">
-            <a>Contact</a>
+            <a href="#">Contact</a>
           </li>
         </ul>
       </nav>

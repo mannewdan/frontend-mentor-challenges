@@ -21,6 +21,11 @@ p {
   margin: 0;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 ul,
 li {
   list-style: none;
@@ -60,6 +65,20 @@ li {
     --fs-900: 3.5rem;
   }
 }
+@media (max-width: 400px) {
+  :root {
+    --fs-900: 2.2rem;
+    --fs-700: 1.85rem;
+    --fs-600: 1.6rem;
+  }
+}
+@media (max-width: 350px) {
+  :root {
+    --fs-900: 1.8rem;
+    --fs-700: 1.55rem;
+    --fs-600: 1.45rem;
+  }
+}
 
 .header {
   display: grid;
@@ -87,6 +106,8 @@ li {
   text-transform: uppercase;
   margin-top: 1.5em;
   margin-bottom: 1.15em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 .header .arrow {
   margin-left: auto;
@@ -151,6 +172,7 @@ li {
   padding: 1.25em 2em;
   border-radius: 10rem;
   background-color: var(--c-bg-accent3);
+  cursor: pointer;
 }
 @media (min-width: 800px) {
   .header ul {

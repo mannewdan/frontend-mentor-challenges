@@ -13,8 +13,18 @@
   --fs-700: 2rem;
   --fs-900: 2.5rem;
 
-  @media (min-width: $bp-small) {
+  @media (min-width: $bp-medium) {
     --fs-700: 2.5rem;
     --fs-900: 3.5rem;
+  }
+  @media (max-width: $bp-small) {
+    --fs-900: 2.2rem;
+    --fs-700: 1.85rem;
+    --fs-600: 1.6rem;
+  }
+  @media (max-width: $bp-tiny) {
+    --fs-900: 1.8rem;
+    --fs-700: 1.55rem;
+    --fs-600: 1.45rem;
   }
 }
