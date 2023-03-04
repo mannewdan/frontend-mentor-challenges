@@ -10,6 +10,10 @@ body {
   margin: 0;
 }
 
+img {
+  max-width: 100%;
+}
+
 h1,
 h2,
 h3 {
@@ -46,6 +50,9 @@ li {
   --c-bg-accent2: hsl(200, 100%, 62%);
   --c-bg-accent3: hsl(51, 100%, 49%);
   --c-bg-accent3-light: hsl(51, 100%, 77%);
+  --c-bg-accent4: hsl(7, 99%, 70%);
+  --c-image-graphic-design: hsl(170, 45%, 72%);
+  --c-image-photography: hsl(199, 100%, 69%);
 }
 
 :root {
@@ -69,15 +76,13 @@ li {
 @media (max-width: 400px) {
   :root {
     --fs-900: 2.2rem;
-    --fs-700: 1.85rem;
-    --fs-600: 1.6rem;
   }
 }
 @media (max-width: 350px) {
   :root {
     --fs-900: 1.8rem;
-    --fs-700: 1.55rem;
-    --fs-600: 1.45rem;
+    --fs-700: 1.6rem;
+    --fs-600: 1.5rem;
   }
 }
 
@@ -246,4 +251,94 @@ li {
     text-shadow: 0 0 1px hsla(0, 0%, 0%, 0.25);
     background-color: hsla(0, 100%, 100%, 0.45);
   }
+}
+
+.pitch {
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+}
+.pitch a {
+  font-family: var(--ff-fancy);
+  text-transform: uppercase;
+  font-weight: 900;
+  position: relative;
+}
+.pitch a:hover::before {
+  opacity: 100%;
+}
+.pitch a::before {
+  transition: opacity 100ms ease-in-out;
+  content: "";
+  width: 12ch;
+  height: 10px;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: -1;
+  background-color: var(--c-bg-accent4);
+  border-radius: 12ch;
+  opacity: 25%;
+}
+.pitch a.yellow::before {
+  background-color: var(--c-bg-accent3);
+}
+.pitch a.pink::before {
+  background-color: var(--c-bg-accent4);
+}
+.pitch .item,
+.pitch .item-split {
+  display: grid;
+}
+.pitch .item img,
+.pitch .item-split img {
+  order: -1;
+}
+.pitch .item {
+  background-position-x: center;
+  background-position-y: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.pitch .item.graphic-design {
+  color: var(--c-text-accent1);
+  background-color: var(--c-image-graphic-design);
+  background-image: url("../images/image-graphic-design.jpg");
+}
+.pitch .item.photography {
+  color: var(--c-text-accent2);
+  background-color: var(--c-image-photography);
+  background-image: url("../images/image-photography.jpg");
+}
+.pitch .item h3 {
+  font-size: var(--fs-600);
+  font-weight: 900;
+  margin-top: 15.35em;
+  margin-bottom: 1.25em;
+  padding: 0 1em;
+}
+.pitch .item p {
+  font-size: var(--fs-300);
+  line-height: 1.7;
+  margin-bottom: 4em;
+  padding: 0 1em;
+}
+.pitch .item-split {
+  padding-bottom: 4.5em;
+}
+.pitch .item-split h2 {
+  font-size: var(--fs-700);
+  font-weight: 900;
+  margin-top: 1.9em;
+  margin-bottom: 0.75em;
+  padding: 0 1em;
+}
+.pitch .item-split p {
+  font-size: var(--fs-400);
+  color: var(--c-text-light);
+  padding: 0 1em;
+  line-height: 1.65;
+  margin-bottom: 1.85em;
 }/*# sourceMappingURL=main.css.map */

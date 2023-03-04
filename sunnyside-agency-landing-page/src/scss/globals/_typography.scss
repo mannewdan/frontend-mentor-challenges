@@ -19,12 +19,10 @@
   }
   @media (max-width: $bp-small) {
     --fs-900: 2.2rem;
-    --fs-700: 1.85rem;
-    --fs-600: 1.6rem;
   }
   @media (max-width: $bp-tiny) {
     --fs-900: 1.8rem;
-    --fs-700: 1.55rem;
-    --fs-600: 1.45rem;
+    --fs-700: 1.6rem;
+    --fs-600: 1.5rem;
   }
 }
