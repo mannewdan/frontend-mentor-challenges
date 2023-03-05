@@ -8,7 +8,7 @@ export default function Header() {
       <h1>We Are Creatives</h1>
 
       <nav>
-        <img className="logo" src="images/logo.svg" alt="logo"></img>
+        <img className="logo" src="images/logo.svg" alt="sunnyside logo"></img>
         <img
           onClick={() => {
             setBurgerActive((prev) => !prev);

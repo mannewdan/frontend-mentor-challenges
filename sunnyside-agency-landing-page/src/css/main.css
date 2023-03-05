@@ -218,7 +218,7 @@ li {
   border-radius: 10rem;
   background-color: var(--c-bg-accent3);
   cursor: pointer;
-  transition: background-color 100ms;
+  transition: background-color 65ms;
 }
 .header ul .contact:hover {
   background-color: var(--c-bg-accent3-light);
@@ -245,7 +245,7 @@ li {
   }
   .header ul .contact {
     background-color: white;
-    transition: color 100ms, background-color 100ms;
+    transition: color 65ms, background-color 65ms;
   }
   .header ul .contact:hover {
     color: white;
@@ -386,7 +386,10 @@ li {
     margin-right: auto;
     margin-left: auto;
   }
-  .pitch .item-split h2,
+  .pitch .item-split h2 {
+    padding: 0;
+    max-width: 15ch;
+  }
   .pitch .item-split p {
     padding: 0;
   }
@@ -455,4 +458,69 @@ li {
   height: 72px;
   justify-self: center;
   margin-bottom: 2em;
+}
+
+.footer {
+  display: grid;
+  background-color: var(--c-bg-accent1);
+}
+.footer .logo {
+  justify-self: center;
+  margin-top: 4em;
+  margin-bottom: 2.5em;
+  width: 170px;
+  filter: invert(65%) sepia(92%) saturate(274%) hue-rotate(118deg) brightness(90%) contrast(89%);
+}
+.footer a {
+  color: var(--c-text-accent1-light);
+  transition: color 65ms ease-in-out;
+}
+.footer a img {
+  transition: all 65ms linear;
+}
+.footer a:hover {
+  color: white;
+}
+.footer a:hover img {
+  filter: brightness(0%) invert(100%);
+}
+.footer ul {
+  justify-self: center;
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-400);
+}
+.footer ul.site-links {
+  margin-bottom: 4.88em;
+  width: 100%;
+  max-width: 300px;
+}
+.footer ul.site-links a {
+  padding: 0.5em;
+}
+.footer ul.social-links {
+  margin-bottom: 4.425em;
+  width: 100%;
+  max-width: 164px;
+}
+.footer ul.social-links a {
+  padding: 0.25em 0.5em;
+}
+.footer ul.social-links img {
+  transform: translateY(3px);
+}
+.footer .image-group {
+  order: -1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+@media (min-width: 850px) {
+  .footer .image-group {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+.footer .image-group img {
+  aspect-ratio: 1;
+  -o-object-fit: cover;
+     object-fit: cover;
 }/*# sourceMappingURL=main.css.map */

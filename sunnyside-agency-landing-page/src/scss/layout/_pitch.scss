@@ -137,7 +137,10 @@
         margin-left: auto;
       }
 
-      h2,
+      h2 {
+        padding: 0;
+        max-width: 15ch;
+      }
       p {
         padding: 0;
       }
