@@ -42,6 +42,26 @@ li {
   padding: 0;
 }
 
+::-moz-selection {
+  color: white;
+  background-color: var(--c-bg-accent2);
+}
+
+::selection {
+  color: white;
+  background-color: var(--c-bg-accent2);
+}
+
+header ::-moz-selection {
+  color: var(--c-bg-accent2);
+  background-color: white;
+}
+
+header ::selection {
+  color: var(--c-bg-accent2);
+  background-color: white;
+}
+
 :root {
   --c-text-main: hsl(212, 27%, 19%);
   --c-text-medium: hsl(213, 9%, 39%);

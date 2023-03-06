@@ -38,3 +38,12 @@ li {
   margin: 0;
   padding: 0;
 }
+
+::selection {
+  color: white;
+  background-color: var(--c-bg-accent2);
+}
+header ::selection {
+  color: var(--c-bg-accent2);
+  background-color: white;
+}
