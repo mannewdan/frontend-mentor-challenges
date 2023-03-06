@@ -358,6 +358,7 @@ header ::selection {
 @media (min-width: 850px) {
   .pitch .primary {
     text-align: left;
+    min-height: 0;
     margin-top: 4em;
     margin-bottom: 4.25em;
     max-width: 700px;
@@ -381,51 +382,8 @@ header ::selection {
   .pitch .primary:nth-of-type(1) img {
     order: 1;
   }
-  .pitch .primary img {
-    -o-object-fit: cover;
-       object-fit: cover;
-    height: 100%;
-  }
   .pitch .primary a {
     align-self: start;
-  }
-}
-.pitch .item-split .container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 4.5em;
-}
-@media (min-width: 850px) {
-  .pitch .item-split {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-column: span 2;
-    text-align: left;
-  }
-  .pitch .item-split .container {
-    align-items: start;
-    max-width: 700px;
-    padding-left: min(10em, 24%);
-    padding-right: 5em;
-    margin-right: auto;
-    margin-left: auto;
-  }
-  .pitch .item-split h2 {
-    padding: 0;
-    max-width: 15ch;
-  }
-  .pitch .item-split p {
-    padding: 0;
-  }
-  .pitch .item-split:nth-of-type(1) img {
-    order: 1;
-  }
-  .pitch .item-split img {
-    -o-object-fit: cover;
-       object-fit: cover;
-    height: 100%;
   }
 }
 .pitch .secondary {
@@ -447,14 +405,14 @@ header ::selection {
 .pitch .secondary h3 {
   font-size: var(--fs-600);
   font-weight: 900;
-  margin-top: 15.35em;
-  margin-bottom: 1.25em;
+  margin-top: 14.2em;
+  margin-bottom: 1em;
   padding: 0 1em;
 }
 .pitch .secondary p {
   font-size: var(--fs-300);
   line-height: 1.7;
-  margin-bottom: 4em;
+  margin-bottom: 3.8em;
   padding: 0 1em;
   max-width: 380px;
   margin-left: auto;
