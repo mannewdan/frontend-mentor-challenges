@@ -11,7 +11,7 @@ export default function Testimonials() {
               "We put our trust in Sunnyside and they delivered, making sure our needs were met and deadlines were always hit."
             }
           </p>
-          <img src="images/image-emily.jpg"></img>
+          <img src="images/image-emily.jpg" alt="emily"></img>
         </blockquote>{" "}
         <blockquote className="item">
           <strong className="name">Thomas S.</strong>
@@ -21,7 +21,7 @@ export default function Testimonials() {
               "Sunnyside’s enthusiasm coupled with their keen interest in our brand’s success made it a satisfying and enjoyable experience."
             }
           </p>
-          <img src="images/image-thomas.jpg"></img>
+          <img src="images/image-thomas.jpg" alt="thomas"></img>
         </blockquote>{" "}
         <blockquote className="item">
           <strong className="name">Jennie F.</strong>
@@ -31,7 +31,7 @@ export default function Testimonials() {
               "Incredible end result! Our sales increased over 400% when we worked with Sunnyside. Highly recommended!"
             }
           </p>
-          <img src="images/image-jennie.jpg"></img>
+          <img src="images/image-jennie.jpg" alt="jennie"></img>
         </blockquote>
       </div>
     </section>

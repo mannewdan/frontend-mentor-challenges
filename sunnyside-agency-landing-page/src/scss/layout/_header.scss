@@ -41,12 +41,25 @@
     opacity: 50%;
   }
   @media (min-width: $bp-medium) {
+    background-size: min(1440px, 150%);
+
+    h1 {
+      margin-top: 1.44em;
+      margin-bottom: 1.71em;
+      letter-spacing: 10.75px;
+    }
     .hamburger {
       display: none;
     }
     nav {
       padding-left: 2.5em;
       padding-right: 3em;
+    }
+    .logo {
+      width: 170px;
+    }
+    .arrow {
+      margin-bottom: 20em;
     }
   }
 
