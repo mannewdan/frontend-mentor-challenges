@@ -7,6 +7,11 @@
   font-size: var(--fs-300);
   margin: 4em 0;
   text-align: center;
+
+  @media (min-width: $bp-large) {
+    font-size: var(--fs-500);
+    margin-top: 8em;
+  }
 }
 .testimonials {
   display: flex;
@@ -14,14 +19,23 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-bottom: 5.65em;
 
   @media (min-width: $bp-large) {
     flex-direction: row;
+    margin-bottom: 10.25em;
   }
 
   .item {
     display: grid;
-    margin-bottom: 4.65em;
+    margin-bottom: 4.25em;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+    @media (min-width: $bp-large) {
+      margin-bottom: 0;
+    }
 
     .name {
       order: 2;
@@ -45,6 +59,10 @@
       margin-bottom: 1.75em;
       padding: 0 1.5em;
       max-width: 400px;
+
+      @media (min-width: $bp-large) {
+        margin-bottom: 3.75em;
+      }
     }
     img {
       order: 0;
@@ -53,6 +71,10 @@
       height: 72px;
       justify-self: center;
       margin-bottom: 2em;
+
+      @media (min-width: $bp-large) {
+        margin-bottom: 4em;
+      }
     }
   }
 }

@@ -5,7 +5,11 @@
 html {
   font-family: var(--ff-main);
 }
-body,
+body {
+  margin: 0;
+  background-color: var(--c-bg-main);
+}
+
 blockquote {
   margin: 0;
 }
