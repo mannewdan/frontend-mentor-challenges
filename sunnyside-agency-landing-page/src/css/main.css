@@ -539,7 +539,6 @@ header ::selection {
 }
 .footer .logo {
   justify-self: center;
-  margin-top: 4em;
   margin-bottom: 2.5em;
   width: 170px;
   filter: invert(65%) sepia(92%) saturate(274%) hue-rotate(118deg) brightness(90%) contrast(89%);
@@ -583,17 +582,21 @@ header ::selection {
   transform: translateY(3px);
 }
 .footer .image-group {
-  order: -1;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 4em;
+}
+.footer .image-group img {
+  width: 100%;
+  height: 50vw;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 @media (min-width: 850px) {
   .footer .image-group {
     grid-template-columns: repeat(4, 1fr);
   }
-}
-.footer .image-group img {
-  aspect-ratio: 1;
-  -o-object-fit: cover;
-     object-fit: cover;
+  .footer .image-group img {
+    height: 100%;
+  }
 }/*# sourceMappingURL=main.css.map */

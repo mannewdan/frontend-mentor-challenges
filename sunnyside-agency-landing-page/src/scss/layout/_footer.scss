@@ -6,7 +6,6 @@
 
   .logo {
     justify-self: center;
-    margin-top: 4em;
     margin-bottom: 2.5em;
     width: 170px;
 
@@ -60,17 +59,22 @@
   }
 
   .image-group {
-    order: -1;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-bottom: 4em;
+
+    img {
+      width: 100%;
+      height: 50vw;
+      object-fit: cover;
+    }
 
     @media (min-width: $bp-medium) {
       grid-template-columns: repeat(4, 1fr);
-    }
 
-    img {
-      aspect-ratio: 1;
-      object-fit: cover;
+      img {
+        height: 100%;
+      }
     }
   }
 }
