@@ -2,6 +2,35 @@
   box-sizing: border-box;
 }
 
+html {
+  font-family: var(--ff-main), sans-serif;
+}
+
 body {
   margin: 0;
+}
+
+:root {
+  --c-bg-white: #ffffff;
+  --c-bg-light: #eff5ff;
+  --c-bg-medium: #d6d9e6;
+  --c-bg-dark: #164a8a;
+  --c-text-white: #ffffff;
+  --c-text-medium: #9699aa;
+  --c-text-dark: #022959;
+  --c-accent-main: #483eff;
+  --c-accent-main-light: #928cff;
+  --c-accent-secondary: #bee2fd;
+  --c-accent-negative: #ee374a;
+}
+
+:root {
+  --ff-main: "Ubuntu";
+  --fs-100: 0.75rem;
+  --fs-300: 0.875rem;
+  --fs-400: 0.9375rem;
+  --fs-500: 1rem;
+  --fs-700: 1.25rem;
+  --fs-800: 1.5rem;
+  --fs-900: 2rem;
 }/*# sourceMappingURL=main.css.map */
