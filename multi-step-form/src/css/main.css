@@ -8,6 +8,7 @@ html {
 
 body {
   margin: 0;
+  background-color: var(--c-bg-light);
 }
 
 h1,
@@ -21,7 +22,8 @@ p {
   --c-bg-white: #ffffff;
   --c-bg-light: #eff5ff;
   --c-bg-medium: #d6d9e6;
-  --c-bg-dark: #164a8a;
+  --c-bg-dark: #022959;
+  --c-bg-dark-active: #164a8a;
   --c-text-white: #ffffff;
   --c-text-medium: #9699aa;
   --c-text-dark: #022959;
@@ -40,4 +42,86 @@ p {
   --fs-700: 1.25rem;
   --fs-800: 1.5rem;
   --fs-900: 2rem;
+}
+
+.form {
+  position: relative;
+  padding-top: 6.19rem;
+}
+.form .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 6.19rem);
+}
+.form .step {
+  background-color: var(--c-bg-white);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  padding: 2rem 1.5rem;
+  border-radius: 10px;
+}
+.form .form-nav {
+  padding: 1rem;
+  display: flex;
+  background-color: var(--c-bg-white);
+}
+.form .form-nav button {
+  font-size: var(--fs-300);
+  font-weight: 700;
+  color: var(--c-text-medium);
+  background: none;
+  border: none;
+}
+.form .form-nav button.fancy {
+  margin-left: auto;
+  color: var(--c-text-white);
+  background-color: var(--c-bg-dark);
+  min-width: 6.06rem;
+  padding: 0.875em 1.15em;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.form .form-nav button.fancy.confirm {
+  background-color: var(--c-accent-main);
+}
+
+.progress {
+  position: absolute;
+  width: 100%;
+  height: 172px;
+  top: 0;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  background-color: var(--c-accent-main);
+  background-image: url("./images/bg-sidebar-mobile.svg");
+}
+.progress .marker {
+  margin-top: 2rem;
+}
+.progress .marker .number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33px;
+  height: 33px;
+  border-radius: 33px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  font-size: var(--fs-300);
+  font-weight: 700;
+}
+.progress .marker .number.active {
+  background-color: var(--c-accent-secondary);
+  border-color: var(--c-accent-secondary);
+  color: var(--c-text-dark);
+}
+.progress .marker .label {
+  display: none;
+}
+.progress .marker .name {
+  display: none;
 }/*# sourceMappingURL=main.css.map */

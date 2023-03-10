@@ -4,5 +4,5 @@ export default function FormStepSummary({
   formData,
   setFormData,
 }: FormStepProps) {
-  return <>Summary</>;
+  return <div className="step">Summary</div>;
 }

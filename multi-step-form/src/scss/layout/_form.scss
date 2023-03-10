@@ -1,0 +1,47 @@
+$top-padding: 6.19rem;
+
+.form {
+  position: relative;
+  padding-top: $top-padding;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - $top-padding);
+  }
+  .step {
+    background-color: var(--c-bg-white);
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 2rem 1.5rem;
+    border-radius: 10px;
+  }
+  .form-nav {
+    padding: 1rem;
+    display: flex;
+    background-color: var(--c-bg-white);
+
+    button {
+      font-size: var(--fs-300);
+      font-weight: 700;
+      color: var(--c-text-medium);
+      background: none;
+      border: none;
+
+      &.fancy {
+        margin-left: auto;
+        color: var(--c-text-white);
+        background-color: var(--c-bg-dark);
+        min-width: 6.06rem;
+        padding: 0.875em 1.15em;
+        border-radius: 4px;
+        font-weight: 500;
+
+        &.confirm {
+          background-color: var(--c-accent-main);
+        }
+      }
+    }
+  }
+}

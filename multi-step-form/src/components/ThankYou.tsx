@@ -1,3 +1,3 @@
 export default function ThankYou() {
-  return <>Thank You</>;
+  return <div className="step">Thank You</div>;
 }

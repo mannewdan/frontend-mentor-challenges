@@ -10,11 +10,10 @@ export default function FormProgressMarker({
   current,
 }: FormProgressMarkerProps) {
   return (
-    <div>
-      <p>{step}</p>
-      <p>Step {step}</p>
-      <p>{name}</p>
-      <p>current: {current === step ? "true" : "false"}</p>
+    <div className="marker">
+      <p className={`number ${current === step ? "active" : ""}`}>{step}</p>
+      <p className="label">Step {step}</p>
+      <p className="name">{name}</p>
     </div>
   );
 }

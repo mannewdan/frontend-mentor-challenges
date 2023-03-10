@@ -67,21 +67,23 @@ export default function App() {
     <section className="form">
       <FormProgress currentStep={currentStep} />
 
-      {renderStep(currentStep)}
+      <div className="content">
+        {renderStep(currentStep)}
 
-      {currentStep < 5 && (
-        <div className="form-nav">
-          {currentStep > 1 && (
-            <button onClick={() => previousStep()}>Go Back</button>
-          )}
-          <button
-            className={currentStep >= 4 ? "confirm" : ""}
-            onClick={() => nextStep()}
-          >
-            {currentStep >= 4 ? "Confirm" : "Next Step"}
-          </button>
-        </div>
-      )}
+        {currentStep < 5 && (
+          <div className="form-nav">
+            {currentStep > 1 && (
+              <button onClick={() => previousStep()}>Go Back</button>
+            )}
+            <button
+              className={`fancy ${currentStep >= 4 ? "confirm" : ""}`}
+              onClick={() => nextStep()}
+            >
+              {currentStep >= 4 ? "Confirm" : "Next Step"}
+            </button>
+          </div>
+        )}
+      </div>
     </section>
   );
 }

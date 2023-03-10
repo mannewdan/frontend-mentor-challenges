@@ -4,5 +4,5 @@ export default function FormStepAddons({
   formData,
   setFormData,
 }: FormStepProps) {
-  return <>Addons</>;
+  return <div className="step">Addons</div>;
 }
