@@ -3,6 +3,7 @@
 .footer {
   display: grid;
   background-color: var(--c-bg-accent1);
+  position: relative;
 
   .logo {
     justify-self: center;

@@ -1,3 +1,5 @@
+import Attribution from "./Attribution";
+
 export default function Footer() {
   return (
     <footer className="footer">
@@ -50,6 +52,8 @@ export default function Footer() {
           </a>
         </li>
       </ul>
+
+      <Attribution />
     </footer>
   );
 }

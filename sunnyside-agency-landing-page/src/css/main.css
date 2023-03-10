@@ -536,6 +536,7 @@ header ::selection {
 .footer {
   display: grid;
   background-color: var(--c-bg-accent1);
+  position: relative;
 }
 .footer .logo {
   justify-self: center;
@@ -598,5 +599,26 @@ header ::selection {
   }
   .footer .image-group img {
     height: 100%;
+  }
+}
+
+.attribution {
+  position: absolute;
+  bottom: 0.5em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.25em;
+  letter-spacing: -1px;
+  font-size: var(--fs-100);
+}
+@media (min-width: 400px) {
+  .attribution {
+    letter-spacing: 0;
+  }
+}
+@media (min-width: 850px) {
+  .attribution {
+    font-size: var(--fs-400);
   }
 }/*# sourceMappingURL=main.css.map */

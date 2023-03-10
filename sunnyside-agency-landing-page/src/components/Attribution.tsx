@@ -1,11 +1,21 @@
 export default function Attribution() {
   return (
     <div className="attribution">
-      {"Challenge by "}
-      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
+      <span>Challenge by</span>
+      <a
+        target="_blank"
+        href="https://www.frontendmentor.io/challenges/sunnyside-agency-landing-page-7yVs3B6ef"
+      >
         Frontend Mentor
       </a>
-      . Coded by <a href="#">mannewdan</a>.
+
+      <span>-- Coded by</span>
+      <a
+        target="_blank"
+        href="https://github.com/mannewdan/frontend-mentor-challenges/tree/main/sunnyside-agency-landing-page"
+      >
+        Daniel Newman
+      </a>
     </div>
   );
 }

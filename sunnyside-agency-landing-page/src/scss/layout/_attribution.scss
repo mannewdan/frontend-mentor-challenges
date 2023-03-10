@@ -1,0 +1,21 @@
+@use "../globals/breakpoints" as *;
+
+.attribution {
+  position: absolute;
+  bottom: 0.5em;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  gap: 0.25em;
+
+  letter-spacing: -1px;
+  font-size: var(--fs-100);
+
+  @media (min-width: $bp-small) {
+    letter-spacing: 0;
+  }
+  @media (min-width: $bp-medium) {
+    font-size: var(--fs-400);
+  }
+}
