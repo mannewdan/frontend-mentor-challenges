@@ -1,11 +1,9 @@
-function App() {
+import Form from "./components/Form";
+
+export default function App() {
   return (
-    <>
-      <h1>h1</h1>
-      <h2>h2</h2>
-      <p>paragraph</p>
-    </>
+    <main>
+      <Form />
+    </main>
   );
 }
-
-export default App;
