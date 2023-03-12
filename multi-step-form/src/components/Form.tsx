@@ -67,7 +67,7 @@ export default function App() {
     <section className="form">
       <FormProgress currentStep={currentStep} />
 
-      <div className="content">
+      <form className="content">
         {renderStep(currentStep)}
 
         {currentStep < 5 && (
@@ -77,13 +77,16 @@ export default function App() {
             )}
             <button
               className={`fancy ${currentStep >= 4 ? "confirm" : ""}`}
-              onClick={() => nextStep()}
+              onClick={(e) => {
+                e.preventDefault();
+                nextStep();
+              }}
             >
               {currentStep >= 4 ? "Confirm" : "Next Step"}
             </button>
           </div>
         )}
-      </div>
+      </form>
     </section>
   );
 }

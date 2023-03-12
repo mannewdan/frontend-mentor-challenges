@@ -2,7 +2,9 @@
   box-sizing: border-box;
 }
 
-html {
+html,
+input,
+button {
   font-family: var(--ff-main), sans-serif;
 }
 
@@ -61,6 +63,58 @@ p {
   padding: 2rem 1.5rem;
   border-radius: 10px;
 }
+.form .step h1 {
+  margin-bottom: 0.375em;
+}
+.form .step p {
+  color: var(--c-text-medium);
+  font-size: 1rem;
+  line-height: 1.56;
+  margin-bottom: 1.375em;
+}
+.form .step .input-group {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
+.form .step label {
+  display: inline-block;
+  color: var(--c-text-dark);
+  font-size: var(--fs-100);
+  margin-bottom: 0.25em;
+}
+.form .step .required-text {
+  display: none;
+  font-size: var(--fs-100);
+  font-weight: 700;
+  color: var(--c-accent-negative);
+  transform: translateY(-3px);
+}
+.form .step .required-text.required {
+  display: inline;
+}
+.form .step input {
+  color: var(--c-text-dark);
+  font-size: var(--fs-400);
+  font-weight: 500;
+  padding: 0.8em 0.9375em;
+  width: 100%;
+  border-color: var(--c-bg-medium);
+  border-style: solid;
+  border-radius: 4px;
+  outline-color: var(--c-accent-main);
+}
+.form .step input.required {
+  border-color: var(--c-accent-negative);
+  outline-color: var(--c-accent-negative);
+}
+.form .step input::-moz-placeholder {
+  color: var(--c-text-medium);
+}
+.form .step input::placeholder {
+  color: var(--c-text-medium);
+}
 .form .form-nav {
   padding: 1rem;
   display: flex;
@@ -97,6 +151,7 @@ p {
   gap: 1rem;
   background-color: var(--c-accent-main);
   background-image: url("./images/bg-sidebar-mobile.svg");
+  background-size: cover;
 }
 .progress .marker {
   margin-top: 2rem;

@@ -2,7 +2,9 @@
   box-sizing: border-box;
 }
 
-html {
+html,
+input,
+button {
   font-family: var(--ff-main), sans-serif;
 }
 
