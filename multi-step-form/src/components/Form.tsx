@@ -73,7 +73,14 @@ export default function App() {
         {currentStep < 5 && (
           <div className="form-nav">
             {currentStep > 1 && (
-              <button onClick={() => previousStep()}>Go Back</button>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  previousStep();
+                }}
+              >
+                Go Back
+              </button>
             )}
             <button
               className={`fancy ${currentStep >= 4 ? "confirm" : ""}`}

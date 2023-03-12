@@ -3,8 +3,10 @@ import { FormStepProps } from "./Form";
 export default function FormStepInfo({ formData, setFormData }: FormStepProps) {
   return (
     <div className="step">
-      <h1>Personal Info</h1>
-      <p>Please provide your name, email address, and phone number.</p>
+      <header>
+        <h1>Personal Info</h1>
+        <p>Please provide your name, email address, and phone number.</p>
+      </header>
 
       <div className="input-group">
         <label>Name</label>
