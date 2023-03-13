@@ -1,6 +1,18 @@
 import { FormStepProps } from "./Form";
 
-export default function FormStepInfo({ formData, setFormData }: FormStepProps) {
+type FormStepInfoProps = {
+  stepProps: FormStepProps;
+  requiredFields: { name: boolean; email: boolean; phone: boolean };
+};
+
+export default function FormStepInfo({
+  stepProps,
+  requiredFields,
+}: FormStepInfoProps) {
+  const { formData, setFormData } = stepProps;
+
+  console.log(formData);
+
   return (
     <div className="step">
       <header>
@@ -9,28 +21,68 @@ export default function FormStepInfo({ formData, setFormData }: FormStepProps) {
       </header>
 
       <div className="input-group">
-        <label>Name</label>
-        <span className="required-text">This field is required</span>
-        <input className="" type="text" placeholder="e.g. Bob Bobson"></input>
-      </div>
-
-      <div className="input-group">
-        <label>Email Address</label>
-        <span className="required-text">This field is required</span>
+        <label htmlFor="name">Name</label>
+        <span
+          className={`required-text ${requiredFields.name ? "required" : ""}`}
+        >
+          This field is required
+        </span>
         <input
-          className=""
+          className={requiredFields.name ? "required" : ""}
           type="text"
-          placeholder="e.g. bobbobson@bob.com"
+          id="name"
+          placeholder="e.g. Bob Bobson"
+          onChange={(e) => {
+            const val = e.target.value;
+            setFormData((prev) => {
+              return { ...prev, name: val };
+            });
+          }}
+          value={formData.name}
         ></input>
       </div>
 
       <div className="input-group">
-        <label>Phone Number</label>
-        <span className="required-text">This field is required</span>
+        <label htmlFor="email">Email Address</label>
+        <span
+          className={`required-text ${requiredFields.email ? "required" : ""}`}
+        >
+          This field is required
+        </span>
         <input
-          className=""
+          className={requiredFields.email ? "required" : ""}
           type="text"
+          id="email"
+          placeholder="e.g. bobbobson@bob.com"
+          onChange={(e) => {
+            const val = e.target.value;
+            setFormData((prev) => {
+              return { ...prev, email: val };
+            });
+          }}
+          value={formData.email}
+        ></input>
+      </div>
+
+      <div className="input-group">
+        <label htmlFor="phone">Phone Number</label>
+        <span
+          className={`required-text ${requiredFields.phone ? "required" : ""}`}
+        >
+          This field is required
+        </span>
+        <input
+          className={requiredFields.phone ? "required" : ""}
+          type="text"
+          id="phone"
           placeholder="e.g. +1 234 567 890"
+          onChange={(e) => {
+            const val = e.target.value;
+            setFormData((prev) => {
+              return { ...prev, phone: val };
+            });
+          }}
+          value={formData.phone}
         ></input>
       </div>
     </div>

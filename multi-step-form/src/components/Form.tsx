@@ -11,6 +11,7 @@ enum BillingIntervalE {
   Yearly = 12,
 }
 enum PlanTypeE {
+  Unselected = "",
   Arcade = "arcade",
   Advanced = "advanced",
   Pro = "pro",
@@ -28,6 +29,23 @@ type FormDataT = {
   billingInterval: BillingIntervalE;
   addons: AddonsT;
 };
+const defaultFormData = {
+  name: "",
+  email: "",
+  phone: "",
+  planType: PlanTypeE.Unselected,
+  billingInterval: BillingIntervalE.Monthly,
+  addons: {
+    onlineService: false,
+    largerStorage: false,
+    customizeProfile: false,
+  },
+} as FormDataT;
+const defaultRequiredFields = {
+  name: false,
+  email: false,
+  phone: false,
+};
 export type FormStepProps = {
   formData: FormDataT;
   setFormData: React.Dispatch<React.SetStateAction<FormDataT>>;
@@ -35,20 +53,43 @@ export type FormStepProps = {
 
 export default function App() {
   const [currentStep, setCurrentStep] = React.useState(1);
-  const [formData, setFormData] = React.useState({} as FormDataT);
+  const [formData, setFormData] = React.useState({ ...defaultFormData });
+  const [requiredFields, setRequiredFields] = React.useState({
+    ...defaultRequiredFields,
+  });
 
   function previousStep() {
-    if (currentStep > 1) setCurrentStep((prev) => prev - 1);
+    if (currentStep <= 1) return;
+    setCurrentStep((prev) => prev - 1);
   }
   function nextStep() {
-    if (currentStep < 5) setCurrentStep((prev) => prev + 1);
+    if (currentStep >= 5) return;
+
+    switch (currentStep) {
+      case 1:
+        const newFields = {
+          name: !formData.name,
+          email: !formData.email,
+          phone: !formData.phone,
+        };
+
+        setRequiredFields(newFields);
+        if (newFields.name || newFields.email || newFields.phone) return;
+    }
+
+    setCurrentStep((prev) => prev + 1);
   }
 
   //rendering
   function renderStep(step: number): JSX.Element {
     switch (step) {
       case 1:
-        return <FormStepInfo formData={formData} setFormData={setFormData} />;
+        return (
+          <FormStepInfo
+            stepProps={{ formData, setFormData }}
+            requiredFields={requiredFields}
+          />
+        );
       case 2:
         return <FormStepPlan formData={formData} setFormData={setFormData} />;
       case 3:
