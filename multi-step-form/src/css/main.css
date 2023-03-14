@@ -84,7 +84,7 @@ p {
   border-radius: 8px;
   margin-bottom: 0.75em;
   padding: 0 1em;
-  transition: border-color 100ms ease-in-out, background-color 100ms ease-in-out;
+  transition: border-color 75ms ease-in-out, background-color 75ms ease-in-out;
 }
 .form .step button.selected {
   border-color: var(--c-accent-main);
@@ -119,6 +119,44 @@ p {
 }
 .form .step button p:last-of-type {
   margin-bottom: 1.29em;
+}
+.form .step button.addons-button {
+  grid-template-columns: auto 1fr auto;
+}
+.form .step button.addons-button .img-container {
+  grid-column: 1;
+  grid-row: span 2;
+  margin-right: 1em;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid var(--c-bg-medium);
+  transition: background-color 75ms ease-in-out, border-color 75ms ease-in-out;
+}
+.form .step button.addons-button .img-container.active {
+  background-color: var(--c-accent-main);
+  border-color: var(--c-accent-main);
+}
+.form .step button.addons-button .img-container img {
+  grid-column: auto;
+  grid-row: auto;
+  width: 12px;
+  margin: 5px auto;
+}
+.form .step button.addons-button .name {
+  font-size: var(--fs-300);
+  font-weight: 700;
+  margin-top: 1.08em;
+}
+.form .step button.addons-button .description {
+  font-size: var(--fs-100);
+  color: var(--c-text-medium);
+}
+.form .step button.addons-button .addition {
+  grid-column: 3;
+  grid-row: 1/span 2;
+  font-size: var(--fs-100);
+  color: var(--c-accent-main);
 }
 .form .input-group {
   display: flex;

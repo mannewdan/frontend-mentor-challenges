@@ -41,8 +41,8 @@ $top-padding: 6.19rem;
       margin-bottom: 0.75em;
       padding: 0 1em;
 
-      transition: border-color 100ms ease-in-out,
-        background-color 100ms ease-in-out;
+      transition: border-color 75ms ease-in-out,
+        background-color 75ms ease-in-out;
 
       &.selected {
         border-color: var(--c-accent-main);
@@ -77,6 +77,50 @@ $top-padding: 6.19rem;
         }
         &:last-of-type {
           margin-bottom: 1.29em;
+        }
+      }
+
+      &.addons-button {
+        grid-template-columns: auto 1fr auto;
+
+        .img-container {
+          grid-column: 1;
+          grid-row: span 2;
+          margin-right: 1em;
+
+          width: 20px;
+          height: 20px;
+          border-radius: 4px;
+          border: 1px solid var(--c-bg-medium);
+
+          transition: background-color 75ms ease-in-out,
+            border-color 75ms ease-in-out;
+
+          &.active {
+            background-color: var(--c-accent-main);
+            border-color: var(--c-accent-main);
+          }
+          img {
+            grid-column: auto;
+            grid-row: auto;
+            width: 12px;
+            margin: 5px auto;
+          }
+        }
+        .name {
+          font-size: var(--fs-300);
+          font-weight: 700;
+          margin-top: 1.08em;
+        }
+        .description {
+          font-size: var(--fs-100);
+          color: var(--c-text-medium);
+        }
+        .addition {
+          grid-column: 3;
+          grid-row: 1 / span 2;
+          font-size: var(--fs-100);
+          color: var(--c-accent-main);
         }
       }
     }
