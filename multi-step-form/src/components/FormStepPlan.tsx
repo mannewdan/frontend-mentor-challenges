@@ -1,6 +1,8 @@
 import { FormStepProps, PlanTypeE, BillingIntervalE } from "./Form";
 
 export default function FormStepPlan({ formData, setFormData }: FormStepProps) {
+  const isYearly = formData.billingInterval === BillingIntervalE.Yearly;
+
   return (
     <div className="step">
       <header>
@@ -19,7 +21,8 @@ export default function FormStepPlan({ formData, setFormData }: FormStepProps) {
       >
         <img src="images/icon-arcade.svg"></img>
         <p className="name">Arcade</p>
-        <p className="price">$9/mo</p>
+        <p className="price">{isYearly ? "$90/yr" : "$9/mo"}</p>
+        {isYearly && <p className="savings">2 months free</p>}
       </button>
 
       <button
@@ -33,7 +36,8 @@ export default function FormStepPlan({ formData, setFormData }: FormStepProps) {
       >
         <img src="images/icon-advanced.svg"></img>
         <p className="name">Advanced</p>
-        <p className="price">$12/mo</p>
+        <p className="price">{isYearly ? "$120/yr" : "$12/mo"}</p>
+        {isYearly && <p className="savings">2 months free</p>}
       </button>
 
       <button
@@ -47,49 +51,29 @@ export default function FormStepPlan({ formData, setFormData }: FormStepProps) {
       >
         <img src="images/icon-pro.svg"></img>
         <p className="name">Pro</p>
-        <p className="price">$15/mo</p>
+        <p className="price">{isYearly ? "$150/yr" : "$15/mo"}</p>
+        {isYearly && <p className="savings">2 months free</p>}
       </button>
 
       <div className="interval-toggle">
-        <span
-          className={
-            formData.billingInterval === BillingIntervalE.Monthly
-              ? "active"
-              : ""
-          }
-        >
-          Monthly
-        </span>
+        <span className={!isYearly ? "active" : ""}>Monthly</span>
         <button
           onClick={(e) => {
             e.preventDefault();
             setFormData((prev) => {
               return {
                 ...prev,
-                billingInterval:
-                  prev.billingInterval === BillingIntervalE.Monthly
-                    ? BillingIntervalE.Yearly
-                    : BillingIntervalE.Monthly,
+                billingInterval: !isYearly
+                  ? BillingIntervalE.Yearly
+                  : BillingIntervalE.Monthly,
               };
             });
           }}
           className="toggler"
         >
-          <div
-            className={`circle ${
-              formData.billingInterval === BillingIntervalE.Yearly
-                ? "active"
-                : ""
-            }`}
-          ></div>
+          <div className={`circle ${isYearly ? "active" : ""}`}></div>
         </button>
-        <span
-          className={
-            formData.billingInterval === BillingIntervalE.Yearly ? "active" : ""
-          }
-        >
-          Yearly
-        </span>
+        <span className={isYearly ? "active" : ""}>Yearly</span>
       </div>
     </div>
   );

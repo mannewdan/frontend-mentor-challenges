@@ -50,8 +50,10 @@ $top-padding: 6.19rem;
       }
       img {
         grid-column: 1;
-        grid-row: span 2;
+        grid-row: span 3;
+        align-self: flex-start;
         margin-right: 0.875em;
+        margin-top: max(1.065em, 35%);
       }
       p {
         grid-column: 2;
@@ -67,6 +69,13 @@ $top-padding: 6.19rem;
         &.price {
           font-size: var(--fs-300);
           color: var(--c-text-medium);
+          margin-bottom: 0.4375em;
+        }
+        &.savings {
+          font-size: var(--fs-100);
+          color: var(--c-text-dark);
+        }
+        &:last-of-type {
           margin-bottom: 1.29em;
         }
       }
