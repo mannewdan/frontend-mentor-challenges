@@ -22,6 +22,7 @@ p {
 
 :root {
   --c-bg-white: #ffffff;
+  --c-bg-verylight: #f8f9ff;
   --c-bg-light: #eff5ff;
   --c-bg-medium: #d6d9e6;
   --c-bg-dark: #022959;
@@ -83,6 +84,11 @@ p {
   border-radius: 8px;
   margin-bottom: 0.75em;
   padding: 0 1em;
+  transition: border-color 100ms ease-in-out, background-color 100ms ease-in-out;
+}
+.form .step button.selected {
+  border-color: var(--c-accent-main);
+  background-color: var(--c-bg-verylight);
 }
 .form .step button img {
   grid-column: 1;
@@ -120,6 +126,48 @@ p {
 }
 .form .required-text.required {
   display: inline;
+}
+.form .interval-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--fs-300);
+  font-weight: 700;
+  color: var(--c-text-medium);
+  margin-top: 1.5rem;
+  padding: 0.875em;
+  background-color: var(--c-bg-verylight);
+  border-radius: 8px;
+}
+.form .interval-toggle span {
+  transition: color 100ms ease-in-out;
+}
+.form .interval-toggle .active {
+  color: var(--c-text-dark);
+}
+.form .interval-toggle .toggler {
+  width: 38px;
+  height: 20px;
+  background-color: var(--c-bg-dark);
+  border: none;
+  border-radius: 38px;
+  margin: 0;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  position: relative;
+}
+.form .interval-toggle .toggler .circle {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--c-bg-white);
+  border-radius: 12px;
+  transition: transform 100ms ease-in-out;
+}
+.form .interval-toggle .toggler .circle.active {
+  transform: translateX(18px);
 }
 .form label {
   display: inline-block;

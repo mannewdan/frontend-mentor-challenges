@@ -41,6 +41,13 @@ $top-padding: 6.19rem;
       margin-bottom: 0.75em;
       padding: 0 1em;
 
+      transition: border-color 100ms ease-in-out,
+        background-color 100ms ease-in-out;
+
+      &.selected {
+        border-color: var(--c-accent-main);
+        background-color: var(--c-bg-verylight);
+      }
       img {
         grid-column: 1;
         grid-row: span 2;
@@ -80,6 +87,55 @@ $top-padding: 6.19rem;
 
     &.required {
       display: inline;
+    }
+  }
+  .interval-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: var(--fs-300);
+    font-weight: 700;
+    color: var(--c-text-medium);
+
+    margin-top: 1.5rem;
+    padding: 0.875em;
+    background-color: var(--c-bg-verylight);
+    border-radius: 8px;
+
+    span {
+      transition: color 100ms ease-in-out;
+    }
+    .active {
+      color: var(--c-text-dark);
+    }
+    .toggler {
+      width: 38px;
+      height: 20px;
+      background-color: var(--c-bg-dark);
+      border: none;
+      border-radius: 38px;
+      margin: 0;
+      margin-left: 1.5em;
+      margin-right: 1.5em;
+
+      position: relative;
+      .circle {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+
+        width: 12px;
+        height: 12px;
+        background-color: var(--c-bg-white);
+        border-radius: 12px;
+
+        transition: transform 100ms ease-in-out;
+
+        &.active {
+          transform: translateX(18px);
+        }
+      }
     }
   }
 

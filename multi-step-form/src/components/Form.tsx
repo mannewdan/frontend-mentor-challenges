@@ -6,12 +6,11 @@ import FormStepAddons from "./FormStepAddons";
 import FormStepSummary from "./FormStepSummary";
 import ThankYou from "./ThankYou";
 
-enum BillingIntervalE {
+export enum BillingIntervalE {
   Monthly = 1,
   Yearly = 12,
 }
-enum PlanTypeE {
-  Unselected = "",
+export enum PlanTypeE {
   Arcade = "arcade",
   Advanced = "advanced",
   Pro = "pro",
@@ -33,7 +32,7 @@ const defaultFormData = {
   name: "",
   email: "",
   phone: "",
-  planType: PlanTypeE.Unselected,
+  planType: PlanTypeE.Arcade,
   billingInterval: BillingIntervalE.Monthly,
   addons: {
     onlineService: false,
@@ -65,6 +64,7 @@ export default function App() {
   function nextStep() {
     if (currentStep >= 5) return;
 
+    //validate inputs before moving on
     switch (currentStep) {
       case 1:
         const newFields = {
@@ -72,7 +72,6 @@ export default function App() {
           email: !formData.email,
           phone: !formData.phone,
         };
-
         setRequiredFields(newFields);
         if (newFields.name || newFields.email || newFields.phone) return;
     }
