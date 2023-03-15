@@ -30,6 +30,30 @@ $top-padding: 6.19rem;
     padding: 2rem 1.5rem;
     border-radius: 10px;
 
+    &.thanks {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      img {
+        width: 56px;
+        margin-bottom: 1.5em;
+      }
+      a {
+        font-weight: 500;
+        color: var(--c-accent-main);
+        text-decoration: none;
+
+        &:hover,
+        &:active {
+          opacity: 0.75;
+        }
+      }
+    }
     button {
       display: grid;
       grid-template-columns: auto 1fr;

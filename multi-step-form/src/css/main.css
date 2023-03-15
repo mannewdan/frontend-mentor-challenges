@@ -75,6 +75,27 @@ p {
   padding: 2rem 1.5rem;
   border-radius: 10px;
 }
+.form .step.thanks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.form .step.thanks img {
+  width: 56px;
+  margin-bottom: 1.5em;
+}
+.form .step.thanks a {
+  font-weight: 500;
+  color: var(--c-accent-main);
+  text-decoration: none;
+}
+.form .step.thanks a:hover, .form .step.thanks a:active {
+  opacity: 0.75;
+}
 .form .step button {
   display: grid;
   grid-template-columns: auto 1fr;
