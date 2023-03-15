@@ -1,7 +1,9 @@
-import { FormStepProps, PlanTypeE, BillingIntervalE } from "./Form";
+import { FormStepProps, PlanInfo } from "./Form";
 
 export default function FormStepPlan({ formData, setFormData }: FormStepProps) {
-  const isYearly = formData.billingInterval === BillingIntervalE.Yearly;
+  const { isYearly } = formData;
+
+  console.log(formData);
 
   return (
     <div className="step">
@@ -11,47 +13,53 @@ export default function FormStepPlan({ formData, setFormData }: FormStepProps) {
       </header>
 
       <button
-        className={formData.planType === PlanTypeE.Arcade ? "selected" : ""}
+        className={formData.planType === PlanInfo.arcade.id ? "selected" : ""}
         onClick={(e) => {
           e.preventDefault();
           setFormData((prev) => {
-            return { ...prev, planType: PlanTypeE.Arcade };
+            return { ...prev, planType: PlanInfo.arcade.id };
           });
         }}
       >
         <img src="images/icon-arcade.svg"></img>
         <p className="name">Arcade</p>
-        <p className="price">{isYearly ? "$90/yr" : "$9/mo"}</p>
+        <p className="price">{`$${
+          PlanInfo.arcade.price * (isYearly ? 10 : 1)
+        }/${isYearly ? "yr" : "mo"}`}</p>
         {isYearly && <p className="savings">2 months free</p>}
       </button>
 
       <button
-        className={formData.planType === PlanTypeE.Advanced ? "selected" : ""}
+        className={formData.planType === PlanInfo.advanced.id ? "selected" : ""}
         onClick={(e) => {
           e.preventDefault();
           setFormData((prev) => {
-            return { ...prev, planType: PlanTypeE.Advanced };
+            return { ...prev, planType: PlanInfo.advanced.id };
           });
         }}
       >
         <img src="images/icon-advanced.svg"></img>
         <p className="name">Advanced</p>
-        <p className="price">{isYearly ? "$120/yr" : "$12/mo"}</p>
+        <p className="price">{`$${
+          PlanInfo.advanced.price * (isYearly ? 10 : 1)
+        }/${isYearly ? "yr" : "mo"}`}</p>
         {isYearly && <p className="savings">2 months free</p>}
       </button>
 
       <button
-        className={formData.planType === PlanTypeE.Pro ? "selected" : ""}
+        className={formData.planType === PlanInfo.pro.id ? "selected" : ""}
         onClick={(e) => {
           e.preventDefault();
           setFormData((prev) => {
-            return { ...prev, planType: PlanTypeE.Pro };
+            return { ...prev, planType: PlanInfo.pro.id };
           });
         }}
       >
         <img src="images/icon-pro.svg"></img>
         <p className="name">Pro</p>
-        <p className="price">{isYearly ? "$150/yr" : "$15/mo"}</p>
+        <p className="price">{`$${PlanInfo.pro.price * (isYearly ? 10 : 1)}/${
+          isYearly ? "yr" : "mo"
+        }`}</p>
         {isYearly && <p className="savings">2 months free</p>}
       </button>
 
@@ -63,9 +71,7 @@ export default function FormStepPlan({ formData, setFormData }: FormStepProps) {
             setFormData((prev) => {
               return {
                 ...prev,
-                billingInterval: !isYearly
-                  ? BillingIntervalE.Yearly
-                  : BillingIntervalE.Monthly,
+                isYearly: !isYearly,
               };
             });
           }}

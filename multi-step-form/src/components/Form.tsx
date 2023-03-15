@@ -6,39 +6,40 @@ import FormStepAddons from "./FormStepAddons";
 import FormStepSummary from "./FormStepSummary";
 import ThankYou from "./ThankYou";
 
-export enum BillingIntervalE {
-  Monthly = 1,
-  Yearly = 12,
-}
-export enum PlanTypeE {
-  Arcade = "arcade",
-  Advanced = "advanced",
-  Pro = "pro",
-}
-type AddonsT = {
-  onlineService: boolean;
-  largerStorage: boolean;
-  customizeProfile: boolean;
+export const PlanInfo: {
+  [key: string]: { id: string; name: string; price: number };
+} = {
+  arcade: { id: "arcade", name: "Arcade", price: 9 },
+  advanced: { id: "advanced", name: "Advanced", price: 12 },
+  pro: { id: "pro", name: "Pro", price: 15 },
 };
+export const AddonInfo: {
+  [key: string]: { id: string; name: string; price: number };
+} = {
+  onlineService: { id: "onlineService", name: "Online service", price: 1 },
+  largerStorage: { id: "largerStorage", name: "Larger storage", price: 2 },
+  customizableProfile: {
+    id: "customizableProfile",
+    name: "Customizable profile",
+    price: 2,
+  },
+};
+
 type FormDataT = {
   name: string;
   email: string;
   phone: string;
-  planType: PlanTypeE;
-  billingInterval: BillingIntervalE;
-  addons: AddonsT;
+  planType: string;
+  isYearly: boolean;
+  addons: { [key: string]: boolean };
 };
 const defaultFormData = {
   name: "",
   email: "",
   phone: "",
-  planType: PlanTypeE.Arcade,
-  billingInterval: BillingIntervalE.Monthly,
-  addons: {
-    onlineService: false,
-    largerStorage: false,
-    customizeProfile: false,
-  },
+  planType: PlanInfo.arcade.id,
+  isYearly: false,
+  addons: {},
 } as FormDataT;
 const defaultRequiredFields = {
   name: false,

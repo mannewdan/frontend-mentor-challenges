@@ -1,10 +1,12 @@
-import { FormStepProps, BillingIntervalE } from "./Form";
+import { FormStepProps, AddonInfo } from "./Form";
 
 export default function FormStepAddons({
   formData,
   setFormData,
 }: FormStepProps) {
-  const isYearly = formData.billingInterval === BillingIntervalE.Yearly;
+  const { isYearly } = formData;
+
+  console.log(formData);
 
   return (
     <div className="step">
@@ -15,16 +17,17 @@ export default function FormStepAddons({
 
       <button
         className={`addons-button ${
-          formData.addons.onlineService ? "selected" : ""
+          formData.addons[AddonInfo.onlineService.id] ? "selected" : ""
         }`}
         onClick={(e) => {
           e.preventDefault();
           setFormData((prev) => {
+            const id = AddonInfo.onlineService.id;
             return {
               ...prev,
               addons: {
                 ...prev.addons,
-                onlineService: !prev.addons.onlineService,
+                [id]: !prev.addons[id],
               },
             };
           });
@@ -32,29 +35,30 @@ export default function FormStepAddons({
       >
         <div
           className={`img-container ${
-            formData.addons.onlineService ? "active" : ""
+            formData.addons[AddonInfo.onlineService.id] ? "active" : ""
           }`}
         >
           <img src="images/icon-checkmark.svg"></img>
         </div>
 
         <p className="name">Online service</p>
-        <p className="addition">{isYearly ? "+$10/yr" : "+$1/mo"}</p>
+        <p className="addition">{formData.isYearly ? "+$10/yr" : "+$1/mo"}</p>
         <p className="description">Access to multiplayer games</p>
       </button>
 
       <button
         className={`addons-button ${
-          formData.addons.largerStorage ? "selected" : ""
+          formData.addons[AddonInfo.largerStorage.id] ? "selected" : ""
         }`}
         onClick={(e) => {
           e.preventDefault();
           setFormData((prev) => {
+            const id = AddonInfo.largerStorage.id;
             return {
               ...prev,
               addons: {
                 ...prev.addons,
-                largerStorage: !prev.addons.largerStorage,
+                [id]: !prev.addons[id],
               },
             };
           });
@@ -62,29 +66,30 @@ export default function FormStepAddons({
       >
         <div
           className={`img-container ${
-            formData.addons.largerStorage ? "active" : ""
+            formData.addons[AddonInfo.largerStorage.id] ? "active" : ""
           }`}
         >
           <img src="images/icon-checkmark.svg"></img>
         </div>
 
         <p className="name">Larger storage</p>
-        <p className="addition">{isYearly ? "+$20/yr" : "+$2/mo"}</p>
+        <p className="addition">{formData.isYearly ? "+$20/yr" : "+$2/mo"}</p>
         <p className="description">Extra 1TB of cloud save</p>
       </button>
 
       <button
         className={`addons-button ${
-          formData.addons.customizeProfile ? "selected" : ""
+          formData.addons[AddonInfo.customizableProfile.id] ? "selected" : ""
         }`}
         onClick={(e) => {
           e.preventDefault();
           setFormData((prev) => {
+            const id = AddonInfo.customizableProfile.id;
             return {
               ...prev,
               addons: {
                 ...prev.addons,
-                customizeProfile: !prev.addons.customizeProfile,
+                [id]: !prev.addons[id],
               },
             };
           });
@@ -92,14 +97,14 @@ export default function FormStepAddons({
       >
         <div
           className={`img-container ${
-            formData.addons.customizeProfile ? "active" : ""
+            formData.addons[AddonInfo.customizableProfile.id] ? "active" : ""
           }`}
         >
           <img src="images/icon-checkmark.svg"></img>
         </div>
 
         <p className="name">Customizable profile</p>
-        <p className="addition">{isYearly ? "+$20/yr" : "+$2/mo"}</p>
+        <p className="addition">{formData.isYearly ? "+$20/yr" : "+$2/mo"}</p>
         <p className="description">Custom theme on your profile</p>
       </button>
     </div>
