@@ -3,8 +3,6 @@ import { FormStepProps, PlanInfo } from "./Form";
 export default function FormStepPlan({ formData, setFormData }: FormStepProps) {
   const { isYearly } = formData;
 
-  console.log(formData);
-
   return (
     <div className="step">
       <header>

@@ -18,10 +18,10 @@ export default function FormStepSummary({
     .map((item) => {
       return (
         <div key={item} className="addon">
-          <p>{AddonInfo[item].name}</p>
-          <p>{`+$${AddonInfo[item].price * (isYearly ? 10 : 1)}/${
-            isYearly ? "yr" : "mo"
-          }`}</p>
+          <p className="name">{AddonInfo[item].name}</p>
+          <p className="price">{`+$${
+            AddonInfo[item].price * (isYearly ? 10 : 1)
+          }/${isYearly ? "yr" : "mo"}`}</p>
         </div>
       );
     });
@@ -33,8 +33,8 @@ export default function FormStepSummary({
       </header>
 
       <div className="summary">
-        <div className="plan">
-          <p>{`${PlanInfo[formData.planType].name} (${
+        <div className={`plan ${addonsEls.length > 0 ? "border" : ""}`}>
+          <p className="name">{`${PlanInfo[formData.planType].name} (${
             isYearly ? "Yearly" : "Monthly"
           })`}</p>
           <button
@@ -46,17 +46,16 @@ export default function FormStepSummary({
           >
             Change
           </button>
-          <p>{`$${PlanInfo[formData.planType].price * (isYearly ? 10 : 1)}/${
-            isYearly ? "yr" : "mo"
-          }`}</p>
+          <p className="price">{`$${
+            PlanInfo[formData.planType].price * (isYearly ? 10 : 1)
+          }/${isYearly ? "yr" : "mo"}`}</p>
         </div>
 
-        {addonsEls.length > 0 && <hr></hr>}
         {addonsEls}
       </div>
 
       <div className="total">
-        <p>{"Total (per year)"}</p>
+        <p className="label">{"Total (per year)"}</p>
         <p className="total-price">{`$${
           (isYearly ? 10 : 1) *
           (PlanInfo[formData.planType].price +

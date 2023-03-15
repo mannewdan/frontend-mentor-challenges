@@ -10,6 +10,7 @@ button {
 
 body {
   margin: 0;
+  color: var(--c-text-dark);
   background-color: var(--c-bg-light);
 }
 
@@ -215,6 +216,63 @@ p {
 }
 .form .interval-toggle .toggler .circle.active {
   transform: translateX(18px);
+}
+.form .summary {
+  background-color: var(--c-bg-verylight);
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: var(--fs-300);
+}
+.form .summary .plan {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+}
+.form .summary .plan.border {
+  padding-bottom: 0.75em;
+  border-bottom: 1px solid var(--c-bg-medium);
+}
+.form .summary .plan .name {
+  font-weight: 500;
+  margin-bottom: 0.25em;
+}
+.form .summary .plan .price {
+  font-weight: 700;
+  grid-column: 2;
+  grid-row: 1/span 2;
+}
+.form .summary .plan button {
+  grid-column: 1;
+  border: none;
+  color: var(--c-text-medium);
+  text-decoration: underline;
+  width: auto;
+  justify-self: flex-start;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.form .summary .addon {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.85em;
+}
+.form .summary .addon .name {
+  color: var(--c-text-medium);
+}
+.form .total {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  font-size: var(--fs-300);
+}
+.form .total .label {
+  color: var(--c-text-medium);
+}
+.form .total .total-price {
+  font-size: var(--fs-500);
+  font-weight: 700;
+  color: var(--c-accent-main);
 }
 .form label {
   display: inline-block;
