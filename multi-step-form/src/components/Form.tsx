@@ -96,7 +96,10 @@ export default function App() {
         return <FormStepAddons formData={formData} setFormData={setFormData} />;
       case 4:
         return (
-          <FormStepSummary formData={formData} setFormData={setFormData} />
+          <FormStepSummary
+            stepProps={{ formData: formData, setFormData: setFormData }}
+            previousStep={previousStep}
+          />
         );
       case 5:
         return <ThankYou />;
