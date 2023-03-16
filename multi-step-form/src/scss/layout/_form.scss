@@ -1,18 +1,46 @@
+@use "../globals/breakpoints" as *;
+
 $top-padding: 6.19rem;
+$max-width: 450px;
+
+@media (min-width: $bp-large) {
+  main {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr auto 1fr;
+  }
+}
 
 .form {
   position: relative;
   padding-top: $top-padding;
 
+  @media (min-width: $bp-large) {
+    grid-row: 2;
+    display: flex;
+    padding: 1rem;
+    margin: 1rem auto;
+    max-width: 940px;
+    height: 600px;
+    background-color: var(--c-bg-white);
+    border-radius: 15px;
+  }
+
   header {
     h1 {
       margin-bottom: 0.375em;
+      @media (min-width: $bp-large) {
+        font-size: var(--fs-900);
+      }
     }
     p {
       color: var(--c-text-medium);
-      font-size: 1rem;
+      font-size: var(--fs-500);
       line-height: 1.56;
       margin-bottom: 1.375em;
+      @media (min-width: $bp-large) {
+        margin-bottom: 2.25em;
+      }
     }
   }
 
@@ -20,7 +48,12 @@ $top-padding: 6.19rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
     height: calc(100vh - $top-padding);
+
+    @media (min-width: $bp-large) {
+      height: auto;
+    }
   }
   .step {
     background-color: var(--c-bg-white);
@@ -29,6 +62,18 @@ $top-padding: 6.19rem;
     margin-bottom: 1.5rem;
     padding: 2rem 1.5rem;
     border-radius: 10px;
+
+    max-width: $max-width;
+    min-width: min(calc(100% - 2rem), $max-width);
+
+    @media (min-width: $bp-large) {
+      margin: 0;
+      padding-top: 2.5rem;
+      padding-left: 6.25rem;
+      padding-right: 6.25rem;
+      max-width: initial;
+      min-width: calc($max-width + 12.5rem);
+    }
 
     &.thanks {
       display: flex;
@@ -154,6 +199,10 @@ $top-padding: 6.19rem;
     justify-content: space-between;
     flex-wrap: wrap;
     margin-bottom: 1em;
+
+    @media (min-width: $bp-large) {
+      margin-bottom: 1.5em;
+    }
   }
   .required-text {
     display: none;
@@ -282,6 +331,11 @@ $top-padding: 6.19rem;
     color: var(--c-text-dark);
     font-size: var(--fs-100);
     margin-bottom: 0.25em;
+
+    @media (min-width: $bp-large) {
+      font-size: var(--fs-300);
+      margin-bottom: 0.5em;
+    }
   }
   input {
     color: var(--c-text-dark);
@@ -301,12 +355,29 @@ $top-padding: 6.19rem;
     &::placeholder {
       color: var(--c-text-medium);
     }
+    @media (min-width: $bp-large) {
+      font-size: var(--fs-500);
+    }
   }
 
   .form-nav {
+    width: 100%;
     padding: 1rem;
     display: flex;
     background-color: var(--c-bg-white);
+
+    padding-left: max(calc(50vw - $max-width * 0.5), 1rem);
+    padding-right: max(calc(50vw - $max-width * 0.5), 1rem);
+
+    @media (min-width: $bp-large) {
+      margin: 0;
+      padding: 0;
+      background-color: transparent;
+
+      padding-left: 6.25rem;
+      padding-right: 6.25rem;
+      min-width: calc($max-width + 12.5rem);
+    }
 
     button {
       font-size: var(--fs-300);
@@ -314,6 +385,11 @@ $top-padding: 6.19rem;
       color: var(--c-text-medium);
       background: none;
       border: none;
+
+      @media (min-width: $bp-large) {
+        font-size: var(--fs-500);
+        font-weight: 500;
+      }
 
       &.fancy {
         margin-left: auto;
@@ -323,6 +399,12 @@ $top-padding: 6.19rem;
         padding: 0.875em 1.15em;
         border-radius: 4px;
         font-weight: 500;
+
+        @media (min-width: $bp-large) {
+          padding: 1em 1.5em;
+          margin-bottom: 1em;
+          border-radius: 8px;
+        }
 
         &.confirm {
           background-color: var(--c-accent-main);

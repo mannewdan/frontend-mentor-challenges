@@ -1,3 +1,5 @@
+@use "../globals/breakpoints" as *;
+
 .progress {
   position: absolute;
   width: 100%;
@@ -13,6 +15,17 @@
   background-color: var(--c-accent-main);
   background-image: url("./images/bg-sidebar-mobile.svg");
   background-size: cover;
+
+  @media (min-width: $bp-large) {
+    position: initial;
+    z-index: 1;
+    background-image: url("./images/bg-sidebar-desktop.svg");
+    height: 100%;
+    width: 100%;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 10px;
+  }
 
   .marker {
     margin-top: 2rem;
