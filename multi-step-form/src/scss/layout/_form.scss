@@ -87,6 +87,10 @@ $max-width: 450px;
       img {
         width: 56px;
         margin-bottom: 1.5em;
+
+        @media (min-width: $bp-large) {
+          width: 80px;
+        }
       }
       a {
         font-weight: 500;
@@ -123,6 +127,11 @@ $max-width: 450px;
         align-self: flex-start;
         margin-right: 0.875em;
         margin-top: max(1.065em, 35%);
+
+        @media (min-width: $bp-large) {
+          margin-top: 1.25rem;
+          margin-bottom: 2.5rem;
+        }
       }
       p {
         grid-column: 2;
@@ -134,6 +143,11 @@ $max-width: 450px;
           color: var(--c-text-dark);
           margin-top: 0.875em;
           margin-bottom: 0.4375em;
+
+          @media (min-width: $bp-large) {
+            margin-top: 0;
+            margin-bottom: 0.4375em;
+          }
         }
         &.price {
           font-size: var(--fs-300);
@@ -152,10 +166,15 @@ $max-width: 450px;
       &.addons-button {
         grid-template-columns: auto 1fr auto;
 
+        @media (min-width: $bp-large) {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+
         .img-container {
           grid-column: 1;
           grid-row: span 2;
-          margin-right: 1em;
+          margin-right: 1rem;
 
           width: 20px;
           height: 20px;
@@ -164,6 +183,10 @@ $max-width: 450px;
 
           transition: background-color 75ms ease-in-out,
             border-color 75ms ease-in-out;
+
+          @media (min-width: $bp-large) {
+            margin-right: 1.5rem;
+          }
 
           &.active {
             background-color: var(--c-accent-main);
@@ -180,17 +203,47 @@ $max-width: 450px;
           font-size: var(--fs-300);
           font-weight: 700;
           margin-top: 1.08em;
+
+          @media (min-width: $bp-large) {
+            font-size: var(--fs-500);
+            font-weight: 500;
+          }
         }
         .description {
           font-size: var(--fs-100);
           color: var(--c-text-medium);
+
+          @media (min-width: $bp-large) {
+            font-size: var(--fs-300);
+          }
         }
         .addition {
           grid-column: 3;
           grid-row: 1 / span 2;
           font-size: var(--fs-100);
           color: var(--c-accent-main);
+
+          @media (min-width: $bp-large) {
+            font-size: var(--fs-300);
+          }
         }
+      }
+    }
+  }
+  .plans {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: $bp-large) {
+      flex-direction: row;
+      min-height: 160px;
+      gap: 1.125rem;
+
+      button {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin-bottom: 0;
       }
     }
   }
@@ -230,6 +283,9 @@ $max-width: 450px;
     background-color: var(--c-bg-verylight);
     border-radius: 8px;
 
+    @media (min-width: $bp-large) {
+      margin-top: 2rem;
+    }
     span {
       transition: color 100ms ease-in-out;
     }
@@ -271,6 +327,12 @@ $max-width: 450px;
     margin-bottom: 1.5rem;
     font-size: var(--fs-300);
 
+    @media (min-width: $bp-large) {
+      padding-left: 1.5em;
+      padding-right: 1.5em;
+      padding-bottom: 1.5em;
+    }
+
     .plan {
       display: grid;
       grid-template-columns: 1fr auto;
@@ -279,15 +341,27 @@ $max-width: 450px;
       &.border {
         padding-bottom: 0.75em;
         border-bottom: 1px solid var(--c-bg-medium);
+
+        @media (min-width: $bp-large) {
+          padding-bottom: 1.5em;
+        }
       }
       .name {
         font-weight: 500;
         margin-bottom: 0.25em;
+
+        @media (min-width: $bp-large) {
+          font-size: var(--fs-500);
+          margin-bottom: 0.4375em;
+        }
       }
       .price {
         font-weight: 700;
         grid-column: 2;
         grid-row: 1 / span 2;
+        @media (min-width: $bp-large) {
+          font-size: var(--fs-500);
+        }
       }
       button {
         grid-column: 1;
@@ -309,13 +383,22 @@ $max-width: 450px;
       .name {
         color: var(--c-text-medium);
       }
+
+      @media (min-width: $bp-large) {
+        margin-top: 1.143em;
+      }
     }
   }
   .total {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 0 1rem;
     font-size: var(--fs-300);
+
+    @media (min-width: $bp-large) {
+      padding: 0 1.5rem;
+    }
 
     .label {
       color: var(--c-text-medium);
@@ -324,6 +407,10 @@ $max-width: 450px;
       font-size: var(--fs-500);
       font-weight: 700;
       color: var(--c-accent-main);
+
+      @media (min-width: $bp-large) {
+        font-size: var(--fs-700);
+      }
     }
   }
 
