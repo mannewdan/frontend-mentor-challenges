@@ -578,7 +578,7 @@ button {
   gap: 1rem;
   padding-top: 2rem;
   background-color: var(--c-accent-main);
-  background-image: url("./images/bg-sidebar-mobile.svg");
+  background-image: url("../images/bg-sidebar-mobile.svg");
   background-size: cover;
 }
 @media (min-width: 1000px) {
@@ -587,7 +587,7 @@ button {
     justify-content: start;
     position: initial;
     z-index: 1;
-    background-image: url("./images/bg-sidebar-desktop.svg");
+    background-image: url("../images/bg-sidebar-desktop.svg");
     height: 100%;
     width: 100%;
     min-width: 274px;
