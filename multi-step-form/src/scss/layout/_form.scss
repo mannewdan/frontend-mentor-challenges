@@ -117,6 +117,9 @@ $max-width: 450px;
       transition: border-color 75ms ease-in-out,
         background-color 75ms ease-in-out;
 
+      &:hover {
+        border-color: var(--c-accent-main);
+      }
       &.selected {
         border-color: var(--c-accent-main);
         background-color: var(--c-bg-verylight);
@@ -373,6 +376,10 @@ $max-width: 450px;
         padding: 0;
         margin: 0;
         cursor: pointer;
+
+        &:hover {
+          color: var(--c-accent-main);
+        }
       }
     }
     .addon {
@@ -435,6 +442,7 @@ $max-width: 450px;
     border-style: solid;
     border-radius: 4px;
     outline-color: var(--c-accent-main);
+    cursor: pointer;
 
     &.required {
       border-color: var(--c-accent-negative);
@@ -452,6 +460,7 @@ $max-width: 450px;
     width: 100%;
     padding: 1rem;
     display: flex;
+    align-items: center;
     background-color: var(--c-bg-white);
 
     padding-left: max(calc(50vw - $max-width * 0.5), 1rem);
@@ -473,10 +482,16 @@ $max-width: 450px;
       color: var(--c-text-medium);
       background: none;
       border: none;
+      transition: color 75ms ease-in-out, background-color 75ms ease-in-out;
 
       @media (min-width: $bp-large) {
         font-size: var(--fs-500);
         font-weight: 500;
+      }
+
+      &:hover,
+      &:active {
+        color: var(--c-bg-dark);
       }
 
       &.fancy {
@@ -494,8 +509,18 @@ $max-width: 450px;
           border-radius: 8px;
         }
 
+        &:hover,
+        &:active {
+          background-color: var(--c-bg-dark-active);
+        }
+
         &.confirm {
           background-color: var(--c-accent-main);
+
+          &:hover,
+          &:active {
+            background-color: var(--c-accent-main-light);
+          }
         }
       }
     }
