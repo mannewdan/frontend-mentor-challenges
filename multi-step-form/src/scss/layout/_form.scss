@@ -205,14 +205,15 @@ $max-width: 450px;
     }
   }
   .required-text {
-    display: none;
+    opacity: 0;
+    user-select: none;
     font-size: var(--fs-100);
     font-weight: 700;
     color: var(--c-accent-negative);
     transform: translateY(-3px);
 
     &.required {
-      display: inline;
+      opacity: 1;
     }
   }
   .interval-toggle {

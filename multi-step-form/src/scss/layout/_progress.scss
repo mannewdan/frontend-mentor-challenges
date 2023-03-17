@@ -9,26 +9,35 @@
 
   display: flex;
   justify-content: center;
-
   gap: 1rem;
 
+  padding-top: 2rem;
   background-color: var(--c-accent-main);
   background-image: url("./images/bg-sidebar-mobile.svg");
   background-size: cover;
 
   @media (min-width: $bp-large) {
+    flex-direction: column;
+    justify-content: start;
+
     position: initial;
     z-index: 1;
     background-image: url("./images/bg-sidebar-desktop.svg");
     height: 100%;
     width: 100%;
+    min-width: 274px;
     padding-left: 2rem;
     padding-right: 2rem;
+    padding-top: 2.5rem;
+    gap: 2rem;
     border-radius: 10px;
   }
 
   .marker {
-    margin-top: 2rem;
+    @media (min-width: $bp-large) {
+      display: grid;
+      grid-template-columns: auto 1fr;
+    }
 
     .number {
       display: flex;
@@ -41,6 +50,7 @@
       background-color: transparent;
       border: 1px solid white;
       color: white;
+      margin-right: 1rem;
 
       font-size: var(--fs-300);
       font-weight: 700;
@@ -50,12 +60,36 @@
         border-color: var(--c-accent-secondary);
         color: var(--c-text-dark);
       }
+
+      @media (min-width: $bp-large) {
+        grid-column: 1;
+        grid-row: span 2;
+      }
     }
     .label {
       display: none;
+      @media (min-width: $bp-large) {
+        display: block;
+        grid-column: 2;
+
+        color: var(--c-text-light);
+        font-size: var(--fs-100);
+        text-transform: uppercase;
+        margin-bottom: 0.33em;
+      }
     }
     .name {
       display: none;
+      @media (min-width: $bp-large) {
+        display: block;
+        grid-column: 2;
+
+        color: var(--c-text-white);
+        font-size: var(--fs-300);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
     }
   }
 }
