@@ -11,8 +11,6 @@ export default function FormStepInfo({
 }: FormStepInfoProps) {
   const { formData, setFormData } = stepProps;
 
-  console.log(formData);
-
   return (
     <div className="step">
       <header>

@@ -9,7 +9,8 @@ export default function ThankYou() {
         <p>
           Thanks for confirming your subscription! We hope you have fun using
           our platform. If you ever need support, please feel free to email us
-          at support@loremgaming.com.
+          at support@loremgaming.com.{" "}
+          <strong>Check the console to see your submitted data!</strong>
         </p>
 
         <Attribution />

@@ -77,6 +77,9 @@ export default function App() {
         if (newFields.name || newFields.email || newFields.phone) return;
     }
 
+    if (currentStep >= 4) {
+      console.log(formData);
+    }
     setCurrentStep((prev) => prev + 1);
   }
 
