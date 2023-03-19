@@ -1,2 +1,23 @@
 :root {
+  --c-white: 0 0% 100%;
+  --c-bg-medium: 223 36% 14%;
+  --c-bg-dark: 223 30% 9%;
+  --c-accent-main: 0 97% 63%;
+  --c-accent-neutral: 223 23% 46%;
+}
+
+.bg-dark {
+  background-color: hsl(var(--c-bg-dark));
+}
+.bg-medium {
+  background-color: hsl(var(--c-bg-medium));
+}
+.text-white {
+  color: hsl(var(--c-white));
+}
+.text-white-75 {
+  color: hsl(var(--c-white) / 0.75);
+}
+.text-white-50 {
+  color: hsl(var(--c-white) / 0.5);
 }

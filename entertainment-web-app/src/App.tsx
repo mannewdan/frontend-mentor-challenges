@@ -1,5 +1,7 @@
+import DesignSetup from "./pages/DesignSetup";
+
 function App() {
-  return <>Entertainment web app</>;
+  return <DesignSetup />;
 }
 
 export default App;

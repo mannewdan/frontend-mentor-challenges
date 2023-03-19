@@ -1,2 +1,59 @@
+@use "breakpoints" as *;
+
 :root {
+  --fs-100: 0.6875rem; //11
+  --fs-200: 0.75rem; //12
+  --fs-300: 0.8125rem; //13
+  --fs-400: 0.875rem; //14
+  --fs-500: 0.9375rem; //15
+  --fs-600: 1rem; //16
+  --fs-700: 1.125rem; //18
+  --fs-800: 1.25rem; //20
+  --fs-900: 1.5rem; //24
+  --fs-1000: 2rem; //32
+}
+@for $i from 1 through 10 {
+  .fs-#{$i}00 {
+    font-size: var(--fs-#{$i}00);
+  }
+}
+
+//screen-size dependent
+.text-h-l {
+  font-size: var(--fs-800);
+  @media (min-width: $bp-small) {
+    font-size: var(--fs-1000);
+  }
+}
+.text-h-m {
+  font-size: var(--fs-600);
+  @media (min-width: $bp-small) {
+    font-size: var(--fs-900);
+  }
+}
+.text-h-s {
+  font-weight: 500;
+  font-size: var(--fs-500);
+  @media (min-width: $bp-small) {
+    font-size: var(--fs-900);
+  }
+}
+.text-h-xs {
+  font-weight: 500;
+  font-size: var(--fs-400);
+  @media (min-width: $bp-small) {
+    font-size: var(--fs-700);
+  }
+}
+.text-b-m {
+  font-size: var(--fs-200);
+  @media (min-width: $bp-small) {
+    font-size: var(--fs-400);
+  }
+}
+.text-b-s {
+  font-size: var(--fs-100);
+  @media (min-width: $bp-small) {
+    font-size: var(--fs-300);
+  }
 }
