@@ -1,8 +1,16 @@
+import SearchBar from "../components/SearchBar";
+import InputField from "../components/InputField";
+
 export default function DesignSetup() {
   return (
     <div
       className="flow"
-      style={{ "--flow-space": "1.5rem" } as React.CSSProperties}
+      style={
+        {
+          "--flow-space": "1.5rem",
+          padding: "2rem",
+        } as React.CSSProperties
+      }
     >
       <p className="text-h-l">Heading (L) text-h-l</p>
       <p className="text-h-m">Heading (M) text-h-m</p>
@@ -30,6 +38,24 @@ export default function DesignSetup() {
         tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam
         mollis. Ut justo. Suspendisse potenti.
       </p>
+
+      <SearchBar />
+      <InputField type={"text"} placeholder={"Email address"} errorText={""} />
+      <InputField
+        type={"text"}
+        placeholder={"Email address"}
+        errorText={"Can't be empty"}
+      />
+      <InputField
+        type={"password"}
+        placeholder={"Password"}
+        errorText={"Can't be empty"}
+      />
+      <InputField
+        type={"password"}
+        placeholder={"Repeat Password"}
+        errorText={"Password doesn't match"}
+      />
 
       <img src="assets/icon-nav-home.svg"></img>
     </div>

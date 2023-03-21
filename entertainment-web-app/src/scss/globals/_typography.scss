@@ -20,12 +20,15 @@
 
 //screen-size dependent
 .text-h-l {
+  font-weight: 300;
   font-size: var(--fs-800);
+  letter-spacing: -0.5px;
   @media (min-width: $bp-small) {
     font-size: var(--fs-1000);
   }
 }
 .text-h-m {
+  font-weight: 300;
   font-size: var(--fs-600);
   @media (min-width: $bp-small) {
     font-size: var(--fs-900);
@@ -46,12 +49,14 @@
   }
 }
 .text-b-m {
+  font-weight: 300;
   font-size: var(--fs-200);
   @media (min-width: $bp-small) {
     font-size: var(--fs-400);
   }
 }
 .text-b-s {
+  font-weight: 300;
   font-size: var(--fs-100);
   @media (min-width: $bp-small) {
     font-size: var(--fs-300);
