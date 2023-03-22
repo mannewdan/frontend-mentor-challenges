@@ -1,3 +1,5 @@
+type TrendingProps = {};
+
 export default function Trending() {
-  return <p className="text-h-l">Trending</p>;
+  return <h1 className="text-h-l">Trending</h1>;
 }

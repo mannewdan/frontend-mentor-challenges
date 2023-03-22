@@ -515,4 +515,40 @@ input::placeholder {
 }
 .sidebar > .links > a .blend.active {
   background-color: hsl(var(--c-white));
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.video-grid.trending {
+  display: inline-block;
+  white-space: nowrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.video-grid.trending::-webkit-scrollbar {
+  display: none;
+}
+
+.video {
+  display: inline-block;
+}
+.video img {
+  width: 240px;
+  height: 140px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.grid.trending {
+  display: unset;
+  overflow-x: scroll;
+  white-space: nowrap;
 }/*# sourceMappingURL=main.css.map */

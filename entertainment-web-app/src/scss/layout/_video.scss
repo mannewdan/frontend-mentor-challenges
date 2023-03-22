@@ -1,0 +1,28 @@
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  &.trending {
+    display: inline-block;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    //hide scrollbar
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+.video {
+  display: inline-block;
+
+  img {
+    width: 240px;
+    height: 140px;
+    object-fit: cover;
+  }
+}
