@@ -1,0 +1,18 @@
+@use "../globals/breakpoints" as *;
+
+.home {
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  .container {
+    grid-column: 1 / span 2;
+    padding: 1rem;
+
+    @media (min-width: $bp-small) {
+      padding: 1.5rem;
+    }
+    @media (min-width: $bp-medium) {
+      grid-column: 2;
+    }
+  }
+}

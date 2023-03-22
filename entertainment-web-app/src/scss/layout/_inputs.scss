@@ -1,4 +1,4 @@
-@use "breakpoints" as *;
+@use "../globals/breakpoints" as *;
 
 input {
   width: 100%;
@@ -8,6 +8,7 @@ input {
   border: none;
   border-bottom: 1px solid hsl(var(--c-accent-neutral));
   outline: none;
+  cursor: pointer;
   &::placeholder {
     color: hsl(var(--c-white 0.5));
   }
