@@ -6,10 +6,10 @@
 
   .container {
     grid-column: 1 / span 2;
-    padding: 1rem;
+    padding-inline: 1rem;
 
     @media (min-width: $bp-small) {
-      padding: 1.5rem;
+      padding-inline: 1.5rem;
     }
     @media (min-width: $bp-medium) {
       grid-column: 2;

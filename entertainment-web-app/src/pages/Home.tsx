@@ -1,7 +1,11 @@
 import Sidebar from "../components/Sidebar";
 import SearchBar from "../components/SearchBar";
+import Trending from "../components/Trending";
+import { useLocation } from "react-router-dom";
 
 export default function Home() {
+  const { pathname } = useLocation();
+
   // load a list of all of the movies/tv shows
   // maintain a list of 'trending' items, (filter isTrending===true)
 
@@ -14,13 +18,12 @@ export default function Home() {
       <Sidebar />
       <div className="container">
         <SearchBar />
-        {/* Trending Component 
-        should only display on home path
-      */}
+
+        {pathname === "/" && <Trending />}
+
         {/* ContentGrid Component
         gets passed a list of items to display, and displays them in a grid which adapts to screensize  
       */}
-        Home
       </div>
     </div>
   );

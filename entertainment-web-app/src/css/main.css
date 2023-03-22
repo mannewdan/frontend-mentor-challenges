@@ -336,6 +336,20 @@ input::placeholder {
 .search-bar {
   display: flex;
   align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+@media (min-width: 550px) {
+  .search-bar {
+    margin-top: 1.16rem;
+    margin-bottom: 1.16rem;
+  }
+}
+@media (min-width: 800px) {
+  .search-bar {
+    margin-top: 3.09rem;
+    margin-bottom: 1.25rem;
+  }
 }
 .search-bar img {
   width: var(--fs-900);
@@ -469,11 +483,11 @@ input::placeholder {
 }
 .home .container {
   grid-column: 1/span 2;
-  padding: 1rem;
+  padding-inline: 1rem;
 }
 @media (min-width: 550px) {
   .home .container {
-    padding: 1.5rem;
+    padding-inline: 1.5rem;
   }
 }
 @media (min-width: 800px) {
