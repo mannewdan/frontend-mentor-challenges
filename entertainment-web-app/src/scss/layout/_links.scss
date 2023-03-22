@@ -1,5 +1,7 @@
 .sidebar > .links > a {
   position: relative;
+  mask-position: center;
+  mask-size: cover;
 
   .blend {
     position: absolute;
