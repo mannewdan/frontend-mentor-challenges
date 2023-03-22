@@ -338,15 +338,13 @@ input::placeholder {
   align-items: center;
 }
 .search-bar img {
-  margin: 3px;
-  width: var(--fs-700);
-  height: var(--fs-700);
+  width: var(--fs-900);
+  height: var(--fs-900);
 }
 @media (min-width: 550px) {
   .search-bar img {
-    margin: 4px;
-    width: var(--fs-900);
-    height: var(--fs-900);
+    width: var(--fs-1000);
+    height: var(--fs-1000);
   }
 }
 .search-bar input {

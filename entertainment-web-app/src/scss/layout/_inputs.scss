@@ -19,14 +19,12 @@ input {
   align-items: center;
 
   img {
-    margin: 3px;
-    width: var(--fs-700);
-    height: var(--fs-700);
+    width: var(--fs-900);
+    height: var(--fs-900);
 
     @media (min-width: $bp-small) {
-      margin: 4px;
-      width: var(--fs-900);
-      height: var(--fs-900);
+      width: var(--fs-1000);
+      height: var(--fs-1000);
     }
   }
   input {
