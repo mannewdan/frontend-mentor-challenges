@@ -19,10 +19,12 @@ input {
   align-items: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  padding-inline: 1rem;
 
   @media (min-width: $bp-small) {
     margin-top: 1.16rem;
     margin-bottom: 1.16rem;
+    padding-inline: 1.5rem;
   }
   @media (min-width: $bp-medium) {
     margin-top: 3.09rem;

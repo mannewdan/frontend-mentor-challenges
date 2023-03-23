@@ -338,11 +338,13 @@ input::placeholder {
   align-items: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
+  padding-inline: 1rem;
 }
 @media (min-width: 550px) {
   .search-bar {
     margin-top: 1.16rem;
     margin-bottom: 1.16rem;
+    padding-inline: 1.5rem;
   }
 }
 @media (min-width: 800px) {
@@ -487,12 +489,6 @@ input::placeholder {
 }
 .home .container {
   grid-column: 1/span 2;
-  padding-inline: 1rem;
-}
-@media (min-width: 550px) {
-  .home .container {
-    padding-inline: 1.5rem;
-  }
 }
 @media (min-width: 800px) {
   .home .container {
@@ -533,10 +529,12 @@ input::placeholder {
 
 .content-grid {
   margin-bottom: 1.5rem;
+  margin-inline: 1rem;
 }
 @media (min-width: 550px) {
   .content-grid {
     margin-bottom: 2.5rem;
+    margin-inline: 1.5rem;
   }
 }
 .content-grid h1,
@@ -549,12 +547,31 @@ input::placeholder {
     margin-bottom: 1.5625rem;
   }
 }
+.content-grid.trending {
+  margin-inline: 0;
+}
+.content-grid.trending h1,
+.content-grid.trending h2 {
+  margin-inline: 1rem;
+}
+@media (min-width: 550px) {
+  .content-grid.trending h1,
+  .content-grid.trending h2 {
+    margin-inline: 1.5rem;
+  }
+}
 
 .x-scroll-container {
   white-space: nowrap;
   overflow-x: scroll;
+  font-size: 1rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+@media (min-width: 550px) {
+  .x-scroll-container {
+    font-size: 1.5rem;
+  }
 }
 .x-scroll-container::-webkit-scrollbar {
   display: none;

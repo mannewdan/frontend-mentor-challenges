@@ -2,8 +2,10 @@
 
 .content-grid {
   margin-bottom: 1.5rem;
+  margin-inline: 1rem;
   @media (min-width: $bp-small) {
     margin-bottom: 2.5rem;
+    margin-inline: 1.5rem;
   }
 
   h1,
@@ -13,11 +15,29 @@
       margin-bottom: 1.5625rem;
     }
   }
+
+  &.trending {
+    margin-inline: 0;
+
+    h1,
+    h2 {
+      margin-inline: 1rem;
+      @media (min-width: $bp-small) {
+        margin-inline: 1.5rem;
+      }
+    }
+  }
 }
 
 .x-scroll-container {
   white-space: nowrap;
   overflow-x: scroll;
+
+  //used to control "margin" size in HorizontalScroll.tsx
+  font-size: 1rem;
+  @media (min-width: $bp-small) {
+    font-size: 1.5rem;
+  }
 
   //hide scrollbar
   &::-webkit-scrollbar {
