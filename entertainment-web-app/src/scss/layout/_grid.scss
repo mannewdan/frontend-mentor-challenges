@@ -15,7 +15,7 @@
   }
 }
 
-.x-scroll {
+.x-scroll-container {
   white-space: nowrap;
   overflow-x: scroll;
 
@@ -25,4 +25,8 @@
   }
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+.x-scroller {
+  display: inline-block;
+  transition: transform 200ms ease-out;
 }
