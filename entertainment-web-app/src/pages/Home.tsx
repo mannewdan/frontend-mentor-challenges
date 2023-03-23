@@ -1,12 +1,35 @@
+import React from "react";
 import Sidebar from "../components/Sidebar";
 import SearchBar from "../components/SearchBar";
 import Trending from "../components/Trending";
+import ContentGrid from "../components/ContentGrid";
 import { useLocation } from "react-router-dom";
+import data from "../data.json";
+
+export type VideoT = {
+  title: string;
+  thumbnail: {
+    trending?: { small: string; large: string };
+    regular: { small: string; medium: string; large: string };
+  };
+  year: number;
+  category: string;
+  rating: string;
+  isBookmarked: boolean;
+  isTrending: boolean;
+};
 
 export default function Home() {
+  const [allVideos, setAllVideos] = React.useState<Array<VideoT>>(data);
+  const [trendingVideos, setTrendingVideos] = React.useState<Array<VideoT>>(
+    data.filter((item) => item.isTrending)
+  );
+  const [nonTrendingVideos, setNonTrendingVideos] = React.useState<
+    Array<VideoT>
+  >(data.filter((item) => !item.isTrending));
+
   const { pathname } = useLocation();
 
-  // load a list of all of the movies/tv shows
   // maintain a list of 'trending' items, (filter isTrending===true)
 
   // maintain a list of 'content' items (everything)
@@ -16,15 +39,15 @@ export default function Home() {
   return (
     <div className="home">
       <Sidebar />
-      <div className="container">
+      <main className="container">
         <SearchBar />
 
-        {pathname === "/" && <Trending />}
+        {pathname === "/" && (
+          <ContentGrid videos={trendingVideos} trending={true} />
+        )}
 
-        {/* ContentGrid Component
-        gets passed a list of items to display, and displays them in a grid which adapts to screensize  
-      */}
-      </div>
+        <ContentGrid videos={nonTrendingVideos} />
+      </main>
     </div>
   );
 }

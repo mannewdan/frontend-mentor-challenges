@@ -420,6 +420,10 @@ input::placeholder {
     padding: 2rem 1.75rem;
     margin: 2rem 0 2rem 2rem;
     border-radius: 20px;
+    position: fixed;
+  }
+  .sidebar + * {
+    margin-left: 7.5rem;
   }
 }
 .sidebar img {
@@ -515,4 +519,48 @@ input::placeholder {
 }
 .sidebar > .links > a .blend.active {
   background-color: hsl(var(--c-white));
+}
+
+.video {
+  display: inline-block;
+}
+.video img {
+  width: 240px;
+  height: 140px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.content-grid {
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 550px) {
+  .content-grid {
+    margin-bottom: 2.5rem;
+  }
+}
+.content-grid h1,
+.content-grid h2 {
+  margin-bottom: 1rem;
+}
+@media (min-width: 550px) {
+  .content-grid h1,
+  .content-grid h2 {
+    margin-bottom: 1.5625rem;
+  }
+}
+
+.x-scroll-container {
+  white-space: nowrap;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.x-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.x-scroller {
+  display: inline-block;
+  transition: transform 200ms ease-out;
 }/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,32 @@
+@use "../globals/breakpoints" as *;
+
+.content-grid {
+  margin-bottom: 1.5rem;
+  @media (min-width: $bp-small) {
+    margin-bottom: 2.5rem;
+  }
+
+  h1,
+  h2 {
+    margin-bottom: 1rem;
+    @media (min-width: $bp-small) {
+      margin-bottom: 1.5625rem;
+    }
+  }
+}
+
+.x-scroll-container {
+  white-space: nowrap;
+  overflow-x: scroll;
+
+  //hide scrollbar
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.x-scroller {
+  display: inline-block;
+  transition: transform 200ms ease-out;
+}
