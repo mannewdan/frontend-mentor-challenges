@@ -1,10 +1,28 @@
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+@use "../globals/breakpoints" as *;
 
-  &.trending {
-    display: unset;
-    overflow-x: scroll;
-    white-space: nowrap;
+.content-grid {
+  margin-bottom: 1.5rem;
+  @media (min-width: $bp-small) {
+    margin-bottom: 2.5rem;
   }
+
+  h1,
+  h2 {
+    margin-bottom: 1rem;
+    @media (min-width: $bp-small) {
+      margin-bottom: 1.5625rem;
+    }
+  }
+}
+
+.x-scroll {
+  white-space: nowrap;
+  overflow-x: scroll;
+
+  //hide scrollbar
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }

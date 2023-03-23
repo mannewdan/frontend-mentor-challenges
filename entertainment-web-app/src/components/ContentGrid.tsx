@@ -1,5 +1,6 @@
 import { VideoT } from "../pages/Home";
 import Video from "./Video";
+import HorizontalScroll from "./HorizontalScroll";
 import { useLocation } from "react-router-dom";
 
 type ContentGridProps = {
@@ -19,20 +20,16 @@ export default function ContentGrid({ videos, trending }: ContentGridProps) {
     <h1 className="text-h-l">{subheadingText}</h1>
   );
 
+  const videoEls = videos.map((item) => {
+    return <Video key={item.title} video={item} trending={trending} />;
+  });
   return (
-    <section>
+    <section className={`content-grid ${trending ? "trending" : ""}`}>
       {heading}
-      <div
-        onScroll={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-        }}
-        className={`video-grid ${trending ? "trending" : ""}`}
-      >
-        {videos.map((item) => {
-          return <Video key={item.title} video={item} trending={trending} />;
-        })}
-      </div>
+
+      {trending && <HorizontalScroll>{videoEls}</HorizontalScroll>}
+
+      {!trending && videoEls}
     </section>
   );
 }

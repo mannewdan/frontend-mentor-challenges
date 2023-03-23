@@ -25,6 +25,11 @@
     padding: 2rem 1.75rem;
     margin: 2rem 0 2rem 2rem;
     border-radius: 20px;
+
+    position: fixed;
+    & + * {
+      margin-left: 7.5rem;
+    }
   }
 
   img {

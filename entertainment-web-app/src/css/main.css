@@ -420,6 +420,10 @@ input::placeholder {
     padding: 2rem 1.75rem;
     margin: 2rem 0 2rem 2rem;
     border-radius: 20px;
+    position: fixed;
+  }
+  .sidebar + * {
+    margin-left: 7.5rem;
   }
 }
 .sidebar img {
@@ -517,22 +521,6 @@ input::placeholder {
   background-color: hsl(var(--c-white));
 }
 
-.video-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-}
-.video-grid.trending {
-  display: inline-block;
-  white-space: nowrap;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.video-grid.trending::-webkit-scrollbar {
-  display: none;
-}
-
 .video {
   display: inline-block;
 }
@@ -543,12 +531,31 @@ input::placeholder {
      object-fit: cover;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+.content-grid {
+  margin-bottom: 1.5rem;
 }
-.grid.trending {
-  display: unset;
-  overflow-x: scroll;
+@media (min-width: 550px) {
+  .content-grid {
+    margin-bottom: 2.5rem;
+  }
+}
+.content-grid h1,
+.content-grid h2 {
+  margin-bottom: 1rem;
+}
+@media (min-width: 550px) {
+  .content-grid h1,
+  .content-grid h2 {
+    margin-bottom: 1.5625rem;
+  }
+}
+
+.x-scroll {
   white-space: nowrap;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.x-scroll::-webkit-scrollbar {
+  display: none;
 }/*# sourceMappingURL=main.css.map */
