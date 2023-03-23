@@ -10,9 +10,9 @@ Video.defaultProps = {
 
 export default function Video({ video, trending }: VideoProps) {
   return (
-    <article className="video">
-      <img src={video.thumbnail.regular.medium}></img>
-      <p>{trending}</p>
+    <article className={`video ${trending ? "trending" : ""}`}>
+      <img src={video.thumbnail.regular.large}></img>
+      <p>{"" + trending}</p>
     </article>
   );
 }

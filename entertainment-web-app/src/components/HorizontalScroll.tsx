@@ -12,8 +12,12 @@ export default function HorizontalScroll({ children }: HorizontalScrollProps) {
 
   //functions
   const handleWheelEvent = (e: WheelEvent) => {
-    //disable vertical scroll
-    e.preventDefault();
+    if (checkScrollable()) {
+      //disable vertical scroll
+      e.preventDefault();
+    } else {
+      return;
+    }
 
     //grab scroll amount & preserve x scroll behavior
     const delta = e.deltaY ? e.deltaY : e.deltaX;
@@ -36,6 +40,13 @@ export default function HorizontalScroll({ children }: HorizontalScrollProps) {
     setXOffset((prev) => {
       return Math.max(min, Math.min(max, prev - delta));
     });
+  };
+  const checkScrollable = (): boolean => {
+    const containerWidth = ref.current?.clientWidth;
+    const scrollerWidth = ref.current?.firstElementChild?.scrollWidth;
+
+    if (!containerWidth || !scrollerWidth) return false;
+    return scrollerWidth >= containerWidth;
   };
 
   //effects

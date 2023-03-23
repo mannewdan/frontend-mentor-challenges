@@ -1,9 +1,10 @@
 .video {
   display: inline-block;
 
-  img {
-    width: 240px;
-    height: 140px;
-    object-fit: cover;
+  &.trending {
+    img {
+      width: 470px;
+      height: 230px;
+    }
   }
 }

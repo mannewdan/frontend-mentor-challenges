@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function useWindowResize() {
+export default function useWindowResized() {
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth);
 
   const handleResize = () => {

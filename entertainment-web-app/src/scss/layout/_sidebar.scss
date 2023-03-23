@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
 
   padding: 1rem;
   background-color: hsl(var(--c-bg-medium));

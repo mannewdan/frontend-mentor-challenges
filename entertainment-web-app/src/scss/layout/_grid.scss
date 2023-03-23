@@ -1,11 +1,9 @@
 @use "../globals/breakpoints" as *;
 
-.content-grid {
+.content-container {
   margin-bottom: 1.5rem;
-  margin-inline: 1rem;
   @media (min-width: $bp-small) {
     margin-bottom: 2.5rem;
-    margin-inline: 1.5rem;
   }
 
   h1,
@@ -16,22 +14,35 @@
     }
   }
 
-  &.trending {
-    margin-inline: 0;
+  & > * {
+    margin-inline: 1rem;
+    @media (min-width: $bp-small) {
+      margin-inline: 1.5rem;
+    }
+  }
+}
 
-    h1,
-    h2 {
-      margin-inline: 1rem;
+.content-grid {
+  &.trending {
+    & > *:where(:not(:last-child)) {
+      margin-right: 1rem;
       @media (min-width: $bp-small) {
-        margin-inline: 1.5rem;
+        margin-right: 2.5rem;
       }
     }
+  }
+  &:not(.trending) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    column-gap: 1rem;
+    row-gap: 1rem;
   }
 }
 
 .x-scroll-container {
   white-space: nowrap;
   overflow-x: scroll;
+  margin-inline: 0;
 
   //used to control "margin" size in HorizontalScroll.tsx
   font-size: 1rem;

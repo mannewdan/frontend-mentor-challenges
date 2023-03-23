@@ -161,6 +161,8 @@ body {
 img {
   max-width: 100%;
   display: block;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 input,
@@ -401,6 +403,7 @@ input::placeholder {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 1;
   padding: 1rem;
   background-color: hsl(var(--c-bg-medium));
   grid-column: 1/span 2;
@@ -520,50 +523,58 @@ input::placeholder {
 .video {
   display: inline-block;
 }
-.video img {
-  width: 240px;
-  height: 140px;
-  -o-object-fit: cover;
-     object-fit: cover;
+.video.trending img {
+  width: 470px;
+  height: 230px;
 }
 
-.content-grid {
+.content-container {
   margin-bottom: 1.5rem;
-  margin-inline: 1rem;
 }
 @media (min-width: 550px) {
-  .content-grid {
+  .content-container {
     margin-bottom: 2.5rem;
-    margin-inline: 1.5rem;
   }
 }
-.content-grid h1,
-.content-grid h2 {
+.content-container h1,
+.content-container h2 {
   margin-bottom: 1rem;
 }
 @media (min-width: 550px) {
-  .content-grid h1,
-  .content-grid h2 {
+  .content-container h1,
+  .content-container h2 {
     margin-bottom: 1.5625rem;
   }
 }
-.content-grid.trending {
-  margin-inline: 0;
-}
-.content-grid.trending h1,
-.content-grid.trending h2 {
+.content-container > * {
   margin-inline: 1rem;
 }
 @media (min-width: 550px) {
-  .content-grid.trending h1,
-  .content-grid.trending h2 {
+  .content-container > * {
     margin-inline: 1.5rem;
   }
+}
+
+.content-grid.trending > *:where(:not(:last-child)) {
+  margin-right: 1rem;
+}
+@media (min-width: 550px) {
+  .content-grid.trending > *:where(:not(:last-child)) {
+    margin-right: 2.5rem;
+  }
+}
+.content-grid:not(.trending) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  row-gap: 1rem;
 }
 
 .x-scroll-container {
   white-space: nowrap;
   overflow-x: scroll;
+  margin-inline: 0;
   font-size: 1rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
