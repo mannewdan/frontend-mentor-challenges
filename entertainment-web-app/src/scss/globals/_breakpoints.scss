@@ -1,2 +1,7 @@
-$bp-small: 550px;
-$bp-medium: 800px;
+$bp-small: 700px;
+$bp-medium: 1200px;
+
+:root {
+  --bp-small: #{$bp-small};
+  --bp-medium: #{$bp-medium};
+}

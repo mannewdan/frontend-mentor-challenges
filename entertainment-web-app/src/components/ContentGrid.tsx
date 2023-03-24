@@ -1,17 +1,22 @@
-import { VideoT } from "../pages/Home";
+import { VideoT, ImgSizeE } from "../pages/Home";
 import Video from "./Video";
 import HorizontalScroll from "./HorizontalScroll";
 import { useLocation } from "react-router-dom";
 
 type ContentGridProps = {
   videos: Array<VideoT>;
-  trending?: boolean;
+  trending: boolean;
+  imgSize: ImgSizeE;
 };
 ContentGrid.defaultProps = {
   trending: false,
 };
 
-export default function ContentGrid({ videos, trending }: ContentGridProps) {
+export default function ContentGrid({
+  videos,
+  trending,
+  imgSize,
+}: ContentGridProps) {
   const { pathname } = useLocation();
 
   const subheadingText = "Recommended for you";
@@ -27,7 +32,14 @@ export default function ContentGrid({ videos, trending }: ContentGridProps) {
   const videoEls = (
     <div className={`content-grid ${trending ? "trending" : ""}`}>
       {videos.map((item) => {
-        return <Video key={item.title} video={item} trending={trending} />;
+        return (
+          <Video
+            key={item.title}
+            video={item}
+            trending={trending}
+            imgSize={imgSize}
+          />
+        );
       })}
     </div>
   );

@@ -133,6 +133,11 @@ table {
   border-spacing: 0;
 }
 
+:root {
+  --bp-small: 700px;
+  --bp-medium: 1200px;
+}
+
 *,
 *::before,
 *::after {
@@ -258,7 +263,7 @@ select {
   font-size: var(--fs-800);
   letter-spacing: -0.5px;
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .text-h-l {
     font-size: var(--fs-1000);
   }
@@ -268,7 +273,7 @@ select {
   font-weight: 300;
   font-size: var(--fs-600);
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .text-h-m {
     font-size: var(--fs-900);
   }
@@ -278,7 +283,7 @@ select {
   font-weight: 500;
   font-size: var(--fs-500);
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .text-h-s {
     font-size: var(--fs-900);
   }
@@ -288,7 +293,7 @@ select {
   font-weight: 500;
   font-size: var(--fs-400);
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .text-h-xs {
     font-size: var(--fs-700);
   }
@@ -298,7 +303,7 @@ select {
   font-weight: 300;
   font-size: var(--fs-200);
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .text-b-m {
     font-size: var(--fs-400);
   }
@@ -308,7 +313,7 @@ select {
   font-weight: 300;
   font-size: var(--fs-100);
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .text-b-s {
     font-size: var(--fs-300);
   }
@@ -342,14 +347,14 @@ input::placeholder {
   margin-bottom: 1rem;
   padding-inline: 1rem;
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .search-bar {
     margin-top: 1.16rem;
     margin-bottom: 1.16rem;
     padding-inline: 1.5rem;
   }
 }
-@media (min-width: 800px) {
+@media (min-width: 1200px) {
   .search-bar {
     margin-top: 3.09rem;
     margin-bottom: 1.25rem;
@@ -359,7 +364,7 @@ input::placeholder {
   width: var(--fs-900);
   height: var(--fs-900);
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .search-bar img {
     width: var(--fs-1000);
     height: var(--fs-1000);
@@ -408,7 +413,7 @@ input::placeholder {
   background-color: hsl(var(--c-bg-medium));
   grid-column: 1/span 2;
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .sidebar {
     padding: 1.25rem 1rem;
     margin-top: 1.5rem;
@@ -416,7 +421,7 @@ input::placeholder {
     border-radius: 10px;
   }
 }
-@media (min-width: 800px) {
+@media (min-width: 1200px) {
   .sidebar {
     grid-column: 1;
     flex-direction: column;
@@ -434,7 +439,7 @@ input::placeholder {
 .sidebar img {
   height: 1rem;
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .sidebar img {
     height: 1.25rem;
   }
@@ -442,7 +447,7 @@ input::placeholder {
 .sidebar img.profile {
   height: 1.5rem;
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .sidebar img.profile {
     height: 2rem;
   }
@@ -451,13 +456,13 @@ input::placeholder {
   width: 1.5rem;
   height: unset;
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .sidebar img.logo {
     width: 2rem;
     margin-left: 0.5rem;
   }
 }
-@media (min-width: 800px) {
+@media (min-width: 1200px) {
   .sidebar img.logo {
     margin-left: 0;
     margin-top: 0.1875rem;
@@ -467,7 +472,7 @@ input::placeholder {
   border: 1px solid hsl(var(--c-white));
   border-radius: 50%;
 }
-@media (min-width: 800px) {
+@media (min-width: 1200px) {
   .sidebar img.profile {
     margin-top: auto;
   }
@@ -477,7 +482,7 @@ input::placeholder {
   align-items: center;
   gap: 2rem;
 }
-@media (min-width: 800px) {
+@media (min-width: 1200px) {
   .sidebar .links {
     flex-direction: column;
     gap: 2.5rem;
@@ -493,7 +498,7 @@ input::placeholder {
 .home .container {
   grid-column: 1/span 2;
 }
-@media (min-width: 800px) {
+@media (min-width: 1200px) {
   .home .container {
     grid-column: 2;
   }
@@ -531,7 +536,7 @@ input::placeholder {
 .content-container {
   margin-bottom: 1.5rem;
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .content-container {
     margin-bottom: 2.5rem;
   }
@@ -540,7 +545,7 @@ input::placeholder {
 .content-container h2 {
   margin-bottom: 1rem;
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .content-container h1,
   .content-container h2 {
     margin-bottom: 1.5625rem;
@@ -549,25 +554,32 @@ input::placeholder {
 .content-container > * {
   margin-inline: 1rem;
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .content-container > * {
     margin-inline: 1.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .content-container > * {
+    margin-inline: 2.25rem;
   }
 }
 
 .content-grid.trending > *:where(:not(:last-child)) {
   margin-right: 1rem;
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .content-grid.trending > *:where(:not(:last-child)) {
     margin-right: 2.5rem;
   }
 }
 .content-grid:not(.trending) {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  -moz-column-gap: 1rem;
-       column-gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  -moz-column-gap: 1.875rem;
+       column-gap: 1.875rem;
+  -moz-column-gap: 2.5rem;
+       column-gap: 2.5rem;
   row-gap: 1rem;
 }
 
@@ -579,9 +591,14 @@ input::placeholder {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-@media (min-width: 550px) {
+@media (min-width: 700px) {
   .x-scroll-container {
     font-size: 1.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .x-scroll-container {
+    font-size: 2.25rem;
   }
 }
 .x-scroll-container::-webkit-scrollbar {
