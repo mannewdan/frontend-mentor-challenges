@@ -1,10 +1,17 @@
+@use "../globals/breakpoints" as *;
+
 .video {
   display: inline-block;
 
   &.trending {
     img {
-      width: 470px;
-      height: 230px;
+      width: 15rem;
+      height: 8.75rem;
+
+      @media (min-width: $bp-small) {
+        width: 29.375rem;
+        height: 14.375rem;
+      }
     }
   }
 }
