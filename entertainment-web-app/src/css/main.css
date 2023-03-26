@@ -584,11 +584,6 @@ input::placeholder {
     height: 14.375rem;
   }
 }
-@media (min-width: 700px) {
-  .video.trending .bookmark-button {
-    right: 1.5rem;
-  }
-}
 .video .text-container {
   display: grid;
   margin-top: 0.5rem;
@@ -636,24 +631,6 @@ input::placeholder {
     width: 0.923em;
     height: 0.923em;
     margin-right: 0.46em;
-  }
-}
-.video .bookmark-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  width: 2rem;
-  height: 2rem;
-  background-color: hsl(var(--c-button-dark)/0.5);
-  border-radius: 50%;
-}
-@media (min-width: 700px) {
-  .video .bookmark-button {
-    top: 1rem;
-    right: 1rem;
   }
 }
 
@@ -759,4 +736,52 @@ input::placeholder {
 .x-scroller {
   display: inline-block;
   transition: transform 200ms ease-out;
+}
+
+.icon-button {
+  -webkit-mask-position: center;
+          mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  transition: background-color 125ms ease-in-out;
+}
+.icon-button .blend {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: background-color 125ms ease-in-out;
+}
+
+@media (min-width: 700px) {
+  .trending .bookmark-button {
+    right: 1.5rem;
+  }
+}
+
+.bookmark-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  background-color: hsl(var(--c-button-dark)/0.5);
+  border-radius: 50%;
+}
+@media (min-width: 700px) {
+  .bookmark-button {
+    top: 1rem;
+    right: 1rem;
+  }
+}
+.bookmark-button .blend {
+  background-color: hsl(var(--c-white));
+}
+.bookmark-button:hover {
+  background-color: hsl(var(--c-white));
+}
+.bookmark-button:hover .blend {
+  background-color: hsl(var(--c-button-dark));
 }/*# sourceMappingURL=main.css.map */

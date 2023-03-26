@@ -1,4 +1,5 @@
 import { VideoT, ImgSizeE } from "../pages/Home";
+import IconButton from "./IconButton";
 
 type VideoProps = {
   video: VideoT;
@@ -50,9 +51,10 @@ export default function Video({ video, trending, imgSize }: VideoProps) {
         </div>
       </div>
 
-      <button className="bookmark-button">
-        <img src="assets/icon-bookmark-empty.svg"></img>
-      </button>
+      <IconButton
+        className="bookmark-button"
+        url={`assets/icon-bookmark-${true ? "empty" : "full"}.svg`}
+      />
     </article>
   );
 }
