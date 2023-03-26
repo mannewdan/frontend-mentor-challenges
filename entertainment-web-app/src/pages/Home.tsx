@@ -33,20 +33,17 @@ export default function Home() {
   const [nonTrendingVideos, setNonTrendingVideos] = React.useState<
     Array<VideoT>
   >(data.filter((item) => !item.isTrending));
-  const homeRef = React.useRef<HTMLDivElement>(null);
   const { windowWidth } = useWindowResized();
   const [imgSize, setImgSize] = React.useState<ImgSizeE>(ImgSizeE.Large);
   const { pathname } = useLocation();
 
   //effects
   React.useEffect(() => {
-    if (!homeRef.current) return;
-
     const bpSmall = parseFloat(
-      getComputedStyle(homeRef.current).getPropertyValue("--bp-small")
+      getComputedStyle(document.body).getPropertyValue("--bp-small")
     );
     const bpMedium = parseFloat(
-      getComputedStyle(homeRef.current).getPropertyValue("--bp-medium")
+      getComputedStyle(document.body).getPropertyValue("--bp-medium")
     );
 
     if (windowWidth >= bpMedium) {
@@ -66,7 +63,7 @@ export default function Home() {
 
   //rendering
   return (
-    <div ref={homeRef} className="home">
+    <div className="home">
       <Sidebar />
       <main className="container">
         <SearchBar />

@@ -6,8 +6,20 @@ type HorizontalScrollProps = {
 };
 
 export default function HorizontalScroll({ children }: HorizontalScrollProps) {
-  const [posParams, setPosParams] = React.useState({ xOffset: 24, margin: 24 });
   const { windowWidth } = useWindowResized();
+  const [posParams, setPosParams] = React.useState(() => {
+    //calculate correct values for initial offset
+    const bpMedium = parseFloat(
+      getComputedStyle(document.body).getPropertyValue("--bp-medium")
+    );
+    const bpSmall = parseFloat(
+      getComputedStyle(document.body).getPropertyValue("--bp-small")
+    );
+    const margin =
+      windowWidth > bpMedium ? 36 : windowWidth > bpSmall ? 24 : 16;
+
+    return { xOffset: margin, margin };
+  });
   const ref = React.useRef<HTMLDivElement>(null);
 
   //functions

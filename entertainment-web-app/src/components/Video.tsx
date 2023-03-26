@@ -40,7 +40,9 @@ export default function Video({ video, trending, imgSize }: VideoProps) {
           <div className="category">
             <img
               className="category-icon"
-              src="assets/icon-category-movie.svg"
+              src={`assets/icon-category-${
+                video.category === "TV Series" ? "tv" : "movie"
+              }.svg`}
             ></img>
             <p>{video.category}</p>
           </div>
