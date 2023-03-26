@@ -49,6 +49,10 @@ export default function Video({ video, trending, imgSize }: VideoProps) {
           <p className="rating">{video.rating}</p>
         </div>
       </div>
+
+      <button className="bookmark-button">
+        <img src="assets/icon-bookmark-empty.svg"></img>
+      </button>
     </article>
   );
 }
