@@ -30,12 +30,7 @@ export default function Home() {
     if (loadedData) return loadedData;
     return defaultData;
   });
-  const [trendingVideos, setTrendingVideos] = React.useState<Array<VideoT>>([]);
-  const [mainContentVideos, setMainContentVideos] = React.useState<
-    Array<VideoT>
-  >([]);
   const [query, setQuery] = React.useState("");
-
   const { windowWidth } = useWindowResized();
   const [imgSize, setImgSize] = React.useState<ImgSizeE>(ImgSizeE.Large);
   const { pathname } = useLocation();
@@ -59,11 +54,7 @@ export default function Home() {
   }, [windowWidth]);
   React.useEffect(() => {
     localStorage.setItem("videoData", JSON.stringify(allVideos));
-    updateVideos();
   }, [allVideos]);
-  React.useEffect(() => {
-    updateVideos();
-  }, [query, pathname]);
 
   //functions
   function loadData() {
@@ -71,56 +62,106 @@ export default function Home() {
     if (data) return JSON.parse(data);
     return null;
   }
-  function updateVideos() {
-    setTrendingVideos(allVideos.filter((item) => item.isTrending));
-
-    setMainContentVideos(
-      allVideos
-        .filter((item) => {
-          switch (pathname) {
-            case "/movies":
-              return item.category === "Movie";
-            case "/tv":
-              return item.category === "TV Series";
-            case "/favorites":
-              return item.isBookmarked;
-            default:
-              return true;
-          }
-        })
-        .filter((item) => {
-          if (!query) {
-            if (pathname === "/") return !item.isTrending;
-            return true;
-          } else {
-            return item.title.toLowerCase().includes(query.toLowerCase());
-          }
-        })
-    );
-  }
-
-  // maintain a list of 'trending' items, (filter isTrending===true)
-
-  // maintain a list of 'content' items (everything)
-  // content items should be filtered based on current search input
-  // content items should be filtered based on current path (ex: /movies should filter category==="Movie")
 
   //rendering
+  const trendingVideos = allVideos.filter((item) => item.isTrending);
+  const filteredVideos = allVideos
+    .filter((item) => {
+      switch (pathname) {
+        case "/movies":
+          return item.category === "Movie";
+        case "/tv":
+          return item.category === "TV Series";
+        case "/favorites":
+          return item.isBookmarked;
+        default:
+          return true;
+      }
+    })
+    .filter((item) => {
+      if (!query) {
+        if (pathname === "/") return !item.isTrending;
+        return true;
+      } else {
+        return item.title.toLowerCase().includes(query.toLowerCase());
+      }
+    });
+  const subheadingText = (() => {
+    if (query) {
+      return `Found ${filteredVideos.length} results for '${query}'`;
+    } else {
+      switch (pathname) {
+        case "/movies":
+          return "Movies";
+        case "/tv":
+          return "TV Series";
+        case "/favorites":
+          return "Bookmarks";
+        default:
+          return "Recommended for you";
+      }
+    }
+  })();
+  const searchPlaceholder = (() => {
+    switch (pathname) {
+      case "/movies":
+        return "Search for movies";
+      case "/tv":
+        return "Search for TV series";
+      case "/favorites":
+        return "Search for bookmarked shows";
+      default:
+        return "Search for movies or TV series";
+    }
+  })();
   return (
     <div className="home">
       <Sidebar />
       <main className="container">
-        <SearchBar setQuery={setQuery} />
+        <SearchBar setQuery={setQuery} placeholder={searchPlaceholder} />
 
-        {pathname === "/" && (
+        {pathname === "/" && !query && (
+          //trending
           <ContentGrid
             videos={trendingVideos}
+            subheadingText={subheadingText}
             trending={true}
             imgSize={imgSize}
           />
         )}
 
-        <ContentGrid videos={mainContentVideos} imgSize={imgSize} />
+        {(() => {
+          //bookmarks page
+          if (pathname === "/favorites" && !query) {
+            return (
+              <>
+                <ContentGrid
+                  videos={filteredVideos.filter(
+                    (item) => item.category === "Movie"
+                  )}
+                  subheadingText={"Bookmarked Movies"}
+                  imgSize={imgSize}
+                />
+                <ContentGrid
+                  videos={filteredVideos.filter(
+                    (item) => item.category === "TV Series"
+                  )}
+                  subheadingText={"Bookmarked TV Series"}
+                  imgSize={imgSize}
+                />
+              </>
+            );
+          }
+
+          //default
+          return (
+            <ContentGrid
+              videos={filteredVideos}
+              subheadingText={subheadingText}
+              imgSize={imgSize}
+            />
+          );
+        })()}
       </main>
     </div>
   );

@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 
 type ContentGridProps = {
   videos: Array<VideoT>;
+  subheadingText: string;
   trending: boolean;
   imgSize: ImgSizeE;
 };
@@ -14,12 +15,12 @@ ContentGrid.defaultProps = {
 
 export default function ContentGrid({
   videos,
+  subheadingText,
   trending,
   imgSize,
 }: ContentGridProps) {
   const { pathname } = useLocation();
 
-  const subheadingText = "Recommended for you";
   const headingClass = `text-h-l ${trending ? "trending" : ""}`;
   const heading = trending ? (
     <h1 className={headingClass}>Trending</h1>
