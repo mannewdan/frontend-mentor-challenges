@@ -1,11 +1,16 @@
 type IconButtonProps = {
   url: string;
   className: string;
+  action: () => void;
 };
 
-export default function IconButton({ url, className }: IconButtonProps) {
+export default function IconButton({
+  url,
+  className,
+  action,
+}: IconButtonProps) {
   return (
-    <button className={`icon-button ${className}`}>
+    <button onClick={action} className={`icon-button ${className}`}>
       <div
         className="button-mask"
         style={{

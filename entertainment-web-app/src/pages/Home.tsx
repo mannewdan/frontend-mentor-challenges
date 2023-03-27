@@ -1,10 +1,9 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
 import SearchBar from "../components/SearchBar";
-import Trending from "../components/Trending";
 import ContentGrid from "../components/ContentGrid";
 import { useLocation } from "react-router-dom";
-import data from "../data.json";
+import defaultData from "../data.json";
 import useWindowResized from "../hooks/useWindowResized";
 
 export type VideoT = {
@@ -26,13 +25,17 @@ export enum ImgSizeE {
 }
 
 export default function Home() {
-  const [allVideos, setAllVideos] = React.useState<Array<VideoT>>(data);
-  const [trendingVideos, setTrendingVideos] = React.useState<Array<VideoT>>(
-    data.filter((item) => item.isTrending)
-  );
-  const [nonTrendingVideos, setNonTrendingVideos] = React.useState<
+  const [allVideos, setAllVideos] = React.useState<Array<VideoT>>(() => {
+    const loadedData = loadData();
+    if (loadedData) return loadedData;
+    return defaultData;
+  });
+  const [trendingVideos, setTrendingVideos] = React.useState<Array<VideoT>>([]);
+  const [mainContentVideos, setMainContentVideos] = React.useState<
     Array<VideoT>
-  >(data.filter((item) => !item.isTrending));
+  >([]);
+  const [query, setQuery] = React.useState("");
+
   const { windowWidth } = useWindowResized();
   const [imgSize, setImgSize] = React.useState<ImgSizeE>(ImgSizeE.Large);
   const { pathname } = useLocation();
@@ -54,6 +57,47 @@ export default function Home() {
       setImgSize(ImgSizeE.Small);
     }
   }, [windowWidth]);
+  React.useEffect(() => {
+    localStorage.setItem("videoData", JSON.stringify(allVideos));
+    updateVideos();
+  }, [allVideos]);
+  React.useEffect(() => {
+    updateVideos();
+  }, [query, pathname]);
+
+  //functions
+  function loadData() {
+    const data = localStorage.getItem("videoData");
+    if (data) return JSON.parse(data);
+    return null;
+  }
+  function updateVideos() {
+    setTrendingVideos(allVideos.filter((item) => item.isTrending));
+
+    setMainContentVideos(
+      allVideos
+        .filter((item) => {
+          switch (pathname) {
+            case "/movies":
+              return item.category === "Movie";
+            case "/tv":
+              return item.category === "TV Series";
+            case "/favorites":
+              return item.isBookmarked;
+            default:
+              return true;
+          }
+        })
+        .filter((item) => {
+          if (!query) {
+            if (pathname === "/") return !item.isTrending;
+            return true;
+          } else {
+            return item.title.toLowerCase().includes(query.toLowerCase());
+          }
+        })
+    );
+  }
 
   // maintain a list of 'trending' items, (filter isTrending===true)
 
@@ -66,7 +110,7 @@ export default function Home() {
     <div className="home">
       <Sidebar />
       <main className="container">
-        <SearchBar />
+        <SearchBar setQuery={setQuery} />
 
         {pathname === "/" && (
           <ContentGrid
@@ -76,7 +120,7 @@ export default function Home() {
           />
         )}
 
-        <ContentGrid videos={nonTrendingVideos} imgSize={imgSize} />
+        <ContentGrid videos={mainContentVideos} imgSize={imgSize} />
       </main>
     </div>
   );
