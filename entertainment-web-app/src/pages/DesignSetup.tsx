@@ -39,7 +39,7 @@ export default function DesignSetup() {
         mollis. Ut justo. Suspendisse potenti.
       </p>
 
-      <SearchBar />
+      <SearchBar setQuery={(q: string) => {}} placeholder={""} />
       <InputField type={"text"} placeholder={"Email address"} errorText={""} />
       <InputField
         type={"text"}

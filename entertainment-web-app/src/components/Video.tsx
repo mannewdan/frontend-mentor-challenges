@@ -52,6 +52,7 @@ export default function Video({ video, trending, imgSize }: VideoProps) {
       </div>
 
       <IconButton
+        action={() => {}}
         className="bookmark-button"
         url={`assets/icon-bookmark-${true ? "empty" : "full"}.svg`}
       />
