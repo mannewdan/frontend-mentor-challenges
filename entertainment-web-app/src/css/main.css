@@ -542,11 +542,66 @@ input::placeholder {
     --circle-size: 3px;
   }
 }
-.video .thumbnail {
+.video .thumbnail,
+.video .thumbnail-container {
   border-radius: 8px;
 }
-.video.trending {
+.video .thumbnail-container {
   position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.video .thumbnail-container::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  transition: background-color 250ms ease-out;
+  background-color: hsla(0, 0%, 0%, 0);
+}
+.video .thumbnail-container:hover::before {
+  background-color: hsla(0, 0%, 0%, 0.5);
+}
+.video .thumbnail-container:hover .play-button-container {
+  opacity: 1;
+}
+.video .thumbnail-container .play-button-container {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 7;
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.video .thumbnail-container .play-button-container .play-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.1875rem;
+  padding: 0.5625rem;
+  background-color: hsla(0, 0%, 100%, 0.25);
+  border-radius: 10rem;
+}
+.video .thumbnail-container .play-button-container .play-button img {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+.video .thumbnail-container .play-button-container .play-button p {
+  font-weight: 300;
+  margin-right: 1rem;
+}
+.video.trending {
   --circle-size: 3px;
 }
 .video.trending::before {
@@ -566,7 +621,8 @@ input::placeholder {
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 2;
+  z-index: 4;
+  pointer-events: none;
   margin: 1rem;
 }
 @media (min-width: 700px) {
@@ -765,6 +821,7 @@ input::placeholder {
   position: absolute;
   top: 0.5rem;
   right: 0.5rem;
+  z-index: 5;
   width: 2rem;
   height: 2rem;
   background-color: hsl(var(--c-button-dark)/0.5);

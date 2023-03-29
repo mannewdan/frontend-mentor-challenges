@@ -14,24 +14,50 @@ export default function Video({
   imgSize,
   toggleBookmarked,
 }: VideoProps) {
-  const imgEl = (
-    <img
-      className="thumbnail"
-      src={(() => {
-        if (trending && video.thumbnail.trending) {
-          return video.thumbnail.trending[
-            imgSize === ImgSizeE.Small ? imgSize : ImgSizeE.Large
-          ];
-        } else {
-          return video.thumbnail.regular[imgSize];
-        }
-      })()}
-    ></img>
-  );
-
   return (
     <article className={`video ${trending ? "trending" : ""}`}>
-      {imgEl}
+      <div
+        onClick={(e) => {
+          if (e.target !== e.currentTarget) return;
+          console.log("Play video");
+        }}
+        className="thumbnail-container"
+      >
+        <img
+          className="thumbnail"
+          src={(() => {
+            if (trending && video.thumbnail.trending) {
+              return video.thumbnail.trending[
+                imgSize === ImgSizeE.Small ? imgSize : ImgSizeE.Large
+              ];
+            } else {
+              return video.thumbnail.regular[imgSize];
+            }
+          })()}
+        ></img>
+
+        <IconButton
+          action={() => {
+            toggleBookmarked(video);
+          }}
+          active={video.isBookmarked}
+          className={`bookmark-button`}
+          url={`assets/icon-bookmark-${
+            !video.isBookmarked ? "empty" : "full"
+          }.svg`}
+        />
+
+        <div className="play-button-container">
+          <div className="play-button">
+            <img src="assets/icon-play.svg"></img>
+            <p className="text-h-xs">Play</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="play-overlay">
+        <div className="play-button"></div>
+      </div>
 
       <div className={`text-container ${trending ? "trending" : ""}`}>
         <h3 className={`title ${trending ? "text-h-s" : "text-h-xs"}`}>
@@ -56,17 +82,6 @@ export default function Video({
           <p className="rating">{video.rating}</p>
         </div>
       </div>
-
-      <IconButton
-        action={() => {
-          toggleBookmarked(video);
-        }}
-        active={video.isBookmarked}
-        className={`bookmark-button`}
-        url={`assets/icon-bookmark-${
-          !video.isBookmarked ? "empty" : "full"
-        }.svg`}
-      />
     </article>
   );
 }
