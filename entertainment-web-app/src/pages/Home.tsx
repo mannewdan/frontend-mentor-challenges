@@ -67,9 +67,12 @@ export default function Home() {
       return prev.map((item) => {
         if (item === video) {
           return { ...video, isBookmarked: !video.isBookmarked };
-        } else return item;
+        } else return { ...item };
       });
     });
+  }
+  function findVideo(title: string): VideoT | undefined {
+    return allVideos.find((item) => item.title === title);
   }
 
   //rendering
@@ -156,6 +159,8 @@ export default function Home() {
                   subheadingText={"Bookmarked Movies"}
                   imgSize={imgSize}
                   toggleBookmarked={toggleBookmarked}
+                  lockVideos={true}
+                  findVideo={findVideo}
                 />
                 <ContentGrid
                   videos={filteredVideos.filter(
@@ -164,6 +169,8 @@ export default function Home() {
                   subheadingText={"Bookmarked TV Series"}
                   imgSize={imgSize}
                   toggleBookmarked={toggleBookmarked}
+                  lockVideos={true}
+                  findVideo={findVideo}
                 />
               </>
             );

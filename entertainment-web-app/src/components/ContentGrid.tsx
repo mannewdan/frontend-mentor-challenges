@@ -2,6 +2,7 @@ import { VideoT, ImgSizeE } from "../pages/Home";
 import Video from "./Video";
 import HorizontalScroll from "./HorizontalScroll";
 import { useLocation } from "react-router-dom";
+import React from "react";
 
 type ContentGridProps = {
   videos: Array<VideoT>;
@@ -9,6 +10,8 @@ type ContentGridProps = {
   trending: boolean;
   imgSize: ImgSizeE;
   toggleBookmarked: (video: VideoT) => void;
+  lockVideos?: boolean;
+  findVideo?: (title: string) => VideoT | undefined;
 };
 ContentGrid.defaultProps = {
   trending: false,
@@ -19,9 +22,12 @@ export default function ContentGrid({
   subheadingText,
   trending,
   imgSize,
+  lockVideos,
   toggleBookmarked,
+  findVideo,
 }: ContentGridProps) {
   const { pathname } = useLocation();
+  const [storedVideos, setStoredVideos] = React.useState(videos);
 
   const headingClass = `text-h-l ${trending ? "trending" : ""}`;
   const heading = trending ? (
@@ -34,17 +40,21 @@ export default function ContentGrid({
 
   const videoEls = (
     <div className={`content-grid ${trending ? "trending" : ""}`}>
-      {videos.map((item) => {
-        return (
-          <Video
-            key={item.title}
-            video={item}
-            trending={trending}
-            imgSize={imgSize}
-            toggleBookmarked={toggleBookmarked}
-          />
-        );
-      })}
+      {(() => {
+        const videosToDisplay = lockVideos ? storedVideos : videos;
+        return videosToDisplay.map((item) => {
+          const video = findVideo && findVideo(item.title);
+          return (
+            <Video
+              key={item.title}
+              video={video ? video : item}
+              trending={trending}
+              imgSize={imgSize}
+              toggleBookmarked={toggleBookmarked}
+            />
+          );
+        });
+      })()}
     </div>
   );
   return (
