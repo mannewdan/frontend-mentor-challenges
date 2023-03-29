@@ -5,9 +5,15 @@ type VideoProps = {
   video: VideoT;
   trending: boolean;
   imgSize: ImgSizeE;
+  toggleBookmarked: (video: VideoT) => void;
 };
 
-export default function Video({ video, trending, imgSize }: VideoProps) {
+export default function Video({
+  video,
+  trending,
+  imgSize,
+  toggleBookmarked,
+}: VideoProps) {
   const imgEl = (
     <img
       className="thumbnail"
@@ -52,9 +58,14 @@ export default function Video({ video, trending, imgSize }: VideoProps) {
       </div>
 
       <IconButton
-        action={() => {}}
-        className="bookmark-button"
-        url={`assets/icon-bookmark-${true ? "empty" : "full"}.svg`}
+        action={() => {
+          toggleBookmarked(video);
+        }}
+        active={video.isBookmarked}
+        className={`bookmark-button`}
+        url={`assets/icon-bookmark-${
+          !video.isBookmarked ? "empty" : "full"
+        }.svg`}
       />
     </article>
   );

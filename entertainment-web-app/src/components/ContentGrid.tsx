@@ -8,6 +8,7 @@ type ContentGridProps = {
   subheadingText: string;
   trending: boolean;
   imgSize: ImgSizeE;
+  toggleBookmarked: (video: VideoT) => void;
 };
 ContentGrid.defaultProps = {
   trending: false,
@@ -18,6 +19,7 @@ export default function ContentGrid({
   subheadingText,
   trending,
   imgSize,
+  toggleBookmarked,
 }: ContentGridProps) {
   const { pathname } = useLocation();
 
@@ -39,6 +41,7 @@ export default function ContentGrid({
             video={item}
             trending={trending}
             imgSize={imgSize}
+            toggleBookmarked={toggleBookmarked}
           />
         );
       })}

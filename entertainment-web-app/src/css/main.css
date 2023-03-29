@@ -784,4 +784,19 @@ input::placeholder {
 }
 .bookmark-button:hover .blend {
   background-color: hsl(var(--c-button-dark));
+}
+.bookmark-button.pulse {
+  animation: pulse 125ms ease-out;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.35);
+  }
+  100% {
+    transform: scale(1);
+  }
 }/*# sourceMappingURL=main.css.map */

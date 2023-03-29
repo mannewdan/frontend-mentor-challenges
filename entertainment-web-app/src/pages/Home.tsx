@@ -62,6 +62,15 @@ export default function Home() {
     if (data) return JSON.parse(data);
     return null;
   }
+  function toggleBookmarked(video: VideoT) {
+    setAllVideos((prev) => {
+      return prev.map((item) => {
+        if (item === video) {
+          return { ...video, isBookmarked: !video.isBookmarked };
+        } else return item;
+      });
+    });
+  }
 
   //rendering
   const trendingVideos = allVideos.filter((item) => item.isTrending);
@@ -116,7 +125,11 @@ export default function Home() {
   })();
   return (
     <div className="home">
-      <Sidebar />
+      <Sidebar
+        action={() => {
+          setQuery("");
+        }}
+      />
       <main className="container">
         <SearchBar setQuery={setQuery} placeholder={searchPlaceholder} />
 
@@ -127,6 +140,7 @@ export default function Home() {
             subheadingText={subheadingText}
             trending={true}
             imgSize={imgSize}
+            toggleBookmarked={toggleBookmarked}
           />
         )}
 
@@ -141,6 +155,7 @@ export default function Home() {
                   )}
                   subheadingText={"Bookmarked Movies"}
                   imgSize={imgSize}
+                  toggleBookmarked={toggleBookmarked}
                 />
                 <ContentGrid
                   videos={filteredVideos.filter(
@@ -148,6 +163,7 @@ export default function Home() {
                   )}
                   subheadingText={"Bookmarked TV Series"}
                   imgSize={imgSize}
+                  toggleBookmarked={toggleBookmarked}
                 />
               </>
             );
@@ -159,6 +175,7 @@ export default function Home() {
               videos={filteredVideos}
               subheadingText={subheadingText}
               imgSize={imgSize}
+              toggleBookmarked={toggleBookmarked}
             />
           );
         })()}
