@@ -1,0 +1,27 @@
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+footer {
+  text-align: center;
+  p {
+    margin-bottom: 1rem;
+  }
+  a {
+    color: hsl(var(--c-accent-neutral));
+    font-weight: 500;
+    text-decoration: none;
+
+    transition: color 75ms ease-in-out;
+    &:hover,
+    &:focus {
+      color: hsl(var(--c-accent-main));
+    }
+    &:active {
+      color: hsl(var(--c-white));
+    }
+  }
+}

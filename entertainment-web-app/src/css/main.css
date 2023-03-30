@@ -856,4 +856,29 @@ input::placeholder {
   100% {
     transform: scale(1);
   }
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+footer {
+  text-align: center;
+}
+footer p {
+  margin-bottom: 1rem;
+}
+footer a {
+  color: hsl(var(--c-accent-neutral));
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 75ms ease-in-out;
+}
+footer a:hover, footer a:focus {
+  color: hsl(var(--c-accent-main));
+}
+footer a:active {
+  color: hsl(var(--c-white));
 }/*# sourceMappingURL=main.css.map */

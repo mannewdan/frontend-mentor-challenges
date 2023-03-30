@@ -131,6 +131,7 @@ export default function Home() {
       <Sidebar
         action={() => {
           setQuery("");
+          window.scrollTo(0, 0);
         }}
       />
       <main className="container">
