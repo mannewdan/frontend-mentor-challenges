@@ -42,12 +42,13 @@ export default function ContentGrid({
     <div className={`content-grid ${trending ? "trending" : ""}`}>
       {(() => {
         const videosToDisplay = lockVideos ? storedVideos : videos;
-        return videosToDisplay.map((item) => {
+        return videosToDisplay.map((item, index) => {
           const video = findVideo && findVideo(item.title);
           return (
             <Video
-              key={item.title}
+              key={pathname + item.title}
               video={video ? video : item}
+              offset={index}
               trending={trending}
               imgSize={imgSize}
               toggleBookmarked={toggleBookmarked}

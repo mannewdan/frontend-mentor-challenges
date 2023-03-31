@@ -1,8 +1,24 @@
 @use "../globals/breakpoints" as *;
 
+@keyframes reveal {
+  0% {
+    transform: translateY(-25%) scaleY(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%) scaleY(1);
+    opacity: 1;
+  }
+}
+
 .video {
   display: inline-block;
   position: relative;
+
+  &.animated {
+    animation: reveal 250ms ease-out;
+    animation-fill-mode: both;
+  }
 
   --circle-size: 2px;
   @media (min-width: $bp-small) {

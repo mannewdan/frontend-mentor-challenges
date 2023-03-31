@@ -532,10 +532,24 @@ input::placeholder {
   background-color: hsl(var(--c-white));
 }
 
+@keyframes reveal {
+  0% {
+    transform: translateY(-25%) scaleY(0.5);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%) scaleY(1);
+    opacity: 1;
+  }
+}
 .video {
   display: inline-block;
   position: relative;
   --circle-size: 2px;
+}
+.video.animated {
+  animation: reveal 250ms ease-out;
+  animation-fill-mode: both;
 }
 @media (min-width: 700px) {
   .video {

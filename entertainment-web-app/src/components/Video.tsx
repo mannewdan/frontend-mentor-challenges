@@ -3,6 +3,7 @@ import IconButton from "./IconButton";
 
 type VideoProps = {
   video: VideoT;
+  offset: number;
   trending: boolean;
   imgSize: ImgSizeE;
   toggleBookmarked: (video: VideoT) => void;
@@ -10,12 +11,16 @@ type VideoProps = {
 
 export default function Video({
   video,
+  offset,
   trending,
   imgSize,
   toggleBookmarked,
 }: VideoProps) {
   return (
-    <article className={`video ${trending ? "trending" : ""}`}>
+    <article
+      className={`video ${trending ? "trending" : "animated"}`}
+      style={{ animationDelay: "" + offset * 35 + "ms" }}
+    >
       <div
         onClick={(e) => {
           if (e.target !== e.currentTarget) return;
