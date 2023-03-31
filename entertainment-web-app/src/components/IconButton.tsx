@@ -24,16 +24,16 @@ export default function IconButton({
       className={`icon-button ${className} ${pulse ? "pulse" : ""}`}
       aria-label="bookmark"
     >
-      <div
+      <span
         className="button-mask"
         style={{
           maskImage: `url("../${url}")`,
           WebkitMaskImage: `url("../${url}")`,
         }}
       >
-        <div className="blend"></div>
+        <span className="blend"></span>
         <img src={url} alt="bookmark"></img>
-      </div>
+      </span>
     </button>
   );
 }

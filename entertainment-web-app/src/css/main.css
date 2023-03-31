@@ -801,6 +801,12 @@ input::placeholder {
           mask-repeat: no-repeat;
   transition: background-color 125ms ease-in-out;
 }
+.icon-button span {
+  display: block;
+}
+.icon-button .button-mask {
+  position: relative;
+}
 .icon-button .blend {
   position: absolute;
   width: 100%;

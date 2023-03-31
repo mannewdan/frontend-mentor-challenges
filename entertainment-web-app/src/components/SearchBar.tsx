@@ -10,7 +10,7 @@ export default function SearchBar({ setQuery, placeholder }: SearchBarProps) {
 
   return (
     <div className="search-bar">
-      <img src="assets/icon-search.svg"></img>
+      <img src="assets/icon-search.svg" alt="search"></img>
       <input
         aria-label={placeholder}
         className="text-h-m"

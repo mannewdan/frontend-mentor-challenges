@@ -5,6 +5,12 @@
   mask-repeat: no-repeat;
   transition: background-color 125ms ease-in-out;
 
+  span {
+    display: block;
+  }
+  .button-mask {
+    position: relative;
+  }
   .blend {
     position: absolute;
     width: 100%;
