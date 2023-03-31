@@ -25,6 +25,7 @@ export default function Video({
       >
         <img
           className="thumbnail"
+          alt={video.title}
           src={(() => {
             if (trending && video.thumbnail.trending) {
               return video.thumbnail.trending[
@@ -49,14 +50,10 @@ export default function Video({
 
         <div className="play-button-container">
           <div className="play-button">
-            <img src="assets/icon-play.svg"></img>
+            <img src="assets/icon-play.svg" alt="play"></img>
             <p className="text-h-xs">Play</p>
           </div>
         </div>
-      </div>
-
-      <div className="play-overlay">
-        <div className="play-button"></div>
       </div>
 
       <div className={`text-container ${trending ? "trending" : ""}`}>
@@ -76,6 +73,7 @@ export default function Video({
               src={`assets/icon-category-${
                 video.category === "TV Series" ? "tv" : "movie"
               }.svg`}
+              alt={video.category + " icon"}
             ></img>
             <p>{video.category}</p>
           </div>

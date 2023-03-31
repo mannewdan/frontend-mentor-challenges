@@ -22,6 +22,7 @@ export default function IconButton({
         action();
       }}
       className={`icon-button ${className} ${pulse ? "pulse" : ""}`}
+      aria-label="bookmark"
     >
       <div
         className="button-mask"
@@ -31,7 +32,7 @@ export default function IconButton({
         }}
       >
         <div className="blend"></div>
-        <img src={url}></img>
+        <img src={url} alt="bookmark"></img>
       </div>
     </button>
   );

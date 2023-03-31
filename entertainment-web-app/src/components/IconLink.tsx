@@ -23,9 +23,10 @@ export default function IconLink({
         WebkitMaskImage: `url("../${imgUrl}")`,
         maskImage: `url("../${imgUrl}")`,
       }}
+      aria-label={"link to " + to}
     >
       <div className={`blend ${active ? "active" : ""}`}></div>
-      <img src={imgUrl}></img>
+      <img src={imgUrl} alt={to.slice(1) + " icon"}></img>
     </Link>
   );
 }

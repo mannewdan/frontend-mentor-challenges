@@ -10,7 +10,7 @@ export default function Sidebar({ action }: SidebarProps) {
 
   return (
     <nav className="sidebar">
-      <img className="logo" src="assets/logo.svg"></img>
+      <img className="logo" src="assets/logo.svg" alt="logo"></img>
       <div className="links">
         <IconLink
           action={action}
@@ -37,7 +37,11 @@ export default function Sidebar({ action }: SidebarProps) {
           active={pathname === "/favorites"}
         />
       </div>
-      <img className="profile" src="assets/image-avatar.png"></img>
+      <img
+        className="profile"
+        src="assets/image-avatar.png"
+        alt="profile"
+      ></img>
     </nav>
   );
 }
