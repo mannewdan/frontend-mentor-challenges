@@ -1,0 +1,92 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+* {
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+:root {
+  --c-accent-main: 242 48% 58%;
+  --c-accent-main-light: 243 100% 82%;
+  --c-accent-danger: 0 78% 63%;
+  --c-accent-danger-light: 0 100% 80%;
+  --c-neutral: 216 15% 57%;
+  --c-text-main: 237 100% 4%;
+  --c-lines-main: 221 69% 94%;
+  --c-bg-main: 220 69% 97%;
+  --c-bg-main-light: 0 0% 100%;
+  --c-text-dark: 0 0% 100%;
+  --c-lines-dark: 236 11% 27%;
+  --c-bg-dark: 235 16% 15%;
+  --c-bg-dark-light: 235 12% 19%;
+}
+
+.dark {
+  --c-text-main: var(--c-text-dark);
+  --c-lines-main: var(--c-lines-dark);
+  --c-bg-main: var(--c-bg-dark);
+  --c-bg-main-light: var(--c-bg-dark-light);
+}
+
+:root {
+  --ff-main: "Plus Jakarta Sans", sans-serif;
+}
+
+body {
+  font-family: var(--ff-main);
+  color: hsl(var(--c-text-main));
+  background-color: hsl(var(--c-bg-main));
+}/*# sourceMappingURL=main.css.map */
