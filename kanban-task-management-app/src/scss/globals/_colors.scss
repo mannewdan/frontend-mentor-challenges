@@ -25,3 +25,22 @@
   --c-bg-main: var(--c-bg-dark);
   --c-bg-main-light: var(--c-bg-dark-light);
 }
+
+.c-text-main {
+  color: hsl(var(--c-text-main));
+}
+.c-text-main-50 {
+  color: hsl(var(--c-text-main) / 50%);
+}
+.c-text-main-25 {
+  color: hsl(var(--c-text-main) / 25%);
+}
+.c-text-neutral {
+  color: hsl(var(--c-neutral));
+}
+.c-text-accent {
+  color: hsl(var(--c-accent-main));
+}
+.c-text-white {
+  color: hsl(var(--c-text-dark));
+}

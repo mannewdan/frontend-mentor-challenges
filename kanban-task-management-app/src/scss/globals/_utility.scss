@@ -1,0 +1,6 @@
+.flow {
+  --flow-size: 1rem;
+  & > *:where(:not(:last-child)) {
+    margin-bottom: var(--flow-size);
+  }
+}

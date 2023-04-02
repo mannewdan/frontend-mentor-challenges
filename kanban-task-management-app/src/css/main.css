@@ -81,12 +81,85 @@ h6 {
   --c-bg-main-light: var(--c-bg-dark-light);
 }
 
+.c-text-main {
+  color: hsl(var(--c-text-main));
+}
+
+.c-text-main-50 {
+  color: hsl(var(--c-text-main)/50%);
+}
+
+.c-text-main-25 {
+  color: hsl(var(--c-text-main)/25%);
+}
+
+.c-text-neutral {
+  color: hsl(var(--c-neutral));
+}
+
+.c-text-accent {
+  color: hsl(var(--c-accent-main));
+}
+
+.c-text-white {
+  color: hsl(var(--c-text-dark));
+}
+
 :root {
   --ff-main: "Plus Jakarta Sans", sans-serif;
+  --fs-400: 0.75rem;
+  --fs-500: 0.8125rem;
+  --fs-600: 0.9375rem;
+  --fs-700: 1.125rem;
+  --fs-800: 1.5rem;
+}
+
+.text-h-xl {
+  font-size: var(--fs-800);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.text-h-l {
+  font-size: var(--fs-700);
+  font-weight: 700;
+  line-height: 1.2778;
+}
+
+.text-h-m {
+  font-size: var(--fs-600);
+  font-weight: 700;
+  line-height: 1.2667;
+}
+
+.text-h-s {
+  font-size: var(--fs-400);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: 2.4px;
+}
+
+.text-b-l {
+  font-size: var(--fs-500);
+  font-weight: 500;
+  line-height: 1.7692;
+}
+
+.text-b-m {
+  font-size: var(--fs-400);
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 body {
   font-family: var(--ff-main);
   color: hsl(var(--c-text-main));
   background-color: hsl(var(--c-bg-main));
+}
+
+.flow {
+  --flow-size: 1rem;
+}
+.flow > *:where(:not(:last-child)) {
+  margin-bottom: var(--flow-size);
 }/*# sourceMappingURL=main.css.map */
