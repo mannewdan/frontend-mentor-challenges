@@ -6,12 +6,16 @@
   font-size: var(--fs-500);
   font-weight: 700;
   line-height: 1.769;
+
   padding-bottom: 0.61538em;
   padding-top: 0.6923em;
   padding-inline: 1.633em;
   border-radius: 20px;
   border: none;
-  transition: background-color 175ms ease-out;
+  width: 100%;
+  display: block;
+
+  transition: background-color 125ms ease-out;
 
   &:not(.inactive) {
     cursor: pointer;

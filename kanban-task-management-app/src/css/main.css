@@ -164,6 +164,13 @@ body {
   margin-bottom: var(--flow-size);
 }
 
+.mock-modal {
+  background-color: hsl(var(--c-bg-main-light));
+  width: 100%;
+  padding: 2rem;
+  border-radius: 6px;
+}
+
 .inactive {
   opacity: 25%;
 }
@@ -177,7 +184,9 @@ body {
   padding-inline: 1.633em;
   border-radius: 20px;
   border: none;
-  transition: background-color 175ms ease-out;
+  width: 100%;
+  display: block;
+  transition: background-color 125ms ease-out;
 }
 .button:not(.inactive), .button-danger:not(.inactive), .button-secondary:not(.inactive), .button-primary:not(.inactive), .button-primary-l:not(.inactive) {
   cursor: pointer;
@@ -215,4 +224,54 @@ body {
 }
 .button-danger:not(.inactive):hover {
   background-color: hsl(var(--c-accent-danger-light));
+}
+
+.checkbox {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  font-size: var(--fs-400);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.75rem;
+  padding-left: 2.75rem;
+  background-color: hsl(var(--c-bg-main));
+  border-radius: 4px;
+  transition: background-color 125ms ease-out;
+  position: relative;
+}
+.checkbox:hover {
+  background-color: hsl(var(--c-accent-main)/25%);
+}
+.checkbox .checkmark::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  left: 0.75rem;
+  display: flex;
+  justify-content: center;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 2px;
+  background-color: hsl(var(--c-bg-main-light));
+  border: 1px solid hsl(var(--c-neutral)/25%);
+}
+.checkbox input[type=checkbox]:checked ~ .checkmark::after {
+  background-color: hsl(var(--c-accent-main));
+  content: url("../assets/icon-check.svg");
+  border: none;
+}
+.checkbox input[type=checkbox]:checked ~ span:not(.checkmark) {
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  opacity: 50%;
+}
+.checkbox input[type=checkbox] {
+  display: none;
 }/*# sourceMappingURL=main.css.map */

@@ -2,7 +2,10 @@ export default function Design() {
   //  document.body.classList.add("dark");
 
   return (
-    <section className="flow" style={{ padding: "1.5rem" }}>
+    <section
+      className="flow"
+      style={{ padding: "1.5rem", paddingBottom: "100vh" }}
+    >
       <h1 className="text-h-xl">Heading XL</h1>
       <h2 className="text-h-l">Heading L</h2>
       <h3 className="text-h-m">Heading M</h3>
@@ -32,6 +35,18 @@ export default function Design() {
       <button className="button-primary">Button Primary S</button>
       <button className="button-secondary">Button Primary S</button>
       <button className="button-danger">Button Primary S</button>
+
+      <div className="mock-modal">
+        <label className="checkbox">
+          <input type="checkbox"></input>{" "}
+          <span>
+            Label apibus id, otenti. Sed egestas, ante et vulputate volutpat,
+            eros pede semper est, vitae luctus metus libero eu augue. Morbi
+            purus libero, fauci
+          </span>
+          <span className="checkmark"></span>
+        </label>
+      </div>
     </section>
   );
 }
