@@ -1,0 +1,63 @@
+.inactive {
+  opacity: 25%;
+}
+
+.button {
+  font-size: var(--fs-500);
+  font-weight: 700;
+  line-height: 1.769;
+  padding-bottom: 0.61538em;
+  padding-top: 0.6923em;
+  padding-inline: 1.633em;
+  border-radius: 20px;
+  border: none;
+  transition: background-color 175ms ease-out;
+
+  &:not(.inactive) {
+    cursor: pointer;
+  }
+
+  &-primary {
+    @extend .button;
+    background-color: hsl(var(--c-accent-main));
+    color: hsl(var(--c-text-dark));
+
+    &:not(.inactive):hover {
+      background-color: hsl(var(--c-accent-main-light));
+    }
+
+    &-l {
+      @extend .button-primary;
+      font-size: var(--fs-600);
+      line-height: 1.26;
+      padding-top: 1em;
+      padding-bottom: 0.933em;
+      border-radius: 24px;
+    }
+  }
+  &-secondary {
+    @extend .button;
+    background-color: hsl(var(--c-accent-main) / 10%);
+    color: hsl(var(--c-accent-main));
+
+    &:not(.inactive):hover {
+      background-color: hsl(var(--c-accent-main) / 25%);
+    }
+  }
+  .dark &-secondary {
+    background-color: hsl(var(--c-text-dark));
+    &:not(.inactive):hover {
+      background-color: hsl(var(--c-text-dark));
+    }
+  }
+
+  &-danger {
+    @extend .button;
+    background-color: hsl(var(--c-accent-danger));
+    color: hsl(var(--c-text-dark));
+
+    &:not(.inactive):hover {
+      background-color: hsl(var(--c-accent-danger-light));
+    }
+  }
+}

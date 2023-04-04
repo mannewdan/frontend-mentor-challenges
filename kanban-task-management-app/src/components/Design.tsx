@@ -2,7 +2,7 @@ export default function Design() {
   //  document.body.classList.add("dark");
 
   return (
-    <section className="flow">
+    <section className="flow" style={{ padding: "1.5rem" }}>
       <h1 className="text-h-xl">Heading XL</h1>
       <h2 className="text-h-l">Heading L</h2>
       <h3 className="text-h-m">Heading M</h3>
@@ -27,6 +27,11 @@ export default function Design() {
         metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo
         quis, gravida id, est.
       </p>
+
+      <button className="button-primary-l inactive">Button Primary L</button>
+      <button className="button-primary">Button Primary S</button>
+      <button className="button-secondary">Button Primary S</button>
+      <button className="button-danger">Button Primary S</button>
     </section>
   );
 }

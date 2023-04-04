@@ -162,4 +162,57 @@ body {
 }
 .flow > *:where(:not(:last-child)) {
   margin-bottom: var(--flow-size);
+}
+
+.inactive {
+  opacity: 25%;
+}
+
+.button, .button-danger, .button-secondary, .button-primary, .button-primary-l {
+  font-size: var(--fs-500);
+  font-weight: 700;
+  line-height: 1.769;
+  padding-bottom: 0.61538em;
+  padding-top: 0.6923em;
+  padding-inline: 1.633em;
+  border-radius: 20px;
+  border: none;
+  transition: background-color 175ms ease-out;
+}
+.button:not(.inactive), .button-danger:not(.inactive), .button-secondary:not(.inactive), .button-primary:not(.inactive), .button-primary-l:not(.inactive) {
+  cursor: pointer;
+}
+.button-primary, .button-primary-l {
+  background-color: hsl(var(--c-accent-main));
+  color: hsl(var(--c-text-dark));
+}
+.button-primary:not(.inactive):hover, .button-primary-l:not(.inactive):hover {
+  background-color: hsl(var(--c-accent-main-light));
+}
+.button-primary-l {
+  font-size: var(--fs-600);
+  line-height: 1.26;
+  padding-top: 1em;
+  padding-bottom: 0.933em;
+  border-radius: 24px;
+}
+.button-secondary {
+  background-color: hsl(var(--c-accent-main)/10%);
+  color: hsl(var(--c-accent-main));
+}
+.button-secondary:not(.inactive):hover {
+  background-color: hsl(var(--c-accent-main)/25%);
+}
+.dark .button-secondary {
+  background-color: hsl(var(--c-text-dark));
+}
+.dark .button-secondary:not(.inactive):hover {
+  background-color: hsl(var(--c-text-dark));
+}
+.button-danger {
+  background-color: hsl(var(--c-accent-danger));
+  color: hsl(var(--c-text-dark));
+}
+.button-danger:not(.inactive):hover {
+  background-color: hsl(var(--c-accent-danger-light));
 }/*# sourceMappingURL=main.css.map */
