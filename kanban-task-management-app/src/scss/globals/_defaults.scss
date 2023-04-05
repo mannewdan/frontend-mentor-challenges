@@ -3,3 +3,8 @@ body {
   color: hsl(var(--c-text-main));
   background-color: hsl(var(--c-bg-main));
 }
+
+::selection {
+  color: hsl(var(--c-text-dark));
+  background-color: hsl(var(--c-accent-main));
+}

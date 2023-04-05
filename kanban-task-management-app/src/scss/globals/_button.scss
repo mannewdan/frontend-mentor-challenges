@@ -3,6 +3,7 @@
 }
 
 .button {
+  user-select: none;
   font-size: var(--fs-500);
   font-weight: 700;
   line-height: 1.769;

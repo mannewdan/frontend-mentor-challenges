@@ -1,0 +1,48 @@
+@use "typography" as *;
+
+.text-input {
+  @extend .text-b-l;
+  display: block;
+  position: relative;
+
+  &.empty {
+    input,
+    textarea {
+      border-color: hsl(var(--c-accent-danger));
+    }
+
+    &::before {
+      content: "Can't be empty";
+      position: absolute;
+      right: 1.2308em;
+      top: calc(0.6154em + 1px);
+      color: hsl(var(--c-accent-danger));
+    }
+  }
+}
+
+textarea {
+  resize: none;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 7rem;
+}
+textarea,
+input[type="text"] {
+  width: 100%;
+  padding: 0.6154em 1.2308em;
+
+  background-color: transparent;
+  border: 1px solid hsl(var(--c-neutral) / 25%);
+  border-radius: 4px;
+  outline: none;
+
+  &::placeholder {
+    color: hsl(0 0% 0% / 25%);
+  }
+  .dark & {
+    &::placeholder {
+      color: hsl(0 0% 100% / 25%);
+    }
+  }
+}

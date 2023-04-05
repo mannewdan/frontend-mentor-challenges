@@ -36,8 +36,18 @@ export default function Design() {
       <button className="button-secondary">Button Primary S</button>
       <button className="button-danger">Button Primary S</button>
 
-      <div className="mock-modal">
-        <label className="checkbox">
+      <div className="mock-modal flow">
+        <label
+          onMouseLeave={(e) => {
+            const target = e.target as HTMLLabelElement;
+            const active = document.activeElement as HTMLElement;
+            if (!target || !active) return;
+            target.childNodes.forEach((item) => {
+              if (item === active) active.blur();
+            });
+          }}
+          className="checkbox"
+        >
           <input type="checkbox"></input>{" "}
           <span>
             Label apibus id, otenti. Sed egestas, ante et vulputate volutpat,
@@ -45,6 +55,21 @@ export default function Design() {
             purus libero, fauci
           </span>
           <span className="checkmark"></span>
+        </label>
+
+        <label className="text-input empty" htmlFor="task-name">
+          <input
+            name="task-name"
+            type="text"
+            placeholder="Enter task name"
+          ></input>
+        </label>
+
+        <label className="text-input empty" htmlFor="task-description">
+          <textarea
+            name="task-description"
+            placeholder="e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little."
+          ></textarea>
         </label>
       </div>
     </section>
