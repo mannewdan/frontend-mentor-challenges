@@ -212,6 +212,10 @@ body {
 .button-primary:not(.inactive):hover, .button-primary-l:not(.inactive):hover {
   background-color: hsl(var(--c-accent-main-light));
 }
+.button-primary:not(.inactive):active, .button-primary-l:not(.inactive):active {
+  transition-duration: 25ms;
+  background-color: hsl(var(--c-accent-main-light)/80%);
+}
 .button-primary-l {
   font-size: var(--fs-600);
   line-height: 1.26;
@@ -226,6 +230,10 @@ body {
 .button-secondary:not(.inactive):hover {
   background-color: hsl(var(--c-accent-main)/25%);
 }
+.button-secondary:not(.inactive):active {
+  transition-duration: 25ms;
+  background-color: hsl(var(--c-accent-main)/20%);
+}
 .dark .button-secondary {
   background-color: hsl(var(--c-text-dark));
 }
@@ -238,6 +246,10 @@ body {
 }
 .button-danger:not(.inactive):hover {
   background-color: hsl(var(--c-accent-danger-light));
+}
+.button-danger:not(.inactive):active {
+  transition-duration: 25ms;
+  background-color: hsl(var(--c-accent-danger-light)/80%);
 }
 
 .checkbox {
@@ -259,6 +271,10 @@ body {
 }
 .checkbox:hover, .checkbox:focus-within {
   background-color: hsl(var(--c-accent-main)/25%);
+}
+.checkbox:active {
+  transition-duration: 25ms;
+  background-color: hsl(var(--c-accent-main)/35%);
 }
 .checkbox .checkmark::after {
   content: "";

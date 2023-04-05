@@ -30,6 +30,10 @@
     &:not(.inactive):hover {
       background-color: hsl(var(--c-accent-main-light));
     }
+    &:not(.inactive):active {
+      transition-duration: 25ms;
+      background-color: hsl(var(--c-accent-main-light) / 80%);
+    }
 
     &-l {
       @extend .button-primary;
@@ -48,6 +52,10 @@
     &:not(.inactive):hover {
       background-color: hsl(var(--c-accent-main) / 25%);
     }
+    &:not(.inactive):active {
+      transition-duration: 25ms;
+      background-color: hsl(var(--c-accent-main) / 20%);
+    }
   }
   .dark &-secondary {
     background-color: hsl(var(--c-text-dark));
@@ -63,6 +71,10 @@
 
     &:not(.inactive):hover {
       background-color: hsl(var(--c-accent-danger-light));
+    }
+    &:not(.inactive):active {
+      transition-duration: 25ms;
+      background-color: hsl(var(--c-accent-danger-light) / 80%);
     }
   }
 }

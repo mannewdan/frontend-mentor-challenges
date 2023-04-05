@@ -19,6 +19,10 @@
   &:focus-within {
     background-color: hsl(var(--c-accent-main) / 25%);
   }
+  &:active {
+    transition-duration: 25ms;
+    background-color: hsl(var(--c-accent-main) / 35%);
+  }
 
   position: relative;
   .checkmark::after {
