@@ -11,11 +11,14 @@ export default function Dropdown({ name, options }: DropdownProps) {
     options.length > 0 ? options[0] : ""
   );
 
-  console.log(selection);
-
   return (
-    <label htmlFor={name} className="dropdown">
+    <label
+      htmlFor={name}
+      className={expanded ? "expanded" : ""}
+      onClick={() => setExpanded((prev) => !prev)}
+    >
       <select
+        className="hidden"
         onChange={(e) => {
           setSelection(e.target.value);
         }}
@@ -32,10 +35,14 @@ export default function Dropdown({ name, options }: DropdownProps) {
       </select>
 
       <div className="select-box">
-        <span className="selection active">{selection}</span>
+        <span className="selection">{selection}</span>
         <div className="options">
           {options.map((item) => {
-            return <span key={item}>{item}</span>;
+            return (
+              <span key={item} onClick={() => setSelection(item)}>
+                {item}
+              </span>
+            );
           })}
         </div>
       </div>

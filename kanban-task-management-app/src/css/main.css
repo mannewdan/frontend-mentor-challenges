@@ -356,41 +356,76 @@ input[type=text]::placeholder {
   color: hsla(0, 0%, 100%, 0.25);
 }
 
-.dropdown select {
+select.hidden {
   position: absolute;
   left: -100px;
   width: 0;
   height: 0;
 }
-.dropdown select:focus + div {
+select.hidden:focus + div {
   outline: 1px solid black;
   border-radius: 4px;
 }
-.dropdown .select-box {
+
+.select-box {
   position: relative;
-}
-.dropdown .select-box:not(.active) {
   cursor: pointer;
+  z-index: 1;
 }
-.dropdown .select-box .selection {
+.select-box .selection {
   display: block;
   width: 100%;
-  padding: 0.5rem 1rem;
+  padding: 0.6154em 1.2308em;
+  background-color: hsl(var(--c-bg-main-light));
   border: 1px solid hsl(var(--c-neutral)/25%);
   border-radius: 4px;
 }
-.dropdown .select-box .selection.active {
+.expanded .select-box .selection {
   border-color: hsl(var(--c-accent-main));
 }
-.dropdown .select-box .options {
+.select-box .options {
+  cursor: default;
   position: absolute;
-  top: calc(100% + 0.3125rem);
+  top: calc(100% + 0.3846em);
+  z-index: -1;
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 1rem;
-  gap: 0.5rem;
+  padding: 0.75rem;
+  padding-inline: 1rem;
   color: hsl(var(--c-neutral));
   background: hsl(var(--c-bg-main));
   border-radius: 8px;
+  transform-origin: top;
+  transform: translateY(-2.6154em) scaleY(0);
+  opacity: 0;
+  transition: transform 150ms ease-out, opacity 150ms ease-out;
+}
+.expanded .select-box .options {
+  transform: translateY(0) scaleY(1);
+  opacity: 1;
+}
+.select-box .options span {
+  position: relative;
+  padding-top: 0.308em;
+  padding-bottom: 0.308em;
+}
+.select-box .options span::before {
+  content: "";
+  position: absolute;
+  top: calc(100% - 0.4em);
+  width: 2.5ch;
+  height: 2px;
+  background-color: hsl(var(--c-accent-main)/75%);
+  opacity: 0;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 150ms ease-out, opacity 150ms ease-out;
+}
+.select-box .options span:hover {
+  color: hsl(var(--c-text-main));
+}
+.select-box .options span:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
 }/*# sourceMappingURL=main.css.map */

@@ -1,47 +1,81 @@
-.dropdown {
-  select {
-    position: absolute;
-    left: -100px;
-    width: 0;
-    height: 0;
+select.hidden {
+  position: absolute;
+  left: -100px;
+  width: 0;
+  height: 0;
 
-    &:focus + div {
-      outline: 1px solid black;
-      border-radius: 4px;
+  &:focus + div {
+    outline: 1px solid black;
+    border-radius: 4px;
+  }
+}
+
+.select-box {
+  position: relative;
+  cursor: pointer;
+  z-index: 1;
+
+  .selection {
+    display: block;
+    width: 100%;
+    padding: 0.6154em 1.2308em;
+
+    background-color: hsl(var(--c-bg-main-light));
+    border: 1px solid hsl(var(--c-neutral) / 25%);
+    border-radius: 4px;
+
+    .expanded & {
+      border-color: hsl(var(--c-accent-main));
     }
   }
-  .select-box {
-    position: relative;
+  .options {
+    cursor: default;
+    position: absolute;
+    top: calc(100% + 0.3846em);
+    z-index: -1;
 
-    &:not(.active) {
-      cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0.75rem;
+    padding-inline: 1rem;
+
+    color: hsl(var(--c-neutral));
+    background: hsl(var(--c-bg-main));
+    border-radius: 8px;
+
+    transform-origin: top;
+    transform: translateY(-2.6154em) scaleY(0);
+    opacity: 0;
+    transition: transform 150ms ease-out, opacity 150ms ease-out;
+    .expanded & {
+      transform: translateY(0) scaleY(1);
+      opacity: 1;
     }
 
-    .selection {
-      display: block;
-      width: 100%;
-      padding: 0.5rem 1rem;
-
-      border: 1px solid hsl(var(--c-neutral) / 25%);
-      border-radius: 4px;
-
-      &.active {
-        border-color: hsl(var(--c-accent-main));
+    span {
+      position: relative;
+      padding-top: 0.308em;
+      padding-bottom: 0.308em;
+      &::before {
+        content: "";
+        position: absolute;
+        top: calc(100% - 0.4em);
+        width: 2.5ch;
+        height: 2px;
+        background-color: hsl(var(--c-accent-main) / 75%);
+        opacity: 0;
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 150ms ease-out, opacity 150ms ease-out;
       }
-    }
-    .options {
-      position: absolute;
-      top: calc(100% + 0.3125rem);
-
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      padding: 1rem;
-      gap: 0.5rem;
-
-      color: hsl(var(--c-neutral));
-      background: hsl(var(--c-bg-main));
-      border-radius: 8px;
+      &:hover {
+        color: hsl(var(--c-text-main));
+        &::before {
+          opacity: 1;
+          transform: scaleX(1);
+        }
+      }
     }
   }
 }
