@@ -372,6 +372,19 @@ select.hidden:focus + div {
   cursor: pointer;
   z-index: 1;
 }
+.select-box::after {
+  content: url("../assets/icon-chevron-down.svg");
+  position: absolute;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  top: 0;
+  right: 1.2308em;
+  transition: transform 75ms ease-in-out;
+}
+.expanded .select-box::after {
+  transform: rotate(-180deg);
+}
 .select-box .selection {
   display: block;
   width: 100%;
