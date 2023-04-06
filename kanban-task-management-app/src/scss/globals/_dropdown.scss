@@ -1,0 +1,47 @@
+.dropdown {
+  select {
+    position: absolute;
+    left: -100px;
+    width: 0;
+    height: 0;
+
+    &:focus + div {
+      outline: 1px solid black;
+      border-radius: 4px;
+    }
+  }
+  .select-box {
+    position: relative;
+
+    &:not(.active) {
+      cursor: pointer;
+    }
+
+    .selection {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 1rem;
+
+      border: 1px solid hsl(var(--c-neutral) / 25%);
+      border-radius: 4px;
+
+      &.active {
+        border-color: hsl(var(--c-accent-main));
+      }
+    }
+    .options {
+      position: absolute;
+      top: calc(100% + 0.3125rem);
+
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 1rem;
+      gap: 0.5rem;
+
+      color: hsl(var(--c-neutral));
+      background: hsl(var(--c-bg-main));
+      border-radius: 8px;
+    }
+  }
+}

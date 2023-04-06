@@ -1,3 +1,5 @@
+import Dropdown from "./Dropdown";
+
 export default function Design() {
   //  document.body.classList.add("dark");
 
@@ -48,7 +50,7 @@ export default function Design() {
           }}
           className="checkbox"
         >
-          <input type="checkbox"></input>{" "}
+          <input type="checkbox"></input>
           <span>
             Label apibus id, otenti. Sed egestas, ante et vulputate volutpat,
             eros pede semper est, vitae luctus metus libero eu augue. Morbi
@@ -65,12 +67,20 @@ export default function Design() {
           ></input>
         </label>
 
-        <label className="text-input empty" htmlFor="task-description">
+        <label className="text-input" htmlFor="task-description">
           <textarea
             name="task-description"
             placeholder="e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little."
           ></textarea>
         </label>
+
+        <select>
+          <option>Todo</option>
+          <option>Doing</option>
+          <option>Done</option>
+        </select>
+
+        <Dropdown name={"status"} options={["Todo", "Doing", "Done"]} />
       </div>
     </section>
   );
