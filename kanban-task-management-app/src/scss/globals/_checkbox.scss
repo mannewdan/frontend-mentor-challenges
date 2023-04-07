@@ -1,31 +1,34 @@
 .checkbox {
-  cursor: pointer;
-  user-select: none;
-
-  font-size: var(--fs-400);
-  font-weight: 700;
-
-  display: flex;
-  align-items: center;
-  width: 100%;
-  padding: 0.75rem;
-  padding-left: 2.75rem;
-
-  background-color: hsl(var(--c-bg-main));
-  border-radius: 4px;
-
-  transition: background-color 125ms ease-out;
-  &:hover,
-  &:focus-within {
-    background-color: hsl(var(--c-accent-main) / 25%);
-  }
-  &:active {
-    transition-duration: 25ms;
-    background-color: hsl(var(--c-accent-main) / 35%);
-  }
-
   position: relative;
+
+  label {
+    cursor: pointer;
+    user-select: none;
+
+    font-size: var(--fs-400);
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.75rem;
+    padding-left: 2.75rem;
+
+    background-color: hsl(var(--c-bg-main));
+    border-radius: 4px;
+
+    transition: background-color 125ms ease-out;
+    &:hover {
+      background-color: hsl(var(--c-accent-main) / 25%);
+    }
+    &:active {
+      transition-duration: 25ms;
+      background-color: hsl(var(--c-accent-main) / 35%);
+    }
+  }
+
   .checkmark::after {
+    pointer-events: none;
     content: "";
     position: absolute;
     top: 0;
@@ -44,18 +47,36 @@
     background-color: hsl(var(--c-bg-main-light));
     border: 1px solid hsl(var(--c-neutral) / 25%);
   }
-  input[type="checkbox"]:checked ~ .checkmark::after {
-    background-color: hsl(var(--c-accent-main));
-    content: url("../assets/icon-check.svg");
-    border: none;
-  }
-  input[type="checkbox"]:checked ~ span:not(.checkmark) {
-    text-decoration: line-through;
-    text-decoration-thickness: 1px;
-    opacity: 50%;
-  }
+
   input[type="checkbox"] {
+    position: absolute;
+    left: -100px;
     width: 0;
     height: 0;
+
+    &:checked + label {
+      .checkmark::after {
+        display: flex;
+        align-items: center;
+        padding-top: 0.125rem;
+        background-color: hsl(var(--c-accent-main));
+        content: url("../assets/icon-check.svg");
+        border: none;
+      }
+      span:not(.checkmark) {
+        text-decoration: line-through;
+        text-decoration-thickness: 1px;
+        opacity: 50%;
+      }
+    }
+    &:focus-visible + label {
+      outline: 1px solid black;
+      border-radius: 4px;
+      background-color: hsl(var(--c-accent-main) / 25%);
+    }
+    &:active + label {
+      transition-duration: 25ms;
+      background-color: hsl(var(--c-accent-main) / 35%);
+    }
   }
 }

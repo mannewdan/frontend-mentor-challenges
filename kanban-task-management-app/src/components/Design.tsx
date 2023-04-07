@@ -39,25 +39,17 @@ export default function Design() {
       <button className="button-danger">Button Primary S</button>
 
       <div className="mock-modal flow">
-        <label
-          onMouseLeave={(e) => {
-            const target = e.target as HTMLLabelElement;
-            const active = document.activeElement as HTMLElement;
-            if (!target || !active) return;
-            target.childNodes.forEach((item) => {
-              if (item === active) active.blur();
-            });
-          }}
-          className="checkbox"
-        >
-          <input type="checkbox"></input>
-          <span>
-            Label apibus id, otenti. Sed egestas, ante et vulputate volutpat,
-            eros pede semper est, vitae luctus metus libero eu augue. Morbi
-            purus libero, fauci
-          </span>
-          <span className="checkmark"></span>
-        </label>
+        <div className="checkbox">
+          <input id="checkbox" type="checkbox"></input>
+          <label htmlFor="checkbox">
+            <span>
+              Label apibus id, otenti. Sed egestas, ante et vulputate volutpat,
+              eros pede semper est, vitae luctus metus libero eu augue. Morbi
+              purus libero, fauci
+            </span>
+            <span className="checkmark"></span>
+          </label>
+        </div>
 
         <label className="text-input empty" htmlFor="task-name">
           <input
