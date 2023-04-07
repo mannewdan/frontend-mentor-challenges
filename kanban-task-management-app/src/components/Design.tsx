@@ -1,7 +1,16 @@
+import React from "react";
 import Dropdown from "./Dropdown";
+import Checkbox from "./Checkbox";
+import TextInput from "./TextInput";
 
 export default function Design() {
-  //  document.body.classList.add("dark");
+  document.body.classList.add("dark");
+
+  const sOptions = ["Todo", "What", "Hey"];
+  const [checked, setChecked] = React.useState(false);
+  const [selection, setSelection] = React.useState(sOptions[0]);
+  const [text, setText] = React.useState("");
+  const [textArea, setTextArea] = React.useState("");
 
   return (
     <section
@@ -39,40 +48,33 @@ export default function Design() {
       <button className="button-danger">Button Primary S</button>
 
       <div className="mock-modal flow">
-        <div className="checkbox">
-          <input id="checkbox" type="checkbox"></input>
-          <label htmlFor="checkbox">
-            <span>
-              Label apibus id, otenti. Sed egestas, ante et vulputate volutpat,
-              eros pede semper est, vitae luctus metus libero eu augue. Morbi
-              purus libero, fauci
-            </span>
-            <span className="checkmark"></span>
-          </label>
-        </div>
+        <Checkbox
+          name="checkbox"
+          checked={checked}
+          toggleChecked={() => setChecked((prev) => !prev)}
+        />
 
-        <label className="text-input empty" htmlFor="task-name">
-          <input
-            name="task-name"
-            type="text"
-            placeholder="Enter task name"
-          ></input>
-        </label>
+        <TextInput
+          text={text}
+          setText={setText}
+          label="Title"
+          placeholder="e.g. Take coffee break"
+        />
 
-        <label className="text-input" htmlFor="task-description">
-          <textarea
-            name="task-description"
-            placeholder="e.g. It’s always good to take a break. This 15 minute break will recharge the batteries a little."
-          ></textarea>
-        </label>
+        <TextInput
+          text={textArea}
+          setText={setTextArea}
+          label="Description"
+          placeholder="e.g. It's always good to take a break. This 15 minute break will recharge the batteries a little"
+          isTextArea={true}
+        />
 
-        <select>
-          <option>Todo</option>
-          <option>Doing</option>
-          <option>Done</option>
-        </select>
-
-        <Dropdown name={"status"} options={["Todo", "Doing", "Done"]} />
+        <Dropdown
+          name={"status"}
+          options={sOptions}
+          selection={selection}
+          setSelection={setSelection}
+        />
       </div>
     </section>
   );

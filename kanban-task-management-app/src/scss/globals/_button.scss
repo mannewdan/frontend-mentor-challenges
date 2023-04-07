@@ -18,6 +18,9 @@
 
   transition: background-color 125ms ease-out;
 
+  &:focus-visible {
+    outline: 2px solid hsl(var(--c-text-main));
+  }
   &:not(.inactive) {
     cursor: pointer;
   }
@@ -55,6 +58,9 @@
     &:not(.inactive):active {
       transition-duration: 25ms;
       background-color: hsl(var(--c-accent-main) / 20%);
+    }
+    &:focus-visible {
+      outline: 2px solid hsl(var(--c-neutral));
     }
   }
   .dark &-secondary {

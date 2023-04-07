@@ -70,9 +70,8 @@
       }
     }
     &:focus-visible + label {
-      outline: 1px solid black;
+      outline: 1px solid hsl(var(--c-text-main));
       border-radius: 4px;
-      background-color: hsl(var(--c-accent-main) / 25%);
     }
     &:active + label {
       transition-duration: 25ms;

@@ -3,13 +3,17 @@ import React from "react";
 type DropdownProps = {
   name: string;
   options: Array<string>;
+  selection: string;
+  setSelection: (selection: string) => void;
 };
 
-export default function Dropdown({ name, options }: DropdownProps) {
+export default function Dropdown({
+  name,
+  options,
+  selection,
+  setSelection,
+}: DropdownProps) {
   const [expanded, setExpanded] = React.useState(false);
-  const [selection, setSelection] = React.useState(
-    options.length > 0 ? options[0] : ""
-  );
 
   return (
     <label

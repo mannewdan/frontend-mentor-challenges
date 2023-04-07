@@ -140,13 +140,14 @@ h6 {
   letter-spacing: 2.4px;
 }
 
-.text-b-l, .text-input {
+.text-b-l, .text-input textarea,
+.text-input input[type=text] {
   font-size: var(--fs-500);
   font-weight: 500;
   line-height: 1.7692;
 }
 
-.text-b-m {
+.text-b-m, .text-input label {
   font-size: var(--fs-400);
   font-weight: 700;
   line-height: 1.25;
@@ -204,6 +205,9 @@ body {
   display: block;
   transition: background-color 125ms ease-out;
 }
+.button:focus-visible, .button-danger:focus-visible, .button-secondary:focus-visible, .button-primary:focus-visible, .button-primary-l:focus-visible {
+  outline: 2px solid hsl(var(--c-text-main));
+}
 .button:not(.inactive), .button-danger:not(.inactive), .button-secondary:not(.inactive), .button-primary:not(.inactive), .button-primary-l:not(.inactive) {
   cursor: pointer;
 }
@@ -235,6 +239,9 @@ body {
 .button-secondary:not(.inactive):active {
   transition-duration: 25ms;
   background-color: hsl(var(--c-accent-main)/20%);
+}
+.button-secondary:focus-visible {
+  outline: 2px solid hsl(var(--c-neutral));
 }
 .dark .button-secondary {
   background-color: hsl(var(--c-text-dark));
@@ -317,9 +324,8 @@ body {
   opacity: 50%;
 }
 .checkbox input[type=checkbox]:focus-visible + label {
-  outline: 1px solid black;
+  outline: 1px solid hsl(var(--c-text-main));
   border-radius: 4px;
-  background-color: hsl(var(--c-accent-main)/25%);
 }
 .checkbox input[type=checkbox]:active + label {
   transition-duration: 25ms;
@@ -327,30 +333,35 @@ body {
 }
 
 .text-input {
-  display: block;
   position: relative;
 }
-.text-input.empty input,
-.text-input.empty textarea {
-  border-color: hsl(var(--c-accent-danger));
+.text-input label {
+  color: hsl(var(--c-neutral));
+}
+.text-input label + input[type=text], .text-input label + textarea {
+  margin-top: 0.6154em;
 }
 .text-input.empty::before {
   content: "Can't be empty";
   position: absolute;
   right: 1.2308em;
-  top: calc(0.6154em + 1px);
+  bottom: 0.75em;
   color: hsl(var(--c-accent-danger));
 }
-
-textarea {
+.text-input.empty textarea,
+.text-input.empty input[type=text] {
+  border-color: hsl(var(--c-accent-danger));
+}
+.text-input textarea {
   resize: none;
   min-width: 100%;
   max-width: 100%;
   min-height: 7rem;
 }
-
-textarea,
-input[type=text] {
+.text-input textarea,
+.text-input input[type=text] {
+  display: block;
+  position: relative;
   width: 100%;
   padding: 0.6154em 1.2308em;
   background-color: transparent;
@@ -358,18 +369,18 @@ input[type=text] {
   border-radius: 4px;
   outline: none;
 }
-textarea::-moz-placeholder, input[type=text]::-moz-placeholder {
+.text-input textarea::-moz-placeholder, .text-input input[type=text]::-moz-placeholder {
   color: hsla(0, 0%, 0%, 0.25);
 }
-textarea::placeholder,
-input[type=text]::placeholder {
+.text-input textarea::placeholder,
+.text-input input[type=text]::placeholder {
   color: hsla(0, 0%, 0%, 0.25);
 }
-.dark textarea::-moz-placeholder, .dark input[type=text]::-moz-placeholder {
+.dark .text-input textarea::-moz-placeholder, .dark .text-input input[type=text]::-moz-placeholder {
   color: hsla(0, 0%, 100%, 0.25);
 }
-.dark textarea::placeholder,
-.dark input[type=text]::placeholder {
+.dark .text-input textarea::placeholder,
+.dark .text-input input[type=text]::placeholder {
   color: hsla(0, 0%, 100%, 0.25);
 }
 
@@ -379,8 +390,8 @@ select.hidden {
   width: 0;
   height: 0;
 }
-select.hidden:focus + div {
-  outline: 1px solid black;
+select.hidden:focus-visible + div {
+  outline: 1px solid hsl(var(--c-text-main));
   border-radius: 4px;
 }
 
