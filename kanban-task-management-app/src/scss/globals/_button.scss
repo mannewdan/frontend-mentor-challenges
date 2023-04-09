@@ -65,7 +65,8 @@
   }
   .dark &-secondary {
     background-color: hsl(var(--c-text-dark));
-    &:not(.inactive):hover {
+    &:not(.inactive):hover,
+    &:not(.inactive):active {
       background-color: hsl(var(--c-text-dark));
     }
   }

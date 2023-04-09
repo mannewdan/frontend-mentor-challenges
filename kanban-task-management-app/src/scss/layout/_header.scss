@@ -1,0 +1,95 @@
+@use "../globals/breakpoints" as *;
+@use "../globals/typography" as *;
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  padding-right: 0.5rem;
+  background-color: hsl(var(--c-bg-main-light));
+
+  @include breakpoint(large) {
+    padding: 1.25rem;
+    padding-bottom: 1.75rem;
+    padding-right: 1.5rem;
+  }
+
+  //small screen
+  .logo {
+    width: 1.5rem;
+    height: 1.5625rem;
+
+    @include breakpoint(medium) {
+      display: none;
+    }
+  }
+  .view-boards-button {
+    display: flex;
+    align-items: center;
+    margin-left: 1rem;
+    gap: 0.5rem;
+    img {
+      width: 0.5rem;
+    }
+    @include breakpoint(medium) {
+      display: none;
+    }
+  }
+
+  //medium+ screen
+  .heading {
+    display: none;
+    margin-left: 0.5rem;
+    @include breakpoint(medium) {
+      display: block;
+    }
+    @include breakpoint(large) {
+      margin-left: 0.75rem;
+    }
+  }
+
+  //all screens
+  .add-task {
+    @extend .text-h-m;
+
+    display: flex;
+    align-items: center;
+    width: auto;
+    margin-left: auto;
+    margin-right: 0.5rem;
+    padding: 0.625rem 1.125rem;
+    border-radius: 5rem;
+    @include breakpoint(medium) {
+      padding: 0.9667em 1.6333em;
+      margin-right: 1rem;
+    }
+
+    //small screen
+    img {
+      width: 0.75rem;
+      display: block;
+      @include breakpoint(medium) {
+        display: none;
+      }
+    }
+    //medium+ screen
+    span {
+      display: none;
+      @include breakpoint(medium) {
+        display: block;
+      }
+    }
+  }
+  .edit-board {
+    padding: 0.3rem;
+    padding-inline: 0.5rem;
+
+    img {
+      width: 0.2306rem;
+      @include breakpoint(medium) {
+        width: 0.28875rem;
+        display: block;
+      }
+    }
+  }
+}
