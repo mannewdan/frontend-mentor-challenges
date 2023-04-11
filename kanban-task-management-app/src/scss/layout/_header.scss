@@ -10,10 +10,15 @@
   background-color: hsl(var(--c-bg-main-light));
 
   @include modeTransition;
+  @include breakpoint(medium) {
+    border-bottom: 1px solid hsl(var(--c-lines-main));
+    padding-left: 17.25rem;
+  }
   @include breakpoint(large) {
     padding: 1.25rem;
     padding-bottom: 1.75rem;
     padding-right: 1.5rem;
+    padding-left: 19.625rem;
   }
 
   //small screen

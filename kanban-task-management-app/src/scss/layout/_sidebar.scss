@@ -16,17 +16,41 @@
   border-radius: 0.5rem;
 
   @include modeTransition;
+  @include breakpoint(medium) {
+    top: 0;
+    right: auto;
+    border-radius: 0;
+    width: 16.25rem;
+    height: 100%;
+    padding-right: 0.75rem;
+    border-right: 1px solid hsl(var(--c-lines-main));
+  }
+  @include breakpoint(large) {
+    width: 18.75rem;
+  }
 
+  .logo {
+    display: none;
+    @include breakpoint(medium) {
+      display: block;
+      margin-top: 1.0625rem;
+      margin-bottom: 3.375rem;
+    }
+  }
   h2 {
     margin-bottom: 1.5833em;
   }
   h2,
-  button {
+  button,
+  .logo {
     padding-left: 1.5rem;
   }
   .container {
     padding-right: 0.5rem;
     margin-bottom: 1rem;
+    @include breakpoint(large) {
+      padding-right: 0.6875rem;
+    }
   }
   .dark-toggle {
     display: flex;

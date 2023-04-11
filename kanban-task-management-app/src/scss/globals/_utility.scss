@@ -14,7 +14,8 @@
 }
 
 @mixin modeTransition {
-  transition: background-color 250ms ease-out, color 275ms ease-out;
+  transition: background-color 250ms ease-out, color 275ms ease-out,
+    border-color 250ms ease-out;
 }
 
 .notransition {
