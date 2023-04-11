@@ -12,3 +12,7 @@
   padding-bottom: 10rem;
   border-radius: 6px;
 }
+
+@mixin modeTransition {
+  transition: background-color 250ms ease-out, color 275ms ease-out;
+}

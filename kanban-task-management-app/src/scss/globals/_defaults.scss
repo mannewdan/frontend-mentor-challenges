@@ -1,8 +1,12 @@
+@use "utility" as *;
+
 body {
   font-family: var(--ff-main);
   font-size: var(--fs-500);
   color: hsl(var(--c-text-main));
   background-color: hsl(var(--c-bg-main));
+
+  @include modeTransition;
 }
 
 ::selection {

@@ -1,5 +1,6 @@
 @use "../globals/breakpoints" as *;
 @use "../globals/typography" as *;
+@use "../globals/utility" as *;
 
 .header {
   display: flex;
@@ -8,6 +9,7 @@
   padding-right: 0.5rem;
   background-color: hsl(var(--c-bg-main-light));
 
+  @include modeTransition;
   @include breakpoint(large) {
     padding: 1.25rem;
     padding-bottom: 1.75rem;

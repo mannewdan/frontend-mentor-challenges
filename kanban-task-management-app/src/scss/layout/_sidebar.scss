@@ -1,4 +1,5 @@
 @use "../globals/breakpoints" as *;
+@use "../globals/utility" as *;
 
 .sidebar {
   position: absolute;
@@ -13,6 +14,8 @@
   color: hsl(var(--c-neutral));
   background-color: hsl(var(--c-bg-main-light));
   border-radius: 0.5rem;
+
+  @include modeTransition;
 
   h2 {
     margin-bottom: 1.5833em;
@@ -36,6 +39,8 @@
     background-color: hsl(var(--c-bg-main));
     border-radius: 0.375rem;
 
+    @include modeTransition;
+
     & + * {
       margin-top: 1rem;
     }
@@ -58,7 +63,7 @@
         background-color: hsl(var(--c-text-dark));
         border-radius: 50%;
 
-        transition: transform 100ms ease-out;
+        transition: transform 175ms ease-out;
       }
 
       &.dark::after {

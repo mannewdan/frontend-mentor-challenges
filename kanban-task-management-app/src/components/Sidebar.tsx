@@ -4,12 +4,18 @@ import showIcon from "../assets/icon-show-sidebar.svg";
 import lightIcon from "../assets/icon-light-theme.svg";
 import darkIcon from "../assets/icon-dark-theme.svg";
 import Icon from "./Icon";
+import { useDataContext } from "../context/DataContext";
 
 export default function Sidebar() {
+  const { data, toggleDarkMode } = useDataContext();
+
   const boards = ["Platform Launch", "Marketing Plan", "Roadmap"];
   const boardEls = boards.map((item, index) => {
     return (
-      <button className={`button-nav ${index === 0 ? "active" : ""}`}>
+      <button
+        key={item}
+        className={`button-nav ${index === 0 ? "active" : ""}`}
+      >
         <Icon url={boardIcon} />
         {item}
       </button>
@@ -31,7 +37,10 @@ export default function Sidebar() {
 
       <div className="dark-toggle">
         <img className="light-icon" src={lightIcon}></img>
-        <button className="dark"></button>
+        <button
+          onClick={toggleDarkMode}
+          className={data.darkMode ? "dark" : ""}
+        ></button>
         <img className="dark-icon" src={darkIcon}></img>
       </div>
 
