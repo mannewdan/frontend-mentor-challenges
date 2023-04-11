@@ -16,3 +16,16 @@
 @mixin modeTransition {
   transition: background-color 250ms ease-out, color 275ms ease-out;
 }
+
+.notransition {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+  & * {
+    -webkit-transition: none !important;
+    -moz-transition: none !important;
+    -o-transition: none !important;
+    transition: none !important;
+  }
+}

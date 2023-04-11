@@ -181,6 +181,13 @@ h6 {
   border-radius: 6px;
 }
 
+.notransition {
+  transition: none !important;
+}
+.notransition * {
+  transition: none !important;
+}
+
 body {
   font-family: var(--ff-main);
   font-size: var(--fs-500);
