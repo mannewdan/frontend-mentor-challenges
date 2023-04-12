@@ -113,12 +113,12 @@
     &:not(.active):hover {
       color: hsl(var(--c-accent-main));
       background-color: hsl(var(--c-bg-main));
-    }
-    .dark &:not(.active):hover {
-      background-color: hsl(var(--c-text-dark));
       .blend {
         background-color: hsl(var(--c-accent-main));
       }
+    }
+    .dark &:not(.active):hover {
+      background-color: hsl(var(--c-text-dark));
     }
   }
 }
