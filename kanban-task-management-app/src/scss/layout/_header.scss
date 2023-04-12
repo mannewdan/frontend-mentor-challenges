@@ -8,6 +8,7 @@
   padding: 1rem;
   padding-right: 0.5rem;
   background-color: hsl(var(--c-bg-main-light));
+  border-color: hsl(var(--c-lines-main));
 
   @include modeTransition;
   @include breakpoint(medium) {

@@ -16,6 +16,7 @@
   color: hsl(var(--c-neutral));
   background-color: hsl(var(--c-bg-main-light));
   border-radius: 0.5rem;
+  border-color: hsl(var(--c-lines-main));
 
   @include modeTransition;
   @include breakpoint(medium) {

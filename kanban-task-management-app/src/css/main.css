@@ -558,6 +558,7 @@ select.hidden:focus-visible + div {
   padding: 1rem;
   padding-right: 0.5rem;
   background-color: hsl(var(--c-bg-main-light));
+  border-color: hsl(var(--c-lines-main));
   transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out;
 }
 @media (min-width: 43.75em) {
@@ -671,6 +672,7 @@ select.hidden:focus-visible + div {
   color: hsl(var(--c-neutral));
   background-color: hsl(var(--c-bg-main-light));
   border-radius: 0.5rem;
+  border-color: hsl(var(--c-lines-main));
   transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out;
 }
 @media (min-width: 43.75em) {
