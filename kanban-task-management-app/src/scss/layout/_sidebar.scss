@@ -2,22 +2,17 @@
 @use "../globals/utility" as *;
 
 .sidebar {
-  display: flex;
-  flex-direction: column;
   position: absolute;
   width: 16.5rem;
   top: 5rem;
   left: 0;
   right: 0;
   margin-inline: auto;
-  padding: 1rem;
-  padding-left: 0;
 
   color: hsl(var(--c-neutral));
   background-color: hsl(var(--c-bg-main-light));
   border-radius: 0.5rem;
   border-color: hsl(var(--c-lines-main));
-
   @include modeTransition;
   @include breakpoint(medium) {
     top: 0;
@@ -25,102 +20,144 @@
     border-radius: 0;
     width: 16.25rem;
     height: 100%;
-    padding-right: 0.75rem;
     border-right: 1px solid hsl(var(--c-lines-main));
   }
   @include breakpoint(large) {
     width: 18.75rem;
   }
 
-  .logo {
-    display: none;
-    @include breakpoint(medium) {
-      display: block;
-      width: 11rem;
-      margin-top: 1.0625rem;
-      margin-bottom: 3.375rem;
-    }
-  }
   h2 {
     margin-bottom: 1.5833em;
   }
   h2,
-  button,
-  .logo {
+  button {
     padding-left: 1.5rem;
   }
-  .container {
-    padding-right: 0.5rem;
-    margin-bottom: 1rem;
-    @include breakpoint(large) {
-      padding-right: 0.6875rem;
-    }
-  }
-  .dark-toggle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 0.875rem;
-    margin-inline: 1rem;
-    margin-top: auto;
 
-    background-color: hsl(var(--c-bg-main));
-    border-radius: 0.375rem;
+  //logo section
+  .logo-container {
+    display: none;
+    height: 5.0625rem;
+    border: 1px solid hsl(var(--c-lines-main) / 0);
 
     @include modeTransition;
-    @include breakpoint(medium) {
-      margin-left: 0.75rem;
-      margin-right: 0;
-    }
-    @include breakpoint(large) {
-      margin-left: 1.5rem;
-      margin-right: 0.75rem;
+    .logo {
+      transition: transform 250ms ease-out;
     }
 
-    & + * {
-      margin-top: 1rem;
-    }
-
-    button {
-      width: 2.5rem;
-      height: 1.25rem;
-      background-color: hsl(var(--c-accent-main));
-      border-radius: 5rem;
-
-      position: relative;
-      &::after {
-        content: "";
-        position: absolute;
-        left: 0.1875rem;
-        top: 0.1875rem;
-
-        width: 0.875rem;
-        height: 0.875rem;
-        background-color: hsl(var(--c-text-dark));
-        border-radius: 50%;
-
-        transition: transform 175ms ease-out;
-      }
-
-      &.dark::after {
-        transform: translateX(1.25rem);
-      }
-    }
-  }
-  .light-icon {
-    width: 1.1456rem;
-    height: 1.1456rem;
-  }
-  .dark-icon {
-    width: 0.9375rem;
-    height: 0.9375rem;
-  }
-  .hide-button {
-    display: none;
     @include breakpoint(medium) {
       display: block;
-      margin-top: 0.5rem;
+      .logo {
+        width: 9.5rem;
+        margin-top: 2rem;
+        margin-left: 1.625rem;
+      }
+    }
+    @include breakpoint(large) {
+      height: 6.0625rem;
+      .logo {
+        margin-left: 2.125rem;
+      }
+    }
+  }
+  &.hide .logo-container {
+    border-bottom: 1px solid hsl(var(--c-lines-main));
+
+    .logo {
+      transform: translate(-0.125rem, -0.25rem);
+      @include breakpoint(large) {
+        transform: translate(-0.625rem, 0.1875rem);
+      }
+    }
+  }
+
+  //buttons section
+  .content-container {
+    padding: 1rem;
+    padding-inline: 0;
+    display: flex;
+    flex-direction: column;
+    @include breakpoint(medium) {
+      padding-top: calc(1rem + 1.25em);
+      height: calc(100% - 5.0625rem);
+    }
+
+    .board-container {
+      padding-right: 1.5rem;
+      margin-bottom: 1rem;
+      @include breakpoint(medium) {
+        padding-right: 1.25rem;
+      }
+      @include breakpoint(large) {
+        padding-right: 1.5rem;
+      }
+    }
+
+    .dark-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 0.875rem;
+      margin-inline: 1rem;
+      margin-top: auto;
+
+      background-color: hsl(var(--c-bg-main));
+      border-radius: 0.375rem;
+
+      @include modeTransition;
+      @include breakpoint(medium) {
+        margin-inline: 0.75rem;
+      }
+      @include breakpoint(large) {
+        margin-inline: 1.5rem;
+      }
+
+      & + * {
+        margin-top: 1rem;
+      }
+      .light-icon {
+        width: 1.1456rem;
+        height: 1.1456rem;
+      }
+      .dark-icon {
+        width: 0.9375rem;
+        height: 0.9375rem;
+      }
+
+      button {
+        width: 2.5rem;
+        height: 1.25rem;
+        background-color: hsl(var(--c-accent-main));
+        border-radius: 5rem;
+
+        position: relative;
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0.1875rem;
+          top: 0.1875rem;
+
+          width: 0.875rem;
+          height: 0.875rem;
+          background-color: hsl(var(--c-text-dark));
+          border-radius: 50%;
+
+          transition: transform 175ms ease-out;
+        }
+
+        &.dark::after {
+          transform: translateX(1.25rem);
+        }
+      }
+    }
+    .hide-button {
+      display: none;
+      @include breakpoint(medium) {
+        display: block;
+        margin-top: 0.5rem;
+        margin-bottom: 1rem;
+      }
     }
   }
 }

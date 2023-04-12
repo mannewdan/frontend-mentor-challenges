@@ -13,9 +13,9 @@
   border-radius: 6px;
 }
 
-@mixin modeTransition {
+@mixin modeTransition($custom: null) {
   transition: background-color 250ms ease-out, color 275ms ease-out,
-    border-color 250ms ease-out;
+    border-color 250ms ease-out, $custom;
 }
 
 .notransition {
