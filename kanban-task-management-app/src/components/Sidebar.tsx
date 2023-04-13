@@ -30,7 +30,7 @@ export default function Sidebar() {
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setNotransitions(true);
-    }, 500);
+    }, 750);
     return () => {
       clearTimeout(timer);
     };

@@ -1,6 +1,13 @@
 @use "../globals/breakpoints" as *;
 @use "../globals/utility" as *;
 
+:root {
+  --sidebar-width-medium: 16.25rem;
+  --sidebar-width-large: 18.75rem;
+  --sidebar-translateX-medium: 3.75rem;
+  --sidebar-translateX-large: 5.6875rem;
+}
+
 .sidebar {
   position: absolute;
   width: 16.5rem;
@@ -17,11 +24,11 @@
     top: 0;
     right: auto;
     border-radius: 0;
-    width: 16.25rem;
     height: 100%;
+    width: var(--sidebar-width-medium);
   }
   @include breakpoint(large) {
-    width: 18.75rem;
+    width: var(--sidebar-width-large);
   }
 
   h2 {
@@ -36,10 +43,26 @@
   &.hide .logo-container {
     border-bottom: 1px solid hsl(var(--c-lines-main));
 
+    @include modeTransition(transform 250ms ease-in 150ms);
+    @include breakpoint(medium) {
+      transform: translateX(calc(-1 * var(--sidebar-translateX-medium)));
+    }
+    @include breakpoint(large) {
+      transform: translateX(calc(-1 * var(--sidebar-translateX-large)));
+    }
     .logo {
-      transform: translate(-0.125rem, -0.25rem);
+      transition: transform 250ms ease-in 150ms;
+      @include breakpoint(medium) {
+        transform: translate(
+          calc(-0.125rem + var(--sidebar-translateX-medium)),
+          -0.25rem
+        );
+      }
       @include breakpoint(large) {
-        transform: translate(-0.625rem, 0.1875rem);
+        transform: translate(
+          calc(-0.625rem + var(--sidebar-translateX-large)),
+          0.1875rem
+        );
       }
     }
   }
@@ -50,9 +73,9 @@
     border-right: 1px solid hsl(var(--c-lines-main));
     background-color: hsl(var(--c-bg-main-light));
 
-    @include modeTransition;
+    @include modeTransition(transform 200ms ease-in 50ms);
     .logo {
-      transition: transform 250ms ease-out;
+      transition: transform 200ms ease-in 50ms;
     }
 
     @include breakpoint(medium) {
@@ -73,7 +96,9 @@
 
   //buttons section
   &.hide .content-container {
-    transform: translateX(-100%);
+    @include breakpoint(medium) {
+      transform: translateX(-100%);
+    }
     @include modeTransition(
       transform 400ms cubic-bezier(0.86, -0.35, 0.95, 0.86)
     );

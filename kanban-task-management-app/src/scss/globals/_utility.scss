@@ -34,3 +34,6 @@
 .clickable {
   cursor: pointer;
 }
+.unselectable {
+  user-select: none;
+}

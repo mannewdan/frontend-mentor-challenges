@@ -192,6 +192,12 @@ h6 {
   cursor: pointer;
 }
 
+.unselectable {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
 body {
   font-family: var(--ff-main);
   font-size: var(--fs-500);
@@ -590,10 +596,19 @@ select.hidden:focus-visible + div {
   border-color: hsl(var(--c-lines-main));
   transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out;
 }
+.header > h1 {
+  transition: transform 200ms ease-in 50ms;
+}
+.header.sidebar-hidden > h1 {
+  transition: transform 250ms ease-in 150ms;
+}
 @media (min-width: 43.75em) {
   .header {
     border-bottom: 1px solid hsl(var(--c-lines-main));
-    padding-left: 17.25rem;
+    padding-left: calc(1.5rem + var(--sidebar-width-medium));
+  }
+  .header.sidebar-hidden > h1 {
+    transform: translateX(calc(-1 * var(--sidebar-translateX-medium)));
   }
 }
 @media (min-width: 56.25em) {
@@ -601,7 +616,10 @@ select.hidden:focus-visible + div {
     padding: 1.25rem;
     padding-bottom: 1.75rem;
     padding-right: 1.5rem;
-    padding-left: 19.625rem;
+    padding-left: calc(1.5rem + var(--sidebar-width-large));
+  }
+  .header.sidebar-hidden > h1 {
+    transform: translateX(calc(-1 * var(--sidebar-translateX-large)));
   }
 }
 .header .logo {
@@ -629,16 +647,10 @@ select.hidden:focus-visible + div {
 }
 .header .heading {
   display: none;
-  margin-left: 0.5rem;
 }
 @media (min-width: 43.75em) {
   .header .heading {
     display: block;
-  }
-}
-@media (min-width: 56.25em) {
-  .header .heading {
-    margin-left: 0.75rem;
   }
 }
 .header .add-task {
@@ -687,6 +699,13 @@ select.hidden:focus-visible + div {
   }
 }
 
+:root {
+  --sidebar-width-medium: 16.25rem;
+  --sidebar-width-large: 18.75rem;
+  --sidebar-translateX-medium: 3.75rem;
+  --sidebar-translateX-large: 5.6875rem;
+}
+
 .sidebar {
   position: absolute;
   width: 16.5rem;
@@ -704,13 +723,13 @@ select.hidden:focus-visible + div {
     top: 0;
     right: auto;
     border-radius: 0;
-    width: 16.25rem;
     height: 100%;
+    width: var(--sidebar-width-medium);
   }
 }
 @media (min-width: 56.25em) {
   .sidebar {
-    width: 18.75rem;
+    width: var(--sidebar-width-large);
   }
 }
 .sidebar h2 {
@@ -722,13 +741,29 @@ select.hidden:focus-visible + div {
 }
 .sidebar.hide .logo-container {
   border-bottom: 1px solid hsl(var(--c-lines-main));
+  transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out, transform 250ms ease-in 150ms;
+}
+@media (min-width: 43.75em) {
+  .sidebar.hide .logo-container {
+    transform: translateX(calc(-1 * var(--sidebar-translateX-medium)));
+  }
+}
+@media (min-width: 56.25em) {
+  .sidebar.hide .logo-container {
+    transform: translateX(calc(-1 * var(--sidebar-translateX-large)));
+  }
 }
 .sidebar.hide .logo-container .logo {
-  transform: translate(-0.125rem, -0.25rem);
+  transition: transform 250ms ease-in 150ms;
+}
+@media (min-width: 43.75em) {
+  .sidebar.hide .logo-container .logo {
+    transform: translate(calc(-0.125rem + var(--sidebar-translateX-medium)), -0.25rem);
+  }
 }
 @media (min-width: 56.25em) {
   .sidebar.hide .logo-container .logo {
-    transform: translate(-0.625rem, 0.1875rem);
+    transform: translate(calc(-0.625rem + var(--sidebar-translateX-large)), 0.1875rem);
   }
 }
 .sidebar .logo-container {
@@ -737,10 +772,10 @@ select.hidden:focus-visible + div {
   border: 1px solid hsl(var(--c-lines-main)/0);
   border-right: 1px solid hsl(var(--c-lines-main));
   background-color: hsl(var(--c-bg-main-light));
-  transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out;
+  transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out, transform 200ms ease-in 50ms;
 }
 .sidebar .logo-container .logo {
-  transition: transform 250ms ease-out;
+  transition: transform 200ms ease-in 50ms;
 }
 @media (min-width: 43.75em) {
   .sidebar .logo-container {
@@ -761,8 +796,12 @@ select.hidden:focus-visible + div {
   }
 }
 .sidebar.hide .content-container {
-  transform: translateX(-100%);
   transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out, transform 400ms cubic-bezier(0.86, -0.35, 0.95, 0.86);
+}
+@media (min-width: 43.75em) {
+  .sidebar.hide .content-container {
+    transform: translateX(-100%);
+  }
 }
 .sidebar .content-container {
   padding: 1rem;

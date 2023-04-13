@@ -10,16 +10,36 @@
   background-color: hsl(var(--c-bg-main-light));
   border-color: hsl(var(--c-lines-main));
 
+  & > h1 {
+    transition: transform 200ms ease-in 50ms;
+  }
+  &.sidebar-hidden > h1 {
+    transition: transform 250ms ease-in 150ms;
+  }
+
   @include modeTransition;
   @include breakpoint(medium) {
     border-bottom: 1px solid hsl(var(--c-lines-main));
-    padding-left: 17.25rem;
+    padding-left: calc(1.5rem + var(--sidebar-width-medium));
+
+    &.sidebar-hidden > h1 {
+      transform: translateX(calc(-1 * var(--sidebar-translateX-medium)));
+    }
   }
   @include breakpoint(large) {
     padding: 1.25rem;
     padding-bottom: 1.75rem;
     padding-right: 1.5rem;
-    padding-left: 19.625rem;
+    padding-left: calc(1.5rem + var(--sidebar-width-large));
+
+    &.sidebar-hidden > h1 {
+      transform: translateX(calc(-1 * var(--sidebar-translateX-large)));
+    }
+  }
+
+  &.sidebar-hidden:first-child {
+    @include breakpoint(medium) {
+    }
   }
 
   //small screen
@@ -47,12 +67,8 @@
   //medium+ screen
   .heading {
     display: none;
-    margin-left: 0.5rem;
     @include breakpoint(medium) {
       display: block;
-    }
-    @include breakpoint(large) {
-      margin-left: 0.75rem;
     }
   }
 
