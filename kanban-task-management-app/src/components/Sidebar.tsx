@@ -1,3 +1,4 @@
+import React from "react";
 import boardIcon from "../assets/icon-board.svg";
 import hideIcon from "../assets/icon-hide-sidebar.svg";
 import showIcon from "../assets/icon-show-sidebar.svg";
@@ -9,7 +10,8 @@ import Icon from "./Icon";
 import { useDataContext } from "../context/DataContext";
 
 export default function Sidebar() {
-  const { data, toggleDarkMode, toggleSidebar } = useDataContext();
+  const { data, toggleDarkMode, toggleSidebar, showSidebar } = useDataContext();
+  const [notransitions, setNotransitions] = React.useState(true);
 
   const boards = ["Platform Launch", "Marketing Plan", "Roadmap"];
   const boardEls = boards.map((item, index) => {
@@ -24,9 +26,29 @@ export default function Sidebar() {
     );
   });
 
+  //disable transitions after timeout
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setNotransitions(true);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [data.darkMode, data.showSidebar]);
+
   return (
-    <nav className={`sidebar ${data.showSidebar ? "hide" : ""}`}>
-      <div className="logo-container">
+    <nav
+      className={`sidebar ${!data.showSidebar ? "hide" : ""} ${
+        notransitions ? "notransition" : ""
+      }`}
+    >
+      <div
+        className={`logo-container ${!data.showSidebar ? "clickable" : ""}`}
+        onClick={() => {
+          setNotransitions(false);
+          showSidebar();
+        }}
+      >
         <img className="logo" src={data.darkMode ? logoDark : logoLight}></img>
       </div>
 
@@ -34,7 +56,7 @@ export default function Sidebar() {
         <div className="scrollable-area">
           <h2 className="text-h-s">All Boards (3)</h2>
 
-          <div className="board-container">
+          <div className="button-container">
             {boardEls}
             <button className="button-nav add">
               <Icon url={boardIcon} />+ Create New Board
@@ -45,14 +67,23 @@ export default function Sidebar() {
         <div className="dark-toggle">
           <img className="light-icon" src={lightIcon}></img>
           <button
-            onClick={toggleDarkMode}
+            onClick={() => {
+              setNotransitions(false);
+              toggleDarkMode();
+            }}
             className={data.darkMode ? "dark" : ""}
           ></button>
           <img className="dark-icon" src={darkIcon}></img>
         </div>
 
-        <div className="hide-button container">
-          <button onClick={toggleSidebar} className="button-nav">
+        <div className="hide-button button-container">
+          <button
+            onClick={() => {
+              setNotransitions(false);
+              toggleSidebar();
+            }}
+            className="button-nav"
+          >
             <Icon url={hideIcon} />
             Hide Sidebar
           </button>

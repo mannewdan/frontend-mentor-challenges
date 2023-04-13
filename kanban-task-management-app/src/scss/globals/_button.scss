@@ -1,3 +1,6 @@
+@use "../globals/utility" as *;
+@use "../globals/breakpoints" as *;
+
 .inactive {
   opacity: 25%;
 }
@@ -15,7 +18,8 @@
   width: 100%;
   display: block;
 
-  transition: background-color 125ms ease-out, color 75ms ease-out;
+  @include modeTransition;
+  transition-duration: 125ms;
   &:focus-visible {
     outline: 2px solid hsl(var(--c-text-main));
   }
@@ -97,9 +101,26 @@
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 
+    @include breakpoint(medium) {
+      position: relative;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: -100%;
+        top: 0;
+        @include modeTransition;
+        transition-duration: 125ms;
+      }
+    }
+
     &.active {
       color: hsl(var(--c-text-dark));
       background-color: hsl(var(--c-accent-main));
+      &::before {
+        background-color: hsl(var(--c-accent-main));
+      }
       .blend {
         background-color: hsl(var(--c-text-dark));
       }
@@ -113,12 +134,18 @@
     &:not(.active):hover {
       color: hsl(var(--c-accent-main));
       background-color: hsl(var(--c-bg-main));
+      &::before {
+        background-color: hsl(var(--c-bg-main));
+      }
       .blend {
         background-color: hsl(var(--c-accent-main));
       }
     }
     .dark &:not(.active):hover {
       background-color: hsl(var(--c-text-dark));
+      &::before {
+        background-color: hsl(var(--c-text-dark));
+      }
     }
   }
 }

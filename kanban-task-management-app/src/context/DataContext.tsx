@@ -7,6 +7,7 @@ type DataContextT = {
   data: DataT;
   toggleDarkMode: () => void;
   toggleSidebar: () => void;
+  showSidebar: () => void;
 };
 type DataT = {
   darkMode: boolean;
@@ -32,6 +33,12 @@ export default function DataContext({ children }: DataContextProps) {
   function toggleSidebar() {
     setData((prev) => ({ ...prev, showSidebar: !prev.showSidebar }));
   }
+  function showSidebar() {
+    setData((prev) => {
+      if (prev.showSidebar) return prev;
+      return { ...prev, showSidebar: true };
+    });
+  }
 
   //save/load
   React.useEffect(() => {
@@ -53,7 +60,9 @@ export default function DataContext({ children }: DataContextProps) {
   }, [data.darkMode]);
 
   return (
-    <Context.Provider value={{ data, toggleDarkMode, toggleSidebar }}>
+    <Context.Provider
+      value={{ data, toggleDarkMode, toggleSidebar, showSidebar }}
+    >
       {children}
     </Context.Provider>
   );

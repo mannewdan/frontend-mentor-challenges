@@ -23,10 +23,14 @@
   -moz-transition: none !important;
   -o-transition: none !important;
   transition: none !important;
-  & * {
+  & *:not(:where(button)) {
     -webkit-transition: none !important;
     -moz-transition: none !important;
     -o-transition: none !important;
     transition: none !important;
   }
+}
+
+.clickable {
+  cursor: pointer;
 }
