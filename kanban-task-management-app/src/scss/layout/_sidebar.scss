@@ -209,6 +209,44 @@
         margin-top: 0.5rem;
         margin-bottom: 1rem;
       }
+
+      button {
+        display: flex;
+        align-items: center;
+        @include halfTransition(transform 100ms ease-out);
+
+        .hide-icon {
+          opacity: 0;
+          margin-left: auto;
+          padding-right: 0.375rem;
+          transition: opacity 150ms ease-out;
+        }
+      }
+      &.hidden {
+        button {
+          @include halfTransition(transform 350ms ease-in 75ms);
+          background-color: hsl(var(--c-accent-main));
+          color: hsl(var(--c-text-dark) / 50%);
+          .blend {
+            background-color: hsl(var(--c-text-dark) / 50%);
+          }
+          transform: translateX(4.75rem);
+
+          &::before {
+            background-color: hsl(var(--c-accent-main));
+          }
+          &:hover {
+            background-color: hsl(var(--c-accent-main-light));
+            &::before {
+              background-color: hsl(var(--c-accent-main-light));
+            }
+          }
+        }
+        .hide-icon {
+          transition: opacity 175ms ease-out 250ms;
+          opacity: 1;
+        }
+      }
     }
   }
 }

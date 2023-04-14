@@ -18,8 +18,7 @@
   width: 100%;
   display: block;
 
-  @include modeTransition;
-  transition-duration: 125ms;
+  @include halfTransition;
   &:focus-visible {
     outline: 2px solid hsl(var(--c-text-main));
   }
@@ -110,8 +109,7 @@
         height: 100%;
         left: -100%;
         top: 0;
-        @include modeTransition;
-        transition-duration: 125ms;
+        @include halfTransition;
       }
     }
 

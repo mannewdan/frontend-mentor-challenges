@@ -76,7 +76,11 @@ export default function Sidebar() {
           <img className="dark-icon" src={darkIcon}></img>
         </div>
 
-        <div className="hide-button button-container">
+        <div
+          className={`hide-button button-container ${
+            data.showSidebar ? "" : "hidden"
+          }`}
+        >
           <button
             onClick={() => {
               setNotransitions(false);
@@ -86,6 +90,7 @@ export default function Sidebar() {
           >
             <Icon url={hideIcon} />
             Hide Sidebar
+            <img className="hide-icon" src={showIcon}></img>
           </button>
         </div>
       </div>

@@ -17,13 +17,17 @@
   transition: background-color 250ms ease-out, color 275ms ease-out,
     border-color 250ms ease-out, $custom;
 }
+@mixin halfTransition($custom: null) {
+  transition: background-color 125ms ease-out, color 135ms ease-out,
+    border-color 125ms ease-out, $custom;
+}
 
 .notransition {
   -webkit-transition: none !important;
   -moz-transition: none !important;
   -o-transition: none !important;
   transition: none !important;
-  & *:not(:where(button)) {
+  & *:where(nav, header, div) {
     -webkit-transition: none !important;
     -moz-transition: none !important;
     -o-transition: none !important;

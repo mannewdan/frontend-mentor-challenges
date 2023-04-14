@@ -184,7 +184,7 @@ h6 {
 .notransition {
   transition: none !important;
 }
-.notransition *:not(:where(button)) {
+.notransition *:where(nav, header, div) {
   transition: none !important;
 }
 
@@ -247,8 +247,7 @@ img {
   border-radius: 5rem;
   width: 100%;
   display: block;
-  transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out;
-  transition-duration: 125ms;
+  transition: background-color 125ms ease-out, color 135ms ease-out, border-color 125ms ease-out;
 }
 .button:focus-visible, .button-nav:focus-visible, .button-danger:focus-visible, .button-secondary:focus-visible, .button-primary:focus-visible, .button-primary-l:focus-visible {
   outline: 2px solid hsl(var(--c-text-main));
@@ -326,8 +325,7 @@ img {
     height: 100%;
     left: -100%;
     top: 0;
-    transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out;
-    transition-duration: 125ms;
+    transition: background-color 125ms ease-out, color 135ms ease-out, border-color 125ms ease-out;
   }
 }
 .button-nav.active {
@@ -911,4 +909,37 @@ select.hidden:focus-visible + div {
     margin-top: 0.5rem;
     margin-bottom: 1rem;
   }
+}
+.sidebar .content-container .hide-button button {
+  display: flex;
+  align-items: center;
+  transition: background-color 125ms ease-out, color 135ms ease-out, border-color 125ms ease-out, transform 100ms ease-out;
+}
+.sidebar .content-container .hide-button button .hide-icon {
+  opacity: 0;
+  margin-left: auto;
+  padding-right: 0.375rem;
+  transition: opacity 150ms ease-out;
+}
+.sidebar .content-container .hide-button.hidden button {
+  transition: background-color 125ms ease-out, color 135ms ease-out, border-color 125ms ease-out, transform 350ms ease-in 75ms;
+  background-color: hsl(var(--c-accent-main));
+  color: hsl(var(--c-text-dark)/50%);
+  transform: translateX(4.75rem);
+}
+.sidebar .content-container .hide-button.hidden button .blend {
+  background-color: hsl(var(--c-text-dark)/50%);
+}
+.sidebar .content-container .hide-button.hidden button::before {
+  background-color: hsl(var(--c-accent-main));
+}
+.sidebar .content-container .hide-button.hidden button:hover {
+  background-color: hsl(var(--c-accent-main-light));
+}
+.sidebar .content-container .hide-button.hidden button:hover::before {
+  background-color: hsl(var(--c-accent-main-light));
+}
+.sidebar .content-container .hide-button.hidden .hide-icon {
+  transition: opacity 175ms ease-out 250ms;
+  opacity: 1;
 }/*# sourceMappingURL=main.css.map */
