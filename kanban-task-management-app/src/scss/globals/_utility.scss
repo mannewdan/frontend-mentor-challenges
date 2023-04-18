@@ -27,7 +27,7 @@
   -moz-transition: none !important;
   -o-transition: none !important;
   transition: none !important;
-  & *:where(nav, header, div) {
+  & .suppress-transitions {
     -webkit-transition: none !important;
     -moz-transition: none !important;
     -o-transition: none !important;

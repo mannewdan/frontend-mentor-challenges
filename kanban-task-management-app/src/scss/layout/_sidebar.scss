@@ -9,6 +9,7 @@
 }
 
 .sidebar {
+  z-index: 2;
   position: absolute;
   width: 16.5rem;
   top: 5rem;
@@ -16,11 +17,18 @@
   right: 0;
   margin-inline: auto;
 
+  @include modeTransition(transform 250ms ease-out);
+  transform: scale(0);
+  &.mobile-show {
+    transform: scale(1);
+  }
+
   color: hsl(var(--c-neutral));
   border-radius: 0.5rem;
   border-color: hsl(var(--c-lines-main));
-  @include modeTransition;
   @include breakpoint(medium) {
+    @include modeTransition;
+    transform: scale(1);
     top: 0;
     right: auto;
     border-radius: 0;
@@ -110,12 +118,13 @@
     flex-direction: column;
 
     background-color: hsl(var(--c-bg-main-light));
-    border-right: 1px solid hsl(var(--c-lines-main));
-
+    border-radius: 0.5rem;
     @include modeTransition(transform 250ms ease-out);
     @include breakpoint(medium) {
       padding-top: calc(1rem + 1.25em);
       height: calc(100% - 5.0625rem);
+      border-radius: 0;
+      border-right: 1px solid hsl(var(--c-lines-main));
 
       position: relative;
       &::before {

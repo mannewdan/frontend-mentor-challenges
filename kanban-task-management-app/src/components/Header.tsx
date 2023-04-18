@@ -4,7 +4,15 @@ import vertEllipsis from "../assets/icon-vertical-ellipsis.svg";
 import chevron from "../assets/icon-chevron-down.svg";
 import { useDataContext } from "../context/DataContext";
 
-export default function Header() {
+type HeaderProps = {
+  setNoTransitions: (value: boolean) => void;
+  mobileSidebarToggle: () => void;
+};
+
+export default function Header({
+  setNoTransitions,
+  mobileSidebarToggle,
+}: HeaderProps) {
   const { data } = useDataContext();
 
   return (
@@ -12,10 +20,18 @@ export default function Header() {
       <img className="logo" src={logo}></img>
 
       {/* Default */}
-      <h1 className="heading text-h-main unselectable">Platform Launch</h1>
+      <h1 className="heading text-h-main unselectable suppress-transitions">
+        Platform Launch
+      </h1>
 
       {/* Small Screen */}
-      <button className="view-boards-button">
+      <button
+        onClick={() => {
+          setNoTransitions(false);
+          mobileSidebarToggle();
+        }}
+        className="view-boards-button"
+      >
         <h1 className="text-h-main">Platform Launch</h1>
         <img src={chevron}></img>
       </button>

@@ -5,6 +5,12 @@ $breakpoints: (
   "xlarge": 90em,
 );
 
+:root {
+  --breakpoint-medium: #{map-get($breakpoints, medium) / 1em};
+  --breakpoint-large: #{map-get($breakpoints, large) / 1em};
+  --breakpoint-xlarge: #{map-get($breakpoints, xlarge) / 1em};
+}
+
 @mixin breakpoint($size) {
   @media (min-width: map-get($breakpoints, $size)) {
     @content;

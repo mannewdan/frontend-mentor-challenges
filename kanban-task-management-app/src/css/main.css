@@ -60,6 +60,12 @@ h6 {
 }
 
 :root {
+  --breakpoint-medium: 43.75;
+  --breakpoint-large: 56.25;
+  --breakpoint-xlarge: 90;
+}
+
+:root {
   --c-accent-main: 242 48% 58%;
   --c-accent-main-light: 243 100% 82%;
   --c-accent-danger: 0 78% 63%;
@@ -184,7 +190,7 @@ h6 {
 .notransition {
   transition: none !important;
 }
-.notransition *:where(nav, header, div) {
+.notransition .suppress-transitions {
   transition: none !important;
 }
 
@@ -200,7 +206,6 @@ h6 {
 
 body {
   font-family: var(--ff-main);
-  font-size: var(--fs-500);
   color: hsl(var(--c-text-main));
   background-color: hsl(var(--c-bg-main));
   transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out;
@@ -585,13 +590,23 @@ select.hidden:focus-visible + div {
   transition: background-color 125ms ease-out;
 }
 
+.modal-fade {
+  z-index: 1;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: hsla(0, 0%, 0%, 0.5);
+}
+
 .header {
+  z-index: 2;
   display: flex;
   align-items: center;
   padding: 1rem;
   padding-right: 0.5rem;
   background-color: hsl(var(--c-bg-main-light));
   border-color: hsl(var(--c-lines-main));
+  position: relative;
   transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out;
 }
 .header > h1 {
@@ -705,19 +720,26 @@ select.hidden:focus-visible + div {
 }
 
 .sidebar {
+  z-index: 2;
   position: absolute;
   width: 16.5rem;
   top: 5rem;
   left: 0;
   right: 0;
   margin-inline: auto;
+  transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out, transform 250ms ease-out;
+  transform: scale(0);
   color: hsl(var(--c-neutral));
   border-radius: 0.5rem;
   border-color: hsl(var(--c-lines-main));
-  transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out;
+}
+.sidebar.mobile-show {
+  transform: scale(1);
 }
 @media (min-width: 43.75em) {
   .sidebar {
+    transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out;
+    transform: scale(1);
     top: 0;
     right: auto;
     border-radius: 0;
@@ -807,13 +829,15 @@ select.hidden:focus-visible + div {
   display: flex;
   flex-direction: column;
   background-color: hsl(var(--c-bg-main-light));
-  border-right: 1px solid hsl(var(--c-lines-main));
+  border-radius: 0.5rem;
   transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out, transform 250ms ease-out;
 }
 @media (min-width: 43.75em) {
   .sidebar .content-container {
     padding-top: calc(1rem + 1.25em);
     height: calc(100% - 5.0625rem);
+    border-radius: 0;
+    border-right: 1px solid hsl(var(--c-lines-main));
     position: relative;
   }
   .sidebar .content-container::before {

@@ -3,12 +3,14 @@
 @use "../globals/utility" as *;
 
 .header {
+  z-index: 2;
   display: flex;
   align-items: center;
   padding: 1rem;
   padding-right: 0.5rem;
   background-color: hsl(var(--c-bg-main-light));
   border-color: hsl(var(--c-lines-main));
+  position: relative;
 
   & > h1 {
     transition: transform 200ms ease-in 50ms;

@@ -1,4 +1,3 @@
-import React from "react";
 import boardIcon from "../assets/icon-board.svg";
 import hideIcon from "../assets/icon-hide-sidebar.svg";
 import showIcon from "../assets/icon-show-sidebar.svg";
@@ -9,9 +8,16 @@ import logoLight from "../assets/logo-dark.svg";
 import Icon from "./Icon";
 import { useDataContext } from "../context/DataContext";
 
-export default function Sidebar() {
+type SidebarProps = {
+  setNoTransitions: (value: boolean) => void;
+  mobileShow: boolean;
+};
+
+export default function Sidebar({
+  setNoTransitions,
+  mobileShow,
+}: SidebarProps) {
   const { data, toggleDarkMode, toggleSidebar, showSidebar } = useDataContext();
-  const [notransitions, setNotransitions] = React.useState(true);
 
   const boards = ["Platform Launch", "Marketing Plan", "Roadmap"];
   const boardEls = boards.map((item, index) => {
@@ -26,33 +32,28 @@ export default function Sidebar() {
     );
   });
 
-  //disable transitions after timeout
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setNotransitions(true);
-    }, 750);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [data.darkMode, data.showSidebar]);
-
   return (
     <nav
-      className={`sidebar ${!data.showSidebar ? "hide" : ""} ${
-        notransitions ? "notransition" : ""
-      }`}
+      className={`sidebar suppress-transitions ${
+        !data.showSidebar ? "hide" : ""
+      }  ${mobileShow ? "mobile-show" : ""}`}
     >
       <div
-        className={`logo-container ${!data.showSidebar ? "clickable" : ""}`}
+        className={`logo-container suppress-transitions ${
+          !data.showSidebar ? "clickable" : ""
+        }`}
         onClick={() => {
-          setNotransitions(false);
+          setNoTransitions(false);
           showSidebar();
         }}
       >
-        <img className="logo" src={data.darkMode ? logoDark : logoLight}></img>
+        <img
+          className="logo suppress-transitions"
+          src={data.darkMode ? logoDark : logoLight}
+        ></img>
       </div>
 
-      <div className="content-container">
+      <div className="content-container suppress-transitions">
         <div className="scrollable-area">
           <h2 className="text-h-s">All Boards (3)</h2>
 
@@ -68,7 +69,7 @@ export default function Sidebar() {
           <img className="light-icon" src={lightIcon}></img>
           <button
             onClick={() => {
-              setNotransitions(false);
+              setNoTransitions(false);
               toggleDarkMode();
             }}
             className={data.darkMode ? "dark" : ""}
@@ -83,7 +84,7 @@ export default function Sidebar() {
         >
           <button
             onClick={() => {
-              setNotransitions(false);
+              setNoTransitions(false);
               toggleSidebar();
             }}
             className="button-nav"
