@@ -18,9 +18,13 @@
   margin-inline: auto;
 
   transform: translateY(-75%) scaleY(25%);
+  &.hide {
+    pointer-events: none;
+  }
   &.mobile-show {
     @include modeTransition(transform 225ms ease-out);
     transform: translateY(0%) scaleY(1);
+    pointer-events: all;
   }
 
   color: hsl(var(--c-neutral));
@@ -89,6 +93,7 @@
 
     @include breakpoint(medium) {
       display: block;
+      pointer-events: all;
       .logo {
         width: 9.5rem;
         margin-top: 2rem;
@@ -216,6 +221,7 @@
       display: none;
       @include breakpoint(medium) {
         display: block;
+        pointer-events: all;
         margin-top: 0.5rem;
         margin-bottom: 1rem;
       }
@@ -234,7 +240,7 @@
       }
       &.hidden {
         button {
-          @include halfTransition(transform 350ms ease-in 75ms);
+          @include halfTransition(transform 300ms ease-in 75ms);
           background-color: hsl(var(--c-accent-main));
           color: hsl(var(--c-text-dark) / 50%);
           .blend {

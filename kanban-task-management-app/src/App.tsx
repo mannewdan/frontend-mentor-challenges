@@ -2,6 +2,7 @@ import React from "react";
 import ModalFade from "./components/ModalFade";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import Content from "./components/Content";
 import { useDataContext } from "./context/DataContext";
 import useWindowSize from "./hooks/useWindowSize";
 
@@ -51,7 +52,9 @@ export default function App() {
         mobileShow={showSidebarMobile}
       />
 
-      <main>content</main>
+      <main>
+        <Content />
+      </main>
     </div>
   );
 }

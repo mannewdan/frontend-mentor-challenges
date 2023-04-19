@@ -43,7 +43,7 @@ export default function Header({
 
       <button className="add-task button-primary">
         <img className="" src={addTask}></img>
-        <span>+ Add New Board</span>
+        <span>+ Add New Task</span>
       </button>
 
       <button className="edit-board">

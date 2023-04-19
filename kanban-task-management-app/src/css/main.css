@@ -749,9 +749,13 @@ select.hidden:focus-visible + div {
   border-radius: 0.5rem;
   border-color: hsl(var(--c-lines-main));
 }
+.sidebar.hide {
+  pointer-events: none;
+}
 .sidebar.mobile-show {
   transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out, transform 225ms ease-out;
   transform: translateY(0%) scaleY(1);
+  pointer-events: all;
 }
 @media (min-width: 43.75em) {
   .sidebar {
@@ -818,6 +822,7 @@ select.hidden:focus-visible + div {
 @media (min-width: 43.75em) {
   .sidebar .logo-container {
     display: block;
+    pointer-events: all;
   }
   .sidebar .logo-container .logo {
     width: 9.5rem;
@@ -948,6 +953,7 @@ select.hidden:focus-visible + div {
 @media (min-width: 43.75em) {
   .sidebar .content-container .hide-button {
     display: block;
+    pointer-events: all;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
   }
@@ -964,7 +970,7 @@ select.hidden:focus-visible + div {
   transition: opacity 150ms ease-out;
 }
 .sidebar .content-container .hide-button.hidden button {
-  transition: background-color 125ms ease-out, color 135ms ease-out, border-color 125ms ease-out, transform 350ms ease-in 75ms;
+  transition: background-color 125ms ease-out, color 135ms ease-out, border-color 125ms ease-out, transform 300ms ease-in 75ms;
   background-color: hsl(var(--c-accent-main));
   color: hsl(var(--c-text-dark)/50%);
   transform: translateX(4.75rem);
@@ -984,4 +990,21 @@ select.hidden:focus-visible + div {
 .sidebar .content-container .hide-button.hidden .hide-icon {
   transition: opacity 175ms ease-out 250ms;
   opacity: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 180px);
+  overflow-y: scroll;
+  background: pink;
+}
+.content .sidebar-offsetter {
+  background: pink;
+  width: 300px;
+  height: 100vh;
+  transition: width 250ms ease-out;
+}
+.content .sidebar-offsetter.hide {
+  width: 0px;
 }/*# sourceMappingURL=main.css.map */
