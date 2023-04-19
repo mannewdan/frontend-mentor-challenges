@@ -4,5 +4,16 @@
   width: 100vw;
   height: 100vh;
 
-  background-color: hsl(0, 0%, 0%, 50%);
+  animation: fade-in;
+  animation-duration: 250ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+@keyframes fade-in {
+  0% {
+    background-color: hsl(0, 0%, 0%, 0%);
+  }
+  100% {
+    background-color: hsl(0, 0%, 0%, 50%);
+  }
 }

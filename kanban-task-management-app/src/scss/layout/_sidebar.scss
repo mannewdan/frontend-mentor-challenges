@@ -17,9 +17,9 @@
   right: 0;
   margin-inline: auto;
 
-  @include modeTransition(transform 225ms ease-out);
   transform: translateY(-75%) scaleY(25%);
   &.mobile-show {
+    @include modeTransition(transform 225ms ease-out);
     transform: translateY(0%) scaleY(1);
   }
 

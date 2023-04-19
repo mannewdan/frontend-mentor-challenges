@@ -60,9 +60,10 @@
     gap: 0.5rem;
     .arrow {
       width: 0.5rem;
-      transition: transform 125ms ease-out;
+      transition: transform 75ms ease-out;
       transform: rotate(0deg);
       &.show {
+        transition: transform 125ms ease-out;
         transform: rotate(-180deg);
       }
     }

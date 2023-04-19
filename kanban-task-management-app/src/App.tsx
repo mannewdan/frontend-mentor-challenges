@@ -33,7 +33,13 @@ export default function App() {
 
   return (
     <div className={noTransitions ? "notransition" : ""}>
-      {showSidebarMobile && <ModalFade />}
+      {showSidebarMobile && (
+        <ModalFade
+          action={() => {
+            setShowSidebarMobile(false);
+          }}
+        />
+      )}
 
       <Header
         setNoTransitions={setNoTransitions}

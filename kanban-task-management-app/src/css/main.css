@@ -595,9 +595,20 @@ select.hidden:focus-visible + div {
   position: absolute;
   width: 100vw;
   height: 100vh;
-  background-color: hsla(0, 0%, 0%, 0.5);
+  animation: fade-in;
+  animation-duration: 250ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
 }
 
+@keyframes fade-in {
+  0% {
+    background-color: hsla(0, 0%, 0%, 0);
+  }
+  100% {
+    background-color: hsla(0, 0%, 0%, 0.5);
+  }
+}
 .header {
   z-index: 3;
   display: flex;
@@ -652,10 +663,11 @@ select.hidden:focus-visible + div {
 }
 .header .view-boards-button .arrow {
   width: 0.5rem;
-  transition: transform 125ms ease-out;
+  transition: transform 75ms ease-out;
   transform: rotate(0deg);
 }
 .header .view-boards-button .arrow.show {
+  transition: transform 125ms ease-out;
   transform: rotate(-180deg);
 }
 @media (min-width: 43.75em) {
@@ -732,13 +744,13 @@ select.hidden:focus-visible + div {
   left: 0;
   right: 0;
   margin-inline: auto;
-  transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out, transform 225ms ease-out;
   transform: translateY(-75%) scaleY(25%);
   color: hsl(var(--c-neutral));
   border-radius: 0.5rem;
   border-color: hsl(var(--c-lines-main));
 }
 .sidebar.mobile-show {
+  transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out, transform 225ms ease-out;
   transform: translateY(0%) scaleY(1);
 }
 @media (min-width: 43.75em) {
