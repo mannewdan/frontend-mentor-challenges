@@ -2,6 +2,12 @@
 @use "../globals/typography" as *;
 @use "../globals/utility" as *;
 
+:root {
+  --header-height-small: 4rem;
+  --header-height-medium: 5.0625rem;
+  --header-height-large: 6.0625rem;
+}
+
 .header {
   z-index: 3;
   display: flex;
