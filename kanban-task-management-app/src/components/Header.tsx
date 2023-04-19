@@ -6,11 +6,13 @@ import { useDataContext } from "../context/DataContext";
 
 type HeaderProps = {
   setNoTransitions: (value: boolean) => void;
+  mobileSidebarShow: boolean;
   mobileSidebarToggle: () => void;
 };
 
 export default function Header({
   setNoTransitions,
+  mobileSidebarShow,
   mobileSidebarToggle,
 }: HeaderProps) {
   const { data } = useDataContext();
@@ -33,7 +35,10 @@ export default function Header({
         className="view-boards-button"
       >
         <h1 className="text-h-main">Platform Launch</h1>
-        <img src={chevron}></img>
+        <img
+          className={`arrow ${mobileSidebarShow ? "show" : ""}`}
+          src={chevron}
+        ></img>
       </button>
 
       <button className="add-task button-primary">

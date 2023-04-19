@@ -37,6 +37,7 @@ export default function App() {
 
       <Header
         setNoTransitions={setNoTransitions}
+        mobileSidebarShow={showSidebarMobile}
         mobileSidebarToggle={() => setShowSidebarMobile((prev) => !prev)}
       />
       <Sidebar

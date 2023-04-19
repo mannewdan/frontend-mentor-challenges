@@ -599,7 +599,7 @@ select.hidden:focus-visible + div {
 }
 
 .header {
-  z-index: 2;
+  z-index: 3;
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -650,8 +650,13 @@ select.hidden:focus-visible + div {
   margin-left: 1rem;
   gap: 0.5rem;
 }
-.header .view-boards-button img {
+.header .view-boards-button .arrow {
   width: 0.5rem;
+  transition: transform 125ms ease-out;
+  transform: rotate(0deg);
+}
+.header .view-boards-button .arrow.show {
+  transform: rotate(-180deg);
 }
 @media (min-width: 43.75em) {
   .header .view-boards-button {
@@ -727,18 +732,19 @@ select.hidden:focus-visible + div {
   left: 0;
   right: 0;
   margin-inline: auto;
-  transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out, transform 250ms ease-out;
-  transform: scale(0);
+  transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out, transform 225ms ease-out;
+  transform: translateY(-75%) scaleY(25%);
   color: hsl(var(--c-neutral));
   border-radius: 0.5rem;
   border-color: hsl(var(--c-lines-main));
 }
 .sidebar.mobile-show {
-  transform: scale(1);
+  transform: translateY(0%) scaleY(1);
 }
 @media (min-width: 43.75em) {
   .sidebar {
     transition: background-color 250ms ease-out, color 275ms ease-out, border-color 250ms ease-out;
+    z-index: 4;
     transform: scale(1);
     top: 0;
     right: auto;

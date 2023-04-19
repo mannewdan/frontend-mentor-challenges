@@ -3,7 +3,7 @@
 @use "../globals/utility" as *;
 
 .header {
-  z-index: 2;
+  z-index: 3;
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -58,8 +58,13 @@
     align-items: center;
     margin-left: 1rem;
     gap: 0.5rem;
-    img {
+    .arrow {
       width: 0.5rem;
+      transition: transform 125ms ease-out;
+      transform: rotate(0deg);
+      &.show {
+        transform: rotate(-180deg);
+      }
     }
     @include breakpoint(medium) {
       display: none;
