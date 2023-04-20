@@ -17,17 +17,20 @@ export default function Sidebar({
   setNoTransitions,
   mobileShow,
 }: SidebarProps) {
-  const { data, toggleDarkMode, toggleSidebar, showSidebar } = useDataContext();
+  const { data, toggleDarkMode, toggleSidebar, showSidebar, setCurrentBoard } =
+    useDataContext();
 
-  const boards = ["Platform Launch", "Marketing Plan", "Roadmap"];
-  const boardEls = boards.map((item, index) => {
+  const boardEls = data.boards.map((item, index) => {
     return (
       <button
-        key={item}
-        className={`button-nav ${index === 0 ? "active" : ""}`}
+        key={item.name}
+        className={`button-nav ${index === data.currentBoard ? "active" : ""}`}
+        onClick={() => {
+          setCurrentBoard(index);
+        }}
       >
         <Icon url={boardIcon} />
-        {item}
+        {item.name}
       </button>
     );
   });
@@ -55,7 +58,7 @@ export default function Sidebar({
 
       <div className="content-container suppress-transitions">
         <div className="scrollable-area">
-          <h2 className="text-h-s">All Boards (3)</h2>
+          <h2 className="text-h-s">All Boards ({data.boards.length})</h2>
 
           <div className="button-container">
             {boardEls}

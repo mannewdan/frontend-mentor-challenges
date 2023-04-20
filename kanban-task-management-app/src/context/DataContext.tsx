@@ -1,4 +1,7 @@
 import React from "react";
+import DefaultBoards from "../data.json";
+
+console.log(DefaultBoards);
 
 type DataContextProps = {
   children: React.ReactNode;
@@ -8,14 +11,37 @@ type DataContextT = {
   toggleDarkMode: () => void;
   toggleSidebar: () => void;
   showSidebar: () => void;
+  setCurrentBoard: (index: number) => void;
 };
 type DataT = {
   darkMode: boolean;
   showSidebar: boolean;
+  boards: Array<BoardT>;
+  currentBoard: number;
+};
+type BoardT = {
+  name: string;
+  columns: Array<ColumnT>;
+};
+type ColumnT = {
+  name: string;
+  tasks: Array<TaskT>;
+};
+type TaskT = {
+  title: string;
+  description: string;
+  status: string;
+  subtasks: Array<SubtaskT>;
+};
+type SubtaskT = {
+  title: string;
+  isCompleted: boolean;
 };
 const DefaultDataValues: DataT = {
   darkMode: false,
-  showSidebar: false,
+  showSidebar: true,
+  boards: DefaultBoards.boards,
+  currentBoard: 0,
 };
 
 const Context = React.createContext<DataContextT>({} as DataContextT);
@@ -25,6 +51,8 @@ export function useDataContext() {
 
 export default function DataContext({ children }: DataContextProps) {
   const [data, setData] = React.useState<DataT>(loadData());
+
+  console.log(data);
 
   //functions
   function toggleDarkMode() {
@@ -37,6 +65,11 @@ export default function DataContext({ children }: DataContextProps) {
     setData((prev) => {
       if (prev.showSidebar) return prev;
       return { ...prev, showSidebar: true };
+    });
+  }
+  function setCurrentBoard(index: number) {
+    setData((prev) => {
+      return { ...prev, currentBoard: index };
     });
   }
 
@@ -61,7 +94,13 @@ export default function DataContext({ children }: DataContextProps) {
 
   return (
     <Context.Provider
-      value={{ data, toggleDarkMode, toggleSidebar, showSidebar }}
+      value={{
+        data,
+        toggleDarkMode,
+        toggleSidebar,
+        showSidebar,
+        setCurrentBoard,
+      }}
     >
       {children}
     </Context.Provider>

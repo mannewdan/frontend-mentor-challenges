@@ -99,6 +99,11 @@
 
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
+    text-align: left;
+
+    .icon-mask {
+      min-width: 1rem;
+    }
 
     @include breakpoint(medium) {
       position: relative;

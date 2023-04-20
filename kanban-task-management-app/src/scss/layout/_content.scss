@@ -4,7 +4,6 @@
 .content {
   display: grid;
   grid-template-columns: auto 1fr;
-  height: 100%;
 
   .sidebar-offsetter {
     transition: width 250ms ease-out;
