@@ -14,9 +14,15 @@
     .dot {
       width: 0.9375rem;
       height: 0.9375rem;
-      background-color: hsl(var(--c-accent-main));
       margin-right: 0.75rem;
       border-radius: 5rem;
+      background-color: hsl(var(--c-accent-main));
+    }
+  }
+
+  @for $i from 1 through 5 {
+    &:nth-child(5n + #{$i}) .dot {
+      background-color: hsl(var(--c-dot-#{$i}));
     }
   }
 

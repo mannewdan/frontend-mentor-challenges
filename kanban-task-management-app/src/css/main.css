@@ -79,6 +79,11 @@ h6 {
   --c-lines-dark: 236 11% 27%;
   --c-bg-dark: 235 16% 15%;
   --c-bg-dark-light: 235 12% 19%;
+  --c-dot-1: 202 75% 58%;
+  --c-dot-2: 242 52% 64%;
+  --c-dot-3: 168 75% 58%;
+  --c-dot-4: 282 52% 64%;
+  --c-dot-5: 100 52% 64%;
 }
 
 .dark {
@@ -1097,9 +1102,24 @@ select.hidden:focus-visible + div {
 .column .title .dot {
   width: 0.9375rem;
   height: 0.9375rem;
-  background-color: hsl(var(--c-accent-main));
   margin-right: 0.75rem;
   border-radius: 5rem;
+  background-color: hsl(var(--c-accent-main));
+}
+.column:nth-child(5n+1) .dot {
+  background-color: hsl(var(--c-dot-1));
+}
+.column:nth-child(5n+2) .dot {
+  background-color: hsl(var(--c-dot-2));
+}
+.column:nth-child(5n+3) .dot {
+  background-color: hsl(var(--c-dot-3));
+}
+.column:nth-child(5n+4) .dot {
+  background-color: hsl(var(--c-dot-4));
+}
+.column:nth-child(5n+5) .dot {
+  background-color: hsl(var(--c-dot-5));
 }
 .column .task {
   width: 17.5rem;
