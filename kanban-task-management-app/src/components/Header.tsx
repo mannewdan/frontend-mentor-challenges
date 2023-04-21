@@ -18,7 +18,11 @@ export default function Header({
   const { data } = useDataContext();
 
   return (
-    <header className={`header ${data.showSidebar ? "" : "sidebar-hidden"}`}>
+    <header
+      className={`header suppress-transitions ${
+        data.showSidebar ? "" : "sidebar-hidden"
+      }`}
+    >
       <img className="logo" src={logo}></img>
 
       {/* Default */}

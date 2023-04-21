@@ -21,9 +21,15 @@
   .content-container {
     overflow: auto;
 
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: start;
+    padding: 1.5rem 1rem;
+
     height: calc(100vh - var(--header-height-small));
     @include breakpoint(medium) {
       height: calc(100vh - var(--header-height-medium));
+      padding-inline: 1.5rem;
     }
     @include breakpoint(large) {
       height: calc(100vh - var(--header-height-large));

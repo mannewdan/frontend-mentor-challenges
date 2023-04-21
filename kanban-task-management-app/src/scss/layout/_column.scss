@@ -1,0 +1,36 @@
+@use "../globals/breakpoints" as *;
+@use "../globals/utility" as *;
+
+.column {
+  margin-right: 1rem;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  .title {
+    margin-bottom: 1.5rem;
+    display: flex;
+
+    .dot {
+      width: 0.9375rem;
+      height: 0.9375rem;
+      background-color: hsl(var(--c-accent-main));
+      margin-right: 0.75rem;
+      border-radius: 5rem;
+    }
+  }
+
+  .task {
+    width: 17.5rem;
+    padding: 1.5rem 1rem;
+    margin-bottom: 1.25rem;
+    border-radius: 0.5rem;
+
+    @include modeTransition;
+    background-color: hsl(var(--c-bg-main-light));
+
+    h4 {
+      margin-bottom: 0.5333em;
+    }
+  }
+}

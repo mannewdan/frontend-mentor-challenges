@@ -68,7 +68,7 @@ export default function Sidebar({
           </div>
         </div>
 
-        <div className="dark-toggle">
+        <div className="dark-toggle suppress-transitions">
           <img className="light-icon" src={lightIcon}></img>
           <button
             onClick={() => {

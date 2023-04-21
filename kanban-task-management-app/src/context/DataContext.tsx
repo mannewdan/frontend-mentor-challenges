@@ -1,8 +1,6 @@
 import React from "react";
 import DefaultBoards from "../data.json";
 
-console.log(DefaultBoards);
-
 type DataContextProps = {
   children: React.ReactNode;
 };
@@ -23,7 +21,7 @@ type BoardT = {
   name: string;
   columns: Array<ColumnT>;
 };
-type ColumnT = {
+export type ColumnT = {
   name: string;
   tasks: Array<TaskT>;
 };
