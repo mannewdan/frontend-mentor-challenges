@@ -27,6 +27,7 @@
   }
 
   .task {
+    cursor: pointer;
     width: 17.5rem;
     padding: 1.5rem 1rem;
     margin-bottom: 1.25rem;
@@ -36,7 +37,19 @@
     background-color: hsl(var(--c-bg-main-light));
 
     h4 {
+      @include halfTransition;
       margin-bottom: 0.5333em;
+    }
+    &:hover h4 {
+      color: hsl(var(--c-accent-main));
+    }
+    &:active h4,
+    &.active h4 {
+      color: hsl(var(--c-accent-main-light));
+      transition-duration: 25ms;
+    }
+    &.active {
+      outline: 1px solid hsl(var(--c-accent-main-light));
     }
   }
 }

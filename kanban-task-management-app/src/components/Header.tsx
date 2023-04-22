@@ -3,17 +3,20 @@ import addTask from "../assets/icon-add-task-mobile.svg";
 import vertEllipsis from "../assets/icon-vertical-ellipsis.svg";
 import chevron from "../assets/icon-chevron-down.svg";
 import { useDataContext } from "../context/DataContext";
+import { FormInfoT, FormStyleE } from "../App";
 
 type HeaderProps = {
   setNoTransitions: (value: boolean) => void;
   mobileSidebarShow: boolean;
   mobileSidebarToggle: () => void;
+  setFormInfo: (info: FormInfoT) => void;
 };
 
 export default function Header({
   setNoTransitions,
   mobileSidebarShow,
   mobileSidebarToggle,
+  setFormInfo,
 }: HeaderProps) {
   const { data } = useDataContext();
 
@@ -45,7 +48,17 @@ export default function Header({
         ></img>
       </button>
 
-      <button className="add-task button-primary">
+      <button
+        onClick={() => {
+          if (data.boards.length > data.currentBoard) {
+            setFormInfo({
+              style: FormStyleE.AddTask,
+              board: data.boards[data.currentBoard].name,
+            });
+          }
+        }}
+        className="add-task button-primary"
+      >
         <img className="" src={addTask}></img>
         <span>+ Add New Task</span>
       </button>

@@ -7,15 +7,18 @@ import logoDark from "../assets/logo-light.svg";
 import logoLight from "../assets/logo-dark.svg";
 import Icon from "./Icon";
 import { useDataContext } from "../context/DataContext";
+import { FormInfoT, FormStyleE } from "../App";
 
 type SidebarProps = {
   setNoTransitions: (value: boolean) => void;
   mobileShow: boolean;
+  setFormInfo: (info: FormInfoT) => void;
 };
 
 export default function Sidebar({
   setNoTransitions,
   mobileShow,
+  setFormInfo,
 }: SidebarProps) {
   const { data, toggleDarkMode, toggleSidebar, showSidebar, setCurrentBoard } =
     useDataContext();
@@ -62,7 +65,12 @@ export default function Sidebar({
 
           <div className="button-container">
             {boardEls}
-            <button className="button-nav add">
+            <button
+              onClick={() => {
+                setFormInfo({ style: FormStyleE.AddBoard });
+              }}
+              className="button-nav add"
+            >
               <Icon url={boardIcon} />+ Create New Board
             </button>
           </div>

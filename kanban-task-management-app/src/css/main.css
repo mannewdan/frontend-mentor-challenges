@@ -1122,6 +1122,7 @@ select.hidden:focus-visible + div {
   background-color: hsl(var(--c-dot-5));
 }
 .column .task {
+  cursor: pointer;
   width: 17.5rem;
   padding: 1.5rem 1rem;
   margin-bottom: 1.25rem;
@@ -1130,5 +1131,25 @@ select.hidden:focus-visible + div {
   background-color: hsl(var(--c-bg-main-light));
 }
 .column .task h4 {
+  transition: background-color 125ms ease-out, color 60ms ease-out, border-color 125ms ease-out;
   margin-bottom: 0.5333em;
+}
+.column .task:hover h4 {
+  color: hsl(var(--c-accent-main));
+}
+.column .task:active h4, .column .task.active h4 {
+  color: hsl(var(--c-accent-main-light));
+  transition-duration: 25ms;
+}
+.column .task.active {
+  outline: 1px solid hsl(var(--c-accent-main-light));
+}
+
+.form-positioner {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=main.css.map */

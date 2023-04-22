@@ -1,13 +1,36 @@
 import { ColumnT } from "../context/DataContext";
+import { FormInfoT, FormStyleE } from "../App";
 
 type ColumnProps = {
+  boardName: string;
   column: ColumnT;
+  formInfo: FormInfoT;
+  setFormInfo: (info: FormInfoT) => void;
 };
 
-export default function Column({ column }: ColumnProps) {
+export default function Column({
+  boardName,
+  column,
+  formInfo,
+  setFormInfo,
+}: ColumnProps) {
   const taskEls = column.tasks.map((item) => {
     return (
-      <div className="task">
+      <div
+        key={item.title}
+        onClick={() => {
+          setFormInfo({
+            style: FormStyleE.ViewTask,
+            board: boardName,
+            task: item.title,
+          });
+        }}
+        className={`task ${
+          boardName === formInfo.board && item.title === formInfo.task
+            ? "active"
+            : ""
+        }`}
+      >
         <h4 className="text-h-m">{item.title}</h4>
         <p className="text-b-m c-text-neutral">{`${item.subtasks.reduce(
           (acc, item) => {
