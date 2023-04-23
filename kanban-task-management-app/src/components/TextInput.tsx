@@ -1,5 +1,5 @@
 type TextInputProps = {
-  label: string;
+  label?: string;
   text: string;
   setText: (text: string) => void;
   placeholder?: string;
@@ -17,7 +17,7 @@ export default function TextInput({
 }: TextInputProps) {
   return (
     <div className={`text-input ${error ? "empty" : ""}`}>
-      <label htmlFor={label}>{label}</label>
+      {label && <label htmlFor={label}>{label}</label>}
 
       {!isTextArea && (
         <input

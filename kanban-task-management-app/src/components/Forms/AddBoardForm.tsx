@@ -2,19 +2,34 @@ import React from "react";
 import TextInput from "../TextInput";
 import { BoardT, ColumnT } from "../../context/DataContext";
 import crossIcon from "../../assets/icon-cross.svg";
+import { v4 as uuid } from "uuid";
 
 export default function AddBoardForm() {
   const [formData, setFormData] = React.useState<BoardT>({
     name: "",
-    columns: [{ name: "Column 1", tasks: [] }],
+    columns: [{ name: "Column 1", tasks: [], id: uuid() }],
   });
 
   console.log(formData);
 
   const columnEls = formData.columns.map((item, index) => {
     return (
-      <div key={item.name} className="column">
-        <TextInput text={item.name} />
+      <div key={item.id} className="column">
+        <TextInput
+          text={item.name}
+          setText={(text: string) => {
+            setFormData((prev) => {
+              return {
+                ...prev,
+                columns: prev.columns.map((prevItem, prevIndex) => {
+                  if (index === prevIndex) {
+                    return { ...prevItem, name: text };
+                  } else return { ...prevItem };
+                }),
+              };
+            });
+          }}
+        />
         <button
           onClick={(e) => {
             e.preventDefault();
@@ -35,7 +50,7 @@ export default function AddBoardForm() {
   });
 
   return (
-    <form className="form">
+    <form className="form" autoComplete="off">
       {/* Title */}
       <h3 className="text-h-l">Add New Board</h3>
 
@@ -67,7 +82,11 @@ export default function AddBoardForm() {
                 ...prev,
                 columns: [
                   ...prev.columns,
-                  { name: `Column ${prev.columns.length + 1}`, tasks: [] },
+                  {
+                    name: `Column ${prev.columns.length + 1}`,
+                    tasks: [],
+                    id: uuid(),
+                  },
                 ],
               };
             });

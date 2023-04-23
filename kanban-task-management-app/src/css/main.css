@@ -1213,7 +1213,6 @@ select.hidden:focus-visible + div {
   margin-top: 0;
 }
 .form-positioner .form .column-section .column button {
-  transform: translateY(0.25rem);
   width: 1.5rem;
   padding: 0.25rem;
 }/*# sourceMappingURL=main.css.map */

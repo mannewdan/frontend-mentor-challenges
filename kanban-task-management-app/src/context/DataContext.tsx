@@ -24,6 +24,7 @@ export type BoardT = {
 export type ColumnT = {
   name: string;
   tasks: Array<TaskT>;
+  id?: string;
 };
 type TaskT = {
   title: string;
