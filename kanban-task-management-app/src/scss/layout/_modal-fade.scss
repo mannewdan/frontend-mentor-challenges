@@ -1,3 +1,5 @@
+@use "../globals/breakpoints" as *;
+
 .modal-fade {
   z-index: 1;
   position: absolute;
@@ -9,8 +11,11 @@
   animation-timing-function: ease-out;
   animation-fill-mode: both;
 
-  &.noanimation {
+  &.noanimation-smallscreens {
     animation-duration: 0ms;
+    @include breakpoint(medium) {
+      animation-duration: 250ms;
+    }
   }
   &.full-screen {
     z-index: 5;

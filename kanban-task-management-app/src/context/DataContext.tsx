@@ -17,7 +17,7 @@ type DataT = {
   boards: Array<BoardT>;
   currentBoard: number;
 };
-type BoardT = {
+export type BoardT = {
   name: string;
   columns: Array<ColumnT>;
 };

@@ -1,3 +1,4 @@
+import AddBoardForm from "./Forms/AddBoardForm";
 import ViewTaskForm from "./Forms/ViewTaskForm";
 import ModalFade from "./ModalFade";
 import { FormInfoT, FormStyleE } from "../App";
@@ -16,7 +17,7 @@ export default function FormHandler({
   function selectFormEl() {
     switch (formInfo.style) {
       case FormStyleE.AddBoard:
-        return <>add board</>;
+        return <AddBoardForm />;
       case FormStyleE.EditBoard:
         //validate board
         return <>edit board</>;

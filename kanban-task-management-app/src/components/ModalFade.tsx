@@ -15,7 +15,7 @@ export default function ModalFade({
         if (action) action();
       }}
       className={`modal-fade ${fullscreen ? "full-screen" : ""} ${
-        skipBGFade ? "noanimation" : ""
+        skipBGFade ? "noanimation-smallscreens" : ""
       }`}
     ></div>
   );

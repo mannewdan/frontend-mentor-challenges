@@ -7,6 +7,10 @@
     @extend .text-b-m;
     color: hsl(var(--c-neutral));
 
+    .dark & {
+      color: hsl(var(--c-text-dark));
+    }
+
     & + input[type="text"],
     & + textarea {
       margin-top: 0.6154em;

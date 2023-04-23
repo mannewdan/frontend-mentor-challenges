@@ -3,7 +3,7 @@ type TextInputProps = {
   text: string;
   setText: (text: string) => void;
   placeholder?: string;
-  empty?: boolean;
+  error?: boolean;
   isTextArea?: boolean;
 };
 
@@ -12,11 +12,11 @@ export default function TextInput({
   text,
   setText,
   placeholder,
-  empty,
+  error,
   isTextArea,
 }: TextInputProps) {
   return (
-    <div className={`text-input ${empty ? "empty" : ""}`}>
+    <div className={`text-input ${error ? "empty" : ""}`}>
       <label htmlFor={label}>{label}</label>
 
       {!isTextArea && (
