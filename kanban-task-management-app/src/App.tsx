@@ -11,6 +11,7 @@ export type FormInfoT = {
   style: FormStyleE;
   board?: string;
   task?: string;
+  skipBGFade?: boolean;
 };
 export enum FormStyleE {
   None,
@@ -75,6 +76,7 @@ export default function App() {
       <Sidebar
         setNoTransitions={setNoTransitions}
         mobileShow={showSidebarMobile}
+        setMobileShow={setShowSidebarMobile}
         setFormInfo={setFormInfo}
       />
 

@@ -8,6 +8,13 @@
   animation-duration: 250ms;
   animation-timing-function: ease-out;
   animation-fill-mode: both;
+
+  &.noanimation {
+    animation-duration: 0ms;
+  }
+  &.full-screen {
+    z-index: 5;
+  }
 }
 @keyframes fade-in {
   0% {

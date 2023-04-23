@@ -609,6 +609,12 @@ select.hidden:focus-visible + div {
   animation-timing-function: ease-out;
   animation-fill-mode: both;
 }
+.modal-fade.noanimation {
+  animation-duration: 0ms;
+}
+.modal-fade.full-screen {
+  z-index: 5;
+}
 
 @keyframes fade-in {
   0% {
@@ -1147,9 +1153,14 @@ select.hidden:focus-visible + div {
 
 .form-positioner {
   position: absolute;
+  z-index: 10;
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: none;
+}
+.form-positioner > * {
+  pointer-events: all;
 }/*# sourceMappingURL=main.css.map */

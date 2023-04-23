@@ -12,12 +12,14 @@ import { FormInfoT, FormStyleE } from "../App";
 type SidebarProps = {
   setNoTransitions: (value: boolean) => void;
   mobileShow: boolean;
+  setMobileShow: (show: boolean) => void;
   setFormInfo: (info: FormInfoT) => void;
 };
 
 export default function Sidebar({
   setNoTransitions,
   mobileShow,
+  setMobileShow,
   setFormInfo,
 }: SidebarProps) {
   const { data, toggleDarkMode, toggleSidebar, showSidebar, setCurrentBoard } =
@@ -67,7 +69,8 @@ export default function Sidebar({
             {boardEls}
             <button
               onClick={() => {
-                setFormInfo({ style: FormStyleE.AddBoard });
+                setMobileShow(false);
+                setFormInfo({ style: FormStyleE.AddBoard, skipBGFade: true });
               }}
               className="button-nav add"
             >

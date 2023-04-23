@@ -25,7 +25,7 @@ export default function Column({
             task: item.title,
           });
         }}
-        className={`task ${
+        className={`task suppress-transitions ${
           boardName === formInfo.board && item.title === formInfo.task
             ? "active"
             : ""

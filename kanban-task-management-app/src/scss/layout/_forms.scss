@@ -1,9 +1,15 @@
 .form-positioner {
   position: absolute;
+  z-index: 10;
   width: 100vw;
   height: 100vh;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  pointer-events: none;
+  & > * {
+    pointer-events: all;
+  }
 }

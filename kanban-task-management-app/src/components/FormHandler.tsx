@@ -4,7 +4,7 @@ import { FormInfoT, FormStyleE } from "../App";
 
 type FormHandlerProps = {
   formInfo: FormInfoT;
-  setFormInfo: (info: FormInfoT) => void;
+  setFormInfo: (info: FormInfoT | ((prev: FormInfoT) => FormInfoT)) => void;
 };
 
 export default function FormHandler({
@@ -34,7 +34,7 @@ export default function FormHandler({
         return <>edit task</>;
       case FormStyleE.DeleteTask:
         //validate board & task
-        return <>add board</>;
+        return <>delete task</>;
       default:
         return null;
     }
@@ -44,7 +44,22 @@ export default function FormHandler({
   return (
     <>
       {formEl !== null && (
-        <ModalFade action={() => setFormInfo({ style: FormStyleE.None })} />
+        <ModalFade
+          fullscreen={true}
+          skipBGFade={formInfo.skipBGFade}
+          action={() => {
+            if (
+              formInfo.style === FormStyleE.EditTask ||
+              formInfo.style === FormStyleE.DeleteTask
+            ) {
+              setFormInfo((prev: FormInfoT) => {
+                return { ...prev, style: FormStyleE.ViewTask };
+              });
+            } else {
+              setFormInfo({ style: FormStyleE.None });
+            }
+          }}
+        />
       )}
       {formEl !== null && <div className="form-positioner">{formEl}</div>}
     </>
