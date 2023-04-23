@@ -5,6 +5,13 @@
   position: absolute;
   width: 100vw;
   height: 100vh;
+  min-height: calc(var(--header-height-small) + var(--min-content-height));
+  @include breakpoint(medium) {
+    min-height: calc(var(--header-height-medium) + var(--min-content-height));
+  }
+  @include breakpoint(large) {
+    min-height: calc(var(--header-height-large) + var(--min-content-height));
+  }
 
   animation: fade-in;
   animation-duration: 250ms;

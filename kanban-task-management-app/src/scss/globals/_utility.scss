@@ -1,3 +1,5 @@
+@use "./breakpoints" as *;
+
 .flow {
   --flow-size: 1rem;
   & > *:where(:not(:last-child)) {
@@ -20,6 +22,36 @@
 @mixin halfTransition($custom: null) {
   transition: background-color 125ms ease-out, color 60ms ease-out,
     border-color 125ms ease-out, $custom;
+}
+@mixin customScrollbar {
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    @include breakpoint(large) {
+      width: 9px;
+      height: 9px;
+    }
+  }
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--c-accent-main)) hsl(var(--c-lines-main));
+  &::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: hsl(var(--c-accent-main));
+    &:hover {
+      background-color: color-mix(
+        in srgb,
+        hsl(var(--c-accent-main)),
+        hsl(0, 0%, 100%) 15%
+      );
+    }
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: hsl(var(--c-neutral) / 20%);
+  }
+  &::-webkit-scrollbar-corner {
+    background: transparent;
+  }
 }
 
 .notransition {

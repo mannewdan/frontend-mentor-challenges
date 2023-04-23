@@ -4,7 +4,6 @@ body {
   font-family: var(--ff-main);
   color: hsl(var(--c-text-main));
   background-color: hsl(var(--c-bg-main));
-
   @include modeTransition;
 }
 

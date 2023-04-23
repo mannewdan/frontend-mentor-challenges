@@ -23,10 +23,12 @@
 
     display: flex;
     flex-wrap: nowrap;
-    align-items: start;
+    align-items: flex-start;
     padding: 1.5rem 1rem;
 
     height: calc(100vh - var(--header-height-small));
+    min-height: var(--min-content-height);
+
     @include breakpoint(medium) {
       height: calc(100vh - var(--header-height-medium));
       padding-inline: 1.5rem;
@@ -35,33 +37,6 @@
       height: calc(100vh - var(--header-height-large));
     }
 
-    &::-webkit-scrollbar {
-      width: 7px;
-      height: 7px;
-      @include breakpoint(large) {
-        width: 9px;
-        height: 9px;
-      }
-    }
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--c-accent-main)) hsl(var(--c-lines-main));
-    &::-webkit-scrollbar-thumb {
-      border-radius: 3px;
-      background-color: hsl(var(--c-accent-main));
-      &:hover {
-        background-color: color-mix(
-          in srgb,
-          hsl(var(--c-accent-main)),
-          hsl(0, 0%, 100%) 15%
-        );
-      }
-    }
-    &::-webkit-scrollbar-track {
-      border-radius: 3px;
-      background-color: hsl(var(--c-neutral) / 20%);
-    }
-    &::-webkit-scrollbar-corner {
-      background: transparent;
-    }
+    @include customScrollbar;
   }
 }

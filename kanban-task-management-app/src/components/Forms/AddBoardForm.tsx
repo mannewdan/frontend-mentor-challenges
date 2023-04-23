@@ -3,6 +3,7 @@ import TextInput from "../TextInput";
 import { BoardT, ColumnT } from "../../context/DataContext";
 import crossIcon from "../../assets/icon-cross.svg";
 import { v4 as uuid } from "uuid";
+import FormTemplate from "./FormTemplate";
 
 export default function AddBoardForm() {
   const [formData, setFormData] = React.useState<BoardT>({
@@ -50,10 +51,7 @@ export default function AddBoardForm() {
   });
 
   return (
-    <form className="form" autoComplete="off">
-      {/* Title */}
-      <h3 className="text-h-l">Add New Board</h3>
-
+    <FormTemplate title={"Add New Board"}>
       {/* Name */}
       <TextInput
         label={"Board Name"}
@@ -107,6 +105,6 @@ export default function AddBoardForm() {
       >
         Create New Board
       </button>
-    </form>
+    </FormTemplate>
   );
 }
