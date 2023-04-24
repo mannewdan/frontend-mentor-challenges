@@ -11,8 +11,6 @@ export default function AddBoardForm() {
     columns: [{ name: "Column 1", tasks: [], id: uuid() }],
   });
 
-  console.log(formData);
-
   const columnEls = formData.columns.map((item, index) => {
     return (
       <div key={item.id} className="column">

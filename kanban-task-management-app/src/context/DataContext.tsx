@@ -1,5 +1,6 @@
 import React from "react";
 import DefaultBoards from "../data.json";
+import { v4 as uuid } from "uuid";
 
 type DataContextProps = {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ type DataT = {
 export type BoardT = {
   name: string;
   columns: Array<ColumnT>;
+  id?: string;
 };
 export type ColumnT = {
   name: string;
@@ -31,15 +33,37 @@ type TaskT = {
   description: string;
   status: string;
   subtasks: Array<SubtaskT>;
+  id?: string;
 };
 type SubtaskT = {
   title: string;
   isCompleted: boolean;
+  id?: string;
 };
 const DefaultDataValues: DataT = {
   darkMode: false,
   showSidebar: true,
-  boards: DefaultBoards.boards,
+  boards: DefaultBoards.boards.map((board) => {
+    return {
+      ...board,
+      id: uuid(),
+      columns: board.columns.map((column) => {
+        return {
+          ...column,
+          id: uuid(),
+          tasks: column.tasks.map((task) => {
+            return {
+              ...task,
+              id: uuid(),
+              subtasks: task.subtasks.map((subtask) => {
+                return { ...subtask, id: uuid() };
+              }),
+            };
+          }),
+        };
+      }),
+    };
+  }),
   currentBoard: 0,
 };
 

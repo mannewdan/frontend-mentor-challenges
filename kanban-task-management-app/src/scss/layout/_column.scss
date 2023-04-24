@@ -1,11 +1,16 @@
 @use "../globals/breakpoints" as *;
 @use "../globals/utility" as *;
 
-.column {
+.content .column {
   margin-right: 1rem;
   &:last-child {
     margin-right: 0;
   }
+
+  animation: column-fade-in;
+  animation-duration: 250ms;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
 
   .title {
     margin-bottom: 1.5rem;
@@ -51,5 +56,15 @@
     &.active {
       outline: 1px solid hsl(var(--c-accent-main-light));
     }
+  }
+}
+@keyframes column-fade-in {
+  0% {
+    opacity: 0%;
+    transform: translateX(4rem);
+  }
+  100% {
+    opacity: 100%;
+    transform: translateX(0);
   }
 }

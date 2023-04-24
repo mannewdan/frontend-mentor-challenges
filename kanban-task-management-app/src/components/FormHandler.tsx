@@ -12,8 +12,6 @@ export default function FormHandler({
   formInfo,
   setFormInfo,
 }: FormHandlerProps) {
-  console.log(formInfo);
-
   function selectFormEl() {
     switch (formInfo.style) {
       case FormStyleE.AddBoard:

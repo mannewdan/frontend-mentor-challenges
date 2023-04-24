@@ -6,6 +6,7 @@ type ColumnProps = {
   column: ColumnT;
   formInfo: FormInfoT;
   setFormInfo: (info: FormInfoT) => void;
+  offset?: number;
 };
 
 export default function Column({
@@ -13,6 +14,7 @@ export default function Column({
   column,
   formInfo,
   setFormInfo,
+  offset,
 }: ColumnProps) {
   const taskEls = column.tasks.map((item) => {
     return (
@@ -44,7 +46,10 @@ export default function Column({
   });
 
   return (
-    <div className="column">
+    <div
+      className="column"
+      style={{ animationDelay: `${(offset ? offset : 0) * 75}ms` }}
+    >
       <div className="title">
         <div className="dot"></div>
         <h3 className="text-h-s c-text-neutral">{`${column.name} (${column.tasks.length})`}</h3>

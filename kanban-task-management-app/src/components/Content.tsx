@@ -12,14 +12,15 @@ export default function Content({ formInfo, setFormInfo }: ContentProps) {
 
   let columnEls = [<></>];
   if (data.boards && data.boards.length > data.currentBoard) {
-    columnEls = data.boards[data.currentBoard].columns.map((item) => {
+    columnEls = data.boards[data.currentBoard].columns.map((item, index) => {
       return (
         <Column
-          key={item.name}
+          key={item.id}
           boardName={data.boards[data.currentBoard].name}
           column={item}
           formInfo={formInfo}
           setFormInfo={setFormInfo}
+          offset={index}
         />
       );
     });
