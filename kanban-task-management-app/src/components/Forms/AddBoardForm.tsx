@@ -5,14 +5,18 @@ import crossIcon from "../../assets/icon-cross.svg";
 import { v4 as uuid } from "uuid";
 import FormTemplate from "./FormTemplate";
 
-export default function AddBoardForm() {
+type AddBoardForm = {
+  closeForm: () => void;
+};
+
+export default function AddBoardForm({ closeForm }: AddBoardForm) {
   const [nameError, setNameError] = React.useState(false);
   const [columnError, setColumnError] = React.useState(false);
   const [formData, setFormData] = React.useState<BoardT>({
     name: "",
     columns: [{ name: "Column 1", tasks: [], id: uuid() }],
   });
-  const { data } = useDataContext();
+  const { data, addBoard, setCurrentBoard } = useDataContext();
 
   const columnEls = formData.columns.map((item, index) => {
     return (
@@ -120,7 +124,11 @@ export default function AddBoardForm() {
           if (nameError) {
             setNameError(true);
           } else {
-            console.log("Create New Board");
+            addBoard(formData);
+            closeForm();
+            setTimeout(() => {
+              setCurrentBoard(data.boards.length);
+            }, 100);
           }
         }}
         className="button-primary"

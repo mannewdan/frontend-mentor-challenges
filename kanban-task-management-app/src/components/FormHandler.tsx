@@ -12,10 +12,13 @@ export default function FormHandler({
   formInfo,
   setFormInfo,
 }: FormHandlerProps) {
+  const closeForm = () => {
+    setFormInfo({ style: FormStyleE.None });
+  };
   function selectFormEl() {
     switch (formInfo.style) {
       case FormStyleE.AddBoard:
-        return <AddBoardForm />;
+        return <AddBoardForm closeForm={closeForm} />;
       case FormStyleE.EditBoard:
         //validate board
         return <>edit board</>;

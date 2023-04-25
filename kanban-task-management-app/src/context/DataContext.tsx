@@ -11,6 +11,7 @@ type DataContextT = {
   toggleSidebar: () => void;
   showSidebar: () => void;
   setCurrentBoard: (index: number) => void;
+  addBoard: (newBoard: BoardT) => void;
 };
 type DataT = {
   darkMode: boolean;
@@ -95,6 +96,11 @@ export default function DataContext({ children }: DataContextProps) {
       return { ...prev, currentBoard: index };
     });
   }
+  function addBoard(newBoard: BoardT) {
+    setData((prev) => {
+      return { ...prev, boards: [...prev.boards, newBoard] };
+    });
+  }
 
   //save/load
   React.useEffect(() => {
@@ -123,6 +129,7 @@ export default function DataContext({ children }: DataContextProps) {
         toggleSidebar,
         showSidebar,
         setCurrentBoard,
+        addBoard,
       }}
     >
       {children}

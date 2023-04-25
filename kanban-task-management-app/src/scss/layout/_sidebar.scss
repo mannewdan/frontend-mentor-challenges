@@ -154,14 +154,7 @@
     .scrollable-area {
       overflow-y: auto;
       margin-bottom: 1.25rem;
-
-      @include breakpoint(medium) {
-        &::-webkit-scrollbar {
-          display: none;
-        }
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
+      @include customScrollbar;
     }
 
     .button-container {
