@@ -117,6 +117,10 @@ h6 {
   color: hsl(var(--c-text-dark));
 }
 
+.c-text-danger {
+  color: hsl(var(--c-accent-danger));
+}
+
 :root {
   --ff-main: "Plus Jakarta Sans", sans-serif;
   --fs-400: 0.75rem;
@@ -165,7 +169,7 @@ h6 {
 }
 
 .text-b-l, .text-input textarea,
-.text-input input[type=text] {
+.text-input input[type=text], .dot-menu .menu {
   font-size: var(--fs-500);
   font-weight: 500;
   line-height: 1.7692;
@@ -238,6 +242,10 @@ img {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+}
+
+:root {
+  --min-content-height: 20rem;
 }
 
 .inactive {
@@ -446,62 +454,58 @@ img {
   background-color: hsl(var(--c-accent-main)/35%);
 }
 
-.text-input {
+.dot-menu {
   position: relative;
 }
-.text-input label {
+.dot-menu > button {
+  padding: 0.3rem;
+  padding-inline: 0.5rem;
+}
+.dot-menu > button img {
+  width: 0.2306rem;
+}
+@media (min-width: 43.75em) {
+  .dot-menu > button img {
+    width: 0.28875rem;
+    display: block;
+  }
+}
+.dot-menu .menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 12rem;
+  padding: 1rem;
+  gap: 1rem;
+  transition: background-color 250ms ease-out, color 120ms ease-out, border-color 250ms ease-out, transform 250ms ease-out, opacity 50ms ease-out;
+  background: hsl(var(--c-bg-main-light));
+  border-radius: 0.5rem;
+  opacity: 0;
+  transform: scale(0.85);
+  pointer-events: none;
+  transform-origin: top right;
+}
+.dot-menu .menu.open {
+  transition: background-color 250ms ease-out, color 120ms ease-out, border-color 250ms ease-out, transform 175ms ease-out, opacity 175ms ease-out;
+  transform: scale(1);
+  opacity: 1;
+  pointer-events: all;
+}
+.dot-menu .menu button {
+  transition: background-color 125ms ease-out, color 60ms ease-out, border-color 125ms ease-out;
   color: hsl(var(--c-neutral));
 }
-.dark .text-input label {
-  color: hsl(var(--c-text-dark));
-}
-.text-input label + input[type=text], .text-input label + textarea {
-  margin-top: 0.6154em;
-}
-.text-input.error {
-  --content: "Can't be empty";
-}
-.text-input.error::before {
-  content: var(--content);
-  position: absolute;
-  right: 1.2308em;
-  bottom: 0.55em;
+.dot-menu .menu button.danger {
   color: hsl(var(--c-accent-danger));
 }
-.text-input.error textarea,
-.text-input.error input[type=text] {
-  border-color: hsl(var(--c-accent-danger));
+.dot-menu .menu button:hover {
+  color: color-mix(in srgb, hsl(var(--c-neutral)), white 35%);
 }
-.text-input textarea {
-  resize: none;
-  min-width: 100%;
-  max-width: 100%;
-  min-height: 7rem;
-}
-.text-input textarea,
-.text-input input[type=text] {
-  display: block;
-  position: relative;
-  width: 100%;
-  padding: 0.6154em 1.2308em;
-  background-color: transparent;
-  border: 1px solid hsl(var(--c-neutral)/25%);
-  border-radius: 4px;
-  outline: none;
-}
-.text-input textarea::-moz-placeholder, .text-input input[type=text]::-moz-placeholder {
-  color: hsla(0, 0%, 0%, 0.25);
-}
-.text-input textarea::placeholder,
-.text-input input[type=text]::placeholder {
-  color: hsla(0, 0%, 0%, 0.25);
-}
-.dark .text-input textarea::-moz-placeholder, .dark .text-input input[type=text]::-moz-placeholder {
-  color: hsla(0, 0%, 100%, 0.25);
-}
-.dark .text-input textarea::placeholder,
-.dark .text-input input[type=text]::placeholder {
-  color: hsla(0, 0%, 100%, 0.25);
+.dot-menu .menu button.danger:hover {
+  color: color-mix(in srgb, hsl(var(--c-accent-danger)), white 35%);
 }
 
 select.hidden {
@@ -605,8 +609,62 @@ select.hidden:focus-visible + div {
   transition: background-color 125ms ease-out;
 }
 
-:root {
-  --min-content-height: 20rem;
+.text-input {
+  position: relative;
+}
+.text-input label {
+  color: hsl(var(--c-neutral));
+}
+.dark .text-input label {
+  color: hsl(var(--c-text-dark));
+}
+.text-input label + input[type=text], .text-input label + textarea {
+  margin-top: 0.6154em;
+}
+.text-input.error {
+  --content: "Can't be empty";
+}
+.text-input.error::before {
+  content: var(--content);
+  position: absolute;
+  right: 1.2308em;
+  bottom: 0.55em;
+  color: hsl(var(--c-accent-danger));
+}
+.text-input.error textarea,
+.text-input.error input[type=text] {
+  border-color: hsl(var(--c-accent-danger));
+}
+.text-input textarea {
+  resize: none;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 7rem;
+}
+.text-input textarea,
+.text-input input[type=text] {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 0.6154em 1.2308em;
+  background-color: transparent;
+  border: 1px solid hsl(var(--c-neutral)/25%);
+  border-radius: 4px;
+  outline: none;
+}
+.text-input textarea::-moz-placeholder, .text-input input[type=text]::-moz-placeholder {
+  color: hsla(0, 0%, 0%, 0.25);
+}
+.text-input textarea::placeholder,
+.text-input input[type=text]::placeholder {
+  color: hsla(0, 0%, 0%, 0.25);
+}
+.dark .text-input textarea::-moz-placeholder, .dark .text-input input[type=text]::-moz-placeholder {
+  color: hsla(0, 0%, 100%, 0.25);
+}
+.dark .text-input textarea::placeholder,
+.dark .text-input input[type=text]::placeholder {
+  color: hsla(0, 0%, 100%, 0.25);
 }
 
 .modal-fade {
@@ -759,19 +817,6 @@ select.hidden:focus-visible + div {
 }
 @media (min-width: 43.75em) {
   .header .add-task span {
-    display: block;
-  }
-}
-.header .edit-board {
-  padding: 0.3rem;
-  padding-inline: 0.5rem;
-}
-.header .edit-board img {
-  width: 0.2306rem;
-}
-@media (min-width: 43.75em) {
-  .header .edit-board img {
-    width: 0.28875rem;
     display: block;
   }
 }

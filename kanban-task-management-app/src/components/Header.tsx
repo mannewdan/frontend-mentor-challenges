@@ -1,9 +1,9 @@
 import logo from "../assets/logo-mobile.svg";
 import addTask from "../assets/icon-add-task-mobile.svg";
-import vertEllipsis from "../assets/icon-vertical-ellipsis.svg";
 import chevron from "../assets/icon-chevron-down.svg";
 import { useDataContext } from "../context/DataContext";
 import { FormInfoT, FormStyleE } from "../App";
+import DotMenu from "./DotMenu";
 
 type HeaderProps = {
   setNoTransitions: (value: boolean) => void;
@@ -63,9 +63,16 @@ export default function Header({
         <span>+ Add New Task</span>
       </button>
 
-      <button className="edit-board">
-        <img className="" src={vertEllipsis}></img>
-      </button>
+      <DotMenu
+        buttons={[
+          { name: "Edit Board", onClick: () => console.log("edit board") },
+          {
+            name: "Delete Board",
+            onClick: () => console.log("delete board"),
+            danger: true,
+          },
+        ]}
+      />
     </header>
   );
 }

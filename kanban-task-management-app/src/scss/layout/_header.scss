@@ -118,16 +118,4 @@
       }
     }
   }
-  .edit-board {
-    padding: 0.3rem;
-    padding-inline: 0.5rem;
-
-    img {
-      width: 0.2306rem;
-      @include breakpoint(medium) {
-        width: 0.28875rem;
-        display: block;
-      }
-    }
-  }
 }

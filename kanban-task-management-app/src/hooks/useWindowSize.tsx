@@ -34,7 +34,7 @@ export default function useWindowSize() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  });
+  }, []);
 
   return { isMedium, isLarge, isXLarge };
 }

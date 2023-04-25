@@ -33,13 +33,13 @@ export default function App() {
     style: FormStyleE.None,
   });
 
-  //disable transitions on load
+  //re-enable transitions (they are disabled for a moment on refresh)
   React.useEffect(() => {
     setTimeout(() => {
       document.body.classList.remove("notransition");
     }, 500);
   }, []);
-  //disable transitions after finishing
+  //disable transitions after they are finished (for better resizing behavior)
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setNoTransitions(true);
