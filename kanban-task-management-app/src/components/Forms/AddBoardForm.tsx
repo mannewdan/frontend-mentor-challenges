@@ -1,15 +1,18 @@
 import React from "react";
 import TextInput from "../TextInput";
-import { BoardT, ColumnT } from "../../context/DataContext";
+import { BoardT, ColumnT, useDataContext } from "../../context/DataContext";
 import crossIcon from "../../assets/icon-cross.svg";
 import { v4 as uuid } from "uuid";
 import FormTemplate from "./FormTemplate";
 
 export default function AddBoardForm() {
+  const [nameError, setNameError] = React.useState(false);
+  const [columnError, setColumnError] = React.useState(false);
   const [formData, setFormData] = React.useState<BoardT>({
     name: "",
     columns: [{ name: "Column 1", tasks: [], id: uuid() }],
   });
+  const { data } = useDataContext();
 
   const columnEls = formData.columns.map((item, index) => {
     return (
@@ -30,6 +33,7 @@ export default function AddBoardForm() {
           }}
         />
         <button
+          type={"button"}
           onClick={(e) => {
             e.preventDefault();
             setFormData((prev) => {
@@ -54,8 +58,16 @@ export default function AddBoardForm() {
       <TextInput
         label={"Board Name"}
         placeholder="e.g. Web Design"
+        error={
+          nameError
+            ? formData.name
+              ? "Board name already exists"
+              : ""
+            : undefined
+        }
         text={formData.name}
         setText={(text: string) => {
+          setNameError(false);
           setFormData((prev) => {
             return { ...prev, name: text };
           });
@@ -71,6 +83,7 @@ export default function AddBoardForm() {
         {columnEls}
 
         <button
+          type={"button"}
           onClick={(e) => {
             e.preventDefault();
             setFormData((prev) => {
@@ -95,9 +108,20 @@ export default function AddBoardForm() {
 
       {/* Submit */}
       <button
+        type={"submit"}
         onClick={(e) => {
           e.preventDefault();
-          console.log("Create New Board");
+
+          const nameError =
+            !formData.name ||
+            data.boards.find((item) => {
+              return item.name === formData.name;
+            });
+          if (nameError) {
+            setNameError(true);
+          } else {
+            console.log("Create New Board");
+          }
         }}
         className="button-primary"
       >

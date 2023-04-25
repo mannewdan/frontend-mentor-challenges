@@ -458,15 +458,18 @@ img {
 .text-input label + input[type=text], .text-input label + textarea {
   margin-top: 0.6154em;
 }
-.text-input.empty::before {
-  content: "Can't be empty";
+.text-input.error {
+  --content: "Can't be empty";
+}
+.text-input.error::before {
+  content: var(--content);
   position: absolute;
   right: 1.2308em;
-  bottom: 0.75em;
+  bottom: 0.55em;
   color: hsl(var(--c-accent-danger));
 }
-.text-input.empty textarea,
-.text-input.empty input[type=text] {
+.text-input.error textarea,
+.text-input.error input[type=text] {
   border-color: hsl(var(--c-accent-danger));
 }
 .text-input textarea {

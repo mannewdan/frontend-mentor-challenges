@@ -17,12 +17,13 @@
     }
   }
 
-  &.empty {
+  &.error {
+    --content: "Can't be empty";
     &::before {
-      content: "Can't be empty";
+      content: var(--content);
       position: absolute;
       right: 1.2308em;
-      bottom: calc(0.75em);
+      bottom: 0.55em;
       color: hsl(var(--c-accent-danger));
     }
     textarea,

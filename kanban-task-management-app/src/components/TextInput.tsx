@@ -3,7 +3,7 @@ type TextInputProps = {
   text: string;
   setText: (text: string) => void;
   placeholder?: string;
-  error?: boolean;
+  error?: string;
   isTextArea?: boolean;
 };
 
@@ -16,7 +16,14 @@ export default function TextInput({
   isTextArea,
 }: TextInputProps) {
   return (
-    <div className={`text-input ${error ? "empty" : ""}`}>
+    <div
+      className={`text-input ${error !== undefined ? "error" : ""}`}
+      style={
+        {
+          "--content": `"${error ? error : "Can't be empty"}"`,
+        } as React.CSSProperties
+      }
+    >
       {label && <label htmlFor={label}>{label}</label>}
 
       {!isTextArea && (
