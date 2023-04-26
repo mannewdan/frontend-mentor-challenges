@@ -480,6 +480,7 @@ img {
   min-width: 12rem;
   padding: 1rem;
   gap: 1rem;
+  box-shadow: 0 0 4px hsla(0, 0%, 0%, 0.15);
   transition: background-color 250ms ease-out, color 120ms ease-out, border-color 250ms ease-out, transform 250ms ease-out, opacity 50ms ease-out;
   background: hsl(var(--c-bg-main-light));
   border-radius: 0.5rem;
@@ -562,11 +563,12 @@ select.hidden:focus-visible + div {
   background: hsl(var(--c-bg-main));
   border-radius: 8px;
   transform-origin: top;
-  transform: translateY(-2.6154em) scaleY(0);
+  transform: translateY(-2.6154em) scaleY(0.5);
   opacity: 0;
-  transition: transform 150ms ease-out, opacity 150ms ease-out;
+  transition: transform 0ms ease-out 80ms, opacity 75ms ease-out;
 }
 .expanded .select-box .options {
+  transition: transform 150ms ease-out, opacity 150ms ease-out;
   transform: translateY(0) scaleY(1);
   opacity: 1;
 }

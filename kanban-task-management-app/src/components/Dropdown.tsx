@@ -1,4 +1,5 @@
 import React from "react";
+import useClickOutside from "../hooks/useClickOutside";
 
 type DropdownProps = {
   name: string;
@@ -14,9 +15,13 @@ export default function Dropdown({
   setSelection,
 }: DropdownProps) {
   const [expanded, setExpanded] = React.useState(false);
+  const containerRef = React.useRef(null);
+
+  useClickOutside(() => setExpanded(false), containerRef);
 
   return (
     <label
+      ref={containerRef}
       htmlFor={name}
       className={expanded ? "expanded" : ""}
       onClick={() => setExpanded((prev) => !prev)}

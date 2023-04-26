@@ -60,10 +60,11 @@ select.hidden {
     border-radius: 8px;
 
     transform-origin: top;
-    transform: translateY(-2.6154em) scaleY(0);
+    transform: translateY(-2.6154em) scaleY(0.5);
     opacity: 0;
-    transition: transform 150ms ease-out, opacity 150ms ease-out;
+    transition: transform 0ms ease-out 80ms, opacity 75ms ease-out;
     .expanded & {
+      transition: transform 150ms ease-out, opacity 150ms ease-out;
       transform: translateY(0) scaleY(1);
       opacity: 1;
     }
