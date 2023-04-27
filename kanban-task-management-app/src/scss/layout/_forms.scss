@@ -42,35 +42,49 @@
     h3 {
       margin-bottom: 1.3333em;
     }
-    .column-section {
-      margin-top: 1.5rem;
-      margin-bottom: 1.5rem;
 
-      & > *:not(:first-child) {
-        margin-bottom: 0.75rem;
-      }
-      & > *:first-child {
-        display: block;
-        margin-bottom: 0.5rem;
-      }
+    &.add-board {
+      .column-section {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
 
-      .column {
+        & > *:not(:first-child) {
+          margin-bottom: 0.75rem;
+        }
+        & > *:first-child {
+          display: block;
+          margin-bottom: 0.5rem;
+        }
+
+        .column {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+
+          .text-input {
+            width: 100%;
+            margin-right: 0.75rem;
+          }
+          input {
+            margin-top: 0;
+          }
+          button {
+            width: 1.5rem;
+            padding: 0.25rem;
+          }
+        }
+      }
+    }
+    &.delete {
+      p {
+        margin-bottom: 1.5rem;
+      }
+      .button-container {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        width: 100%;
-
-        .text-input {
-          width: 100%;
-          margin-right: 0.75rem;
-        }
-        input {
-          margin-top: 0;
-        }
-        button {
-          width: 1.5rem;
-          padding: 0.25rem;
-        }
+        gap: 1rem;
+        margin-bottom: 0.5rem;
       }
     }
   }

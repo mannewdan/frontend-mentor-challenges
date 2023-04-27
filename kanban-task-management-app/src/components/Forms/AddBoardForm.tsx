@@ -7,7 +7,7 @@ import FormTemplate from "./FormTemplate";
 
 type AddBoardForm = {
   board?: BoardT;
-  submitAction: () => void;
+  submitAction?: () => void;
 };
 
 export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
@@ -64,7 +64,10 @@ export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
   });
 
   return (
-    <FormTemplate title={board ? "Edit Board" : "Add New Board"}>
+    <FormTemplate
+      title={board ? "Edit Board" : "Add New Board"}
+      className="add-board"
+    >
       {/* Name */}
       <TextInput
         label={"Board Name"}
@@ -142,7 +145,7 @@ export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
               }, 100);
             }
 
-            submitAction();
+            if (submitAction) submitAction();
           }
         }}
         className="button-primary"

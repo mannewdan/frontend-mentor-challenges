@@ -3,13 +3,20 @@ import React from "react";
 type FormTemplateProps = {
   title: string;
   children: React.ReactNode;
+  className?: string;
+  danger?: boolean;
 };
 
-export default function FormTemplate({ title, children }: FormTemplateProps) {
+export default function FormTemplate({
+  title,
+  children,
+  className,
+  danger,
+}: FormTemplateProps) {
   return (
-    <form className="form" autoComplete="off">
+    <form className={`form ${className ? className : ""}`} autoComplete="off">
       <div className="scrollable-area">
-        <h3 className="text-h-l">{title}</h3>
+        <h3 className={`text-h-l ${danger ? "c-text-danger" : ""}`}>{title}</h3>
 
         {children}
       </div>

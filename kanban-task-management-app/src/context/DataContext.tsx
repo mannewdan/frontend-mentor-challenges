@@ -13,6 +13,7 @@ type DataContextT = {
   setCurrentBoard: (index: number) => void;
   addBoard: (newBoard: BoardT) => void;
   editBoard: (id: string, newBoard: BoardT) => void;
+  deleteBoard: (id: string) => void;
 };
 type DataT = {
   darkMode: boolean;
@@ -93,6 +94,7 @@ export default function DataContext({ children }: DataContextProps) {
     });
   }
   function setCurrentBoard(index: number) {
+    if (index < 0) index = 0;
     setData((prev) => {
       return { ...prev, currentBoard: index };
     });
@@ -113,6 +115,29 @@ export default function DataContext({ children }: DataContextProps) {
         }),
       };
     });
+  }
+  function deleteBoard(id: string) {
+    let deletedSomething = false;
+    let index = data.currentBoard;
+    setData((prev) => {
+      const newBoards = prev.boards.filter((item) => {
+        if (item.id === id) {
+          deletedSomething = true;
+          return false;
+        } else return true;
+      });
+
+      if (index > newBoards.length - 1) index = newBoards.length - 1;
+
+      return {
+        ...prev,
+        boards: newBoards,
+      };
+    });
+
+    if (deletedSomething) {
+      setCurrentBoard(index);
+    }
   }
 
   //save/load
@@ -144,6 +169,7 @@ export default function DataContext({ children }: DataContextProps) {
         setCurrentBoard,
         addBoard,
         editBoard,
+        deleteBoard,
       }}
     >
       {children}

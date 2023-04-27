@@ -1320,33 +1320,42 @@ select.hidden:focus-visible + div {
 .form-positioner .form h3 {
   margin-bottom: 1.3333em;
 }
-.form-positioner .form .column-section {
+.form-positioner .form.add-board .column-section {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
-.form-positioner .form .column-section > *:not(:first-child) {
+.form-positioner .form.add-board .column-section > *:not(:first-child) {
   margin-bottom: 0.75rem;
 }
-.form-positioner .form .column-section > *:first-child {
+.form-positioner .form.add-board .column-section > *:first-child {
   display: block;
   margin-bottom: 0.5rem;
 }
-.form-positioner .form .column-section .column {
+.form-positioner .form.add-board .column-section .column {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
 }
-.form-positioner .form .column-section .column .text-input {
+.form-positioner .form.add-board .column-section .column .text-input {
   width: 100%;
   margin-right: 0.75rem;
 }
-.form-positioner .form .column-section .column input {
+.form-positioner .form.add-board .column-section .column input {
   margin-top: 0;
 }
-.form-positioner .form .column-section .column button {
+.form-positioner .form.add-board .column-section .column button {
   width: 1.5rem;
   padding: 0.25rem;
+}
+.form-positioner .form.delete p {
+  margin-bottom: 1.5rem;
+}
+.form-positioner .form.delete .button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 @keyframes form-fade-in {

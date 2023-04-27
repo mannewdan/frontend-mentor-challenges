@@ -10,7 +10,7 @@ type ContentProps = {
 export default function Content({ formInfo, setFormInfo }: ContentProps) {
   const { data } = useDataContext();
 
-  let columnEls = [<></>];
+  let columnEls = [] as Array<JSX.Element>;
   if (data.boards && data.boards.length > data.currentBoard) {
     columnEls = data.boards[data.currentBoard].columns.map((item, index) => {
       return (
