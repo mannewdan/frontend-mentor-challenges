@@ -12,6 +12,7 @@ type DataContextT = {
   showSidebar: () => void;
   setCurrentBoard: (index: number) => void;
   addBoard: (newBoard: BoardT) => void;
+  editBoard: (id: string, newBoard: BoardT) => void;
 };
 type DataT = {
   darkMode: boolean;
@@ -22,24 +23,24 @@ type DataT = {
 export type BoardT = {
   name: string;
   columns: Array<ColumnT>;
-  id?: string;
+  id: string;
 };
 export type ColumnT = {
   name: string;
   tasks: Array<TaskT>;
-  id?: string;
+  id: string;
 };
-type TaskT = {
+export type TaskT = {
   title: string;
   description: string;
   status: string;
   subtasks: Array<SubtaskT>;
-  id?: string;
+  id: string;
 };
-type SubtaskT = {
+export type SubtaskT = {
   title: string;
   isCompleted: boolean;
-  id?: string;
+  id: string;
 };
 const DefaultDataValues: DataT = {
   darkMode: false,
@@ -101,6 +102,18 @@ export default function DataContext({ children }: DataContextProps) {
       return { ...prev, boards: [...prev.boards, newBoard] };
     });
   }
+  function editBoard(id: string, newBoard: BoardT) {
+    setData((prev) => {
+      return {
+        ...prev,
+        boards: prev.boards.map((item) => {
+          if (item.id === id) {
+            return { ...newBoard };
+          } else return item;
+        }),
+      };
+    });
+  }
 
   //save/load
   React.useEffect(() => {
@@ -130,6 +143,7 @@ export default function DataContext({ children }: DataContextProps) {
         showSidebar,
         setCurrentBoard,
         addBoard,
+        editBoard,
       }}
     >
       {children}

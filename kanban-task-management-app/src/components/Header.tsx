@@ -53,7 +53,7 @@ export default function Header({
           if (data.boards.length > data.currentBoard) {
             setFormInfo({
               style: FormStyleE.AddTask,
-              board: data.boards[data.currentBoard].name,
+              board: data.boards[data.currentBoard],
             });
           }
         }}
@@ -65,10 +65,27 @@ export default function Header({
 
       <DotMenu
         buttons={[
-          { name: "Edit Board", onClick: () => console.log("edit board") },
+          {
+            name: "Edit Board",
+            onClick: () => {
+              if (data.boards.length > data.currentBoard) {
+                setFormInfo({
+                  style: FormStyleE.EditBoard,
+                  board: data.boards[data.currentBoard],
+                });
+              }
+            },
+          },
           {
             name: "Delete Board",
-            onClick: () => console.log("delete board"),
+            onClick: () => {
+              if (data.boards.length > data.currentBoard) {
+                setFormInfo({
+                  style: FormStyleE.DeleteBoard,
+                  board: data.boards[data.currentBoard],
+                });
+              }
+            },
             danger: true,
           },
         ]}

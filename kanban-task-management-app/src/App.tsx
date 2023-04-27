@@ -6,11 +6,12 @@ import Content from "./components/Content";
 import FormHandler from "./components/FormHandler";
 import { useDataContext } from "./context/DataContext";
 import useWindowSize from "./hooks/useWindowSize";
+import { BoardT, TaskT } from "./context/DataContext";
 
 export type FormInfoT = {
   style: FormStyleE;
-  board?: string;
-  task?: string;
+  board?: BoardT;
+  task?: TaskT;
   skipBGFade?: boolean;
 };
 export enum FormStyleE {

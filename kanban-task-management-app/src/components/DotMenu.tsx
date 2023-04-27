@@ -16,7 +16,10 @@ export default function DotMenu({ buttons }: DotMenuProps) {
     return (
       <button
         key={button.name}
-        onClick={button.onClick}
+        onClick={() => {
+          button.onClick();
+          setOpen(false);
+        }}
         className={button.danger ? "danger" : ""}
       >
         {button.name}

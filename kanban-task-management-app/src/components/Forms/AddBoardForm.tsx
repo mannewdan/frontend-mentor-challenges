@@ -6,17 +6,24 @@ import { v4 as uuid } from "uuid";
 import FormTemplate from "./FormTemplate";
 
 type AddBoardForm = {
-  closeForm: () => void;
+  board?: BoardT;
+  submitAction: () => void;
 };
 
-export default function AddBoardForm({ closeForm }: AddBoardForm) {
+export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
   const [nameError, setNameError] = React.useState(false);
   const [columnError, setColumnError] = React.useState(false);
-  const [formData, setFormData] = React.useState<BoardT>({
-    name: "",
-    columns: [{ name: "Column 1", tasks: [], id: uuid() }],
-  });
-  const { data, addBoard, setCurrentBoard } = useDataContext();
+  const [originalName] = React.useState(board ? board.name : "");
+  const [formData, setFormData] = React.useState<BoardT>(
+    board
+      ? board
+      : {
+          name: "",
+          columns: [{ name: "Column 1", tasks: [], id: uuid() }],
+          id: uuid(),
+        }
+  );
+  const { data, addBoard, editBoard, setCurrentBoard } = useDataContext();
 
   const columnEls = formData.columns.map((item, index) => {
     return (
@@ -57,7 +64,7 @@ export default function AddBoardForm({ closeForm }: AddBoardForm) {
   });
 
   return (
-    <FormTemplate title={"Add New Board"}>
+    <FormTemplate title={board ? "Edit Board" : "Add New Board"}>
       {/* Name */}
       <TextInput
         label={"Board Name"}
@@ -117,23 +124,30 @@ export default function AddBoardForm({ closeForm }: AddBoardForm) {
           e.preventDefault();
 
           const nameError =
-            !formData.name ||
-            data.boards.find((item) => {
-              return item.name === formData.name;
-            });
+            originalName &&
+            originalName !== formData.name &&
+            (!formData.name ||
+              data.boards.find((item) => {
+                return item.name === formData.name;
+              }));
           if (nameError) {
             setNameError(true);
           } else {
-            addBoard(formData);
-            closeForm();
-            setTimeout(() => {
-              setCurrentBoard(data.boards.length);
-            }, 100);
+            if (board) {
+              editBoard(board.id, formData);
+            } else {
+              addBoard(formData);
+              setTimeout(() => {
+                setCurrentBoard(data.boards.length);
+              }, 100);
+            }
+
+            submitAction();
           }
         }}
         className="button-primary"
       >
-        Create New Board
+        {board ? "Save Changes" : "Create New Board"}
       </button>
     </FormTemplate>
   );

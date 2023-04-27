@@ -18,10 +18,10 @@ export default function FormHandler({
   function selectFormEl() {
     switch (formInfo.style) {
       case FormStyleE.AddBoard:
-        return <AddBoardForm closeForm={closeForm} />;
+        return <AddBoardForm submitAction={closeForm} />;
       case FormStyleE.EditBoard:
-        //validate board
-        return <>edit board</>;
+        if (!formInfo.board) return null;
+        return <AddBoardForm board={formInfo.board} submitAction={closeForm} />;
       case FormStyleE.DeleteBoard:
         //validate board
         return <>delete board</>;

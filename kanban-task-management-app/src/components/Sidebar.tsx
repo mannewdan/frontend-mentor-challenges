@@ -28,7 +28,7 @@ export default function Sidebar({
   const boardEls = data.boards.map((item, index) => {
     return (
       <button
-        key={item.name}
+        key={item.id}
         className={`button-nav ${index === data.currentBoard ? "active" : ""}`}
         onClick={() => {
           setCurrentBoard(index);
