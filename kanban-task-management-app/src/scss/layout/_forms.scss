@@ -56,6 +56,13 @@
           margin-bottom: 0.5rem;
         }
 
+        span {
+          color: hsl(var(--c-neutral));
+          .dark & {
+            color: hsl(var(--c-text-dark));
+          }
+        }
+
         .column {
           display: flex;
           justify-content: space-between;

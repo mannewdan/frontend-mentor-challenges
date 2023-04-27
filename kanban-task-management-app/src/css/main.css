@@ -1331,6 +1331,12 @@ select.hidden:focus-visible + div {
   display: block;
   margin-bottom: 0.5rem;
 }
+.form-positioner .form.add-board .column-section span {
+  color: hsl(var(--c-neutral));
+}
+.dark .form-positioner .form.add-board .column-section span {
+  color: hsl(var(--c-text-dark));
+}
 .form-positioner .form.add-board .column-section .column {
   display: flex;
   justify-content: space-between;
