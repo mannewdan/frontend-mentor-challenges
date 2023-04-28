@@ -19,6 +19,9 @@ export default function AddTaskForm({
   submitAction,
 }: AddTaskFormProps) {
   const [titleError, setTitleError] = React.useState(false);
+  const [subtaskErrors, setSubtaskErrors] = React.useState(
+    [] as Array<boolean>
+  );
   const [formData, setFormData] = React.useState<TaskT>(
     task
       ? task
@@ -49,7 +52,22 @@ export default function AddTaskForm({
         <TextInput
           text={item.title}
           placeholder={placeholderBank[index % placeholderBank.length]}
+          error={
+            subtaskErrors.length > index && subtaskErrors[index]
+              ? "Can't be empty"
+              : undefined
+          }
           setText={(text: string) => {
+            if (subtaskErrors.length > index) {
+              setSubtaskErrors((prev) => {
+                return prev.map((item, i) => {
+                  if (i === index) {
+                    return false;
+                  } else return item;
+                });
+              });
+            }
+
             setFormData((prev) => {
               return {
                 ...prev,
@@ -167,10 +185,21 @@ recharge the batteries a little.`}
         onClick={(e) => {
           e.preventDefault();
 
-          const error = !formData.title;
-          if (error) {
+          const titleError = !formData.title;
+          if (titleError) {
             setTitleError(true);
-          } else {
+          }
+          let subtaskError = false;
+          const subtaskErrors = formData.subtasks.map((item) => {
+            if (!item.title) subtaskError = true;
+            return !item.title;
+          });
+          if (subtaskError) {
+            setSubtaskErrors(subtaskErrors);
+          }
+
+          if (!titleError && !subtaskError) {
+            console.log("No errors");
             if (task) {
               //edit task
             } else {

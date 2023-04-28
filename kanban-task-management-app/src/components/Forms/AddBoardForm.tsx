@@ -12,7 +12,7 @@ type AddBoardForm = {
 
 export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
   const [nameError, setNameError] = React.useState(false);
-  const [columnError, setColumnError] = React.useState(false);
+  const [columnErrors, setColumnErrors] = React.useState([] as Array<boolean>);
   const [originalName] = React.useState(board ? board.name : "");
   const [formData, setFormData] = React.useState<BoardT>(
     board
@@ -25,12 +25,28 @@ export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
   );
   const { data, addBoard, editBoard, setCurrentBoard } = useDataContext();
 
+  console.log(columnErrors);
+
   const columnEls = formData.columns.map((item, index) => {
     return (
       <div key={item.id} className="list-item">
         <TextInput
           text={item.name}
+          error={
+            columnErrors.length > 0 && columnErrors[index]
+              ? "Can't be empty"
+              : undefined
+          }
           setText={(text: string) => {
+            if (columnErrors.length > index) {
+              setColumnErrors((prev) => {
+                return prev.map((item, i) => {
+                  if (i === index) {
+                    return false;
+                  } else return item;
+                });
+              });
+            }
             setFormData((prev) => {
               return {
                 ...prev,
@@ -132,10 +148,19 @@ export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
               data.boards.find((item) => {
                 return item.name === formData.name;
               }));
-
           if (nameError) {
             setNameError(true);
-          } else {
+          }
+          let columnError = false;
+          const columnErrors = formData.columns.map((item) => {
+            if (!item.name) columnError = true;
+            return !item.name;
+          });
+          if (columnError) {
+            setColumnErrors(columnErrors);
+          }
+
+          if (!nameError && !columnError) {
             if (board) {
               editBoard(board.id, formData);
             } else {
