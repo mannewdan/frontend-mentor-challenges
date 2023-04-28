@@ -127,12 +127,12 @@ export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
           e.preventDefault();
 
           const nameError =
-            originalName &&
-            originalName !== formData.name &&
-            (!formData.name ||
+            !formData.name ||
+            (originalName !== formData.name &&
               data.boards.find((item) => {
                 return item.name === formData.name;
               }));
+
           if (nameError) {
             setNameError(true);
           } else {
