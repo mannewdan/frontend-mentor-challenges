@@ -104,10 +104,6 @@ select.hidden {
       }
       &:hover {
         color: hsl(var(--c-text-main));
-        &::before {
-          //   opacity: 1;
-          //   transform: scaleX(1);
-        }
       }
     }
   }

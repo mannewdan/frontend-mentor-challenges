@@ -636,6 +636,7 @@ select.hidden:focus-visible + div {
 .select-box .options span:hover {
   color: hsl(var(--c-text-main));
 }
+
 .icon-mask {
   position: relative;
   -webkit-mask-position: center;
@@ -1411,6 +1412,12 @@ select.hidden:focus-visible + div {
 .form-positioner .form.add-board .list-section .list-item button, .form-positioner .form.add-task .list-section .list-item button {
   width: 1.5rem;
   padding: 0.25rem;
+}
+.form-positioner .form.add-board .list-section .list-item button .blend, .form-positioner .form.add-task .list-section .list-item button .blend {
+  background-color: hsl(var(--c-neutral));
+}
+.form-positioner .form.add-board .list-section .list-item button:hover .blend, .form-positioner .form.add-task .list-section .list-item button:hover .blend {
+  background-color: hsl(var(--c-accent-danger));
 }
 .form-positioner .form.delete p {
   margin-bottom: 1.5rem;

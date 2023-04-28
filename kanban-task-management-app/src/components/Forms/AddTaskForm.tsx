@@ -5,6 +5,7 @@ import TextInput from "../TextInput";
 import crossIcon from "../../assets/icon-cross.svg";
 import { v4 as uuid } from "uuid";
 import Dropdown from "../Dropdown";
+import Icon from "../Icon";
 
 type AddTaskFormProps = {
   board: BoardT;
@@ -24,7 +25,7 @@ export default function AddTaskForm({
       : {
           title: "",
           description: "",
-          status: "",
+          status: board.columns.length > 0 ? board.columns[0].name : "",
           subtasks: [
             { title: "", isCompleted: false, id: uuid() },
             { title: "", isCompleted: false, id: uuid() },
@@ -75,7 +76,7 @@ export default function AddTaskForm({
             });
           }}
         >
-          <img src={crossIcon}></img>
+          <Icon url={crossIcon} />
         </button>
       </div>
     );
@@ -152,8 +153,12 @@ recharge the batteries a little.`}
       <Dropdown
         name={"Status"}
         options={board.columns.map((c) => c.name)}
-        selection={board.columns[0].name}
-        setSelection={() => console.log("selected")}
+        selection={formData.status}
+        setSelection={(selection: string) => {
+          setFormData((prev) => {
+            return { ...prev, status: selection };
+          });
+        }}
       />
 
       {/* Submit */}
