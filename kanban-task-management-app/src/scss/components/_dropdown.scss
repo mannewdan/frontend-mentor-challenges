@@ -6,12 +6,12 @@
 }
 select.hidden {
   position: absolute;
-  left: -100px;
+  left: -200vw;
   top: 0;
   width: 0;
   height: 0;
 
-  &:focus-visible + div {
+  &:focus-visible ~ div {
     outline: 1px solid hsl(var(--c-text-main));
     border-radius: 4px;
   }

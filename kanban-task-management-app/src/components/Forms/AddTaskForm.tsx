@@ -1,5 +1,10 @@
 import React from "react";
-import { BoardT, TaskT, SubtaskT } from "../../context/DataContext";
+import {
+  BoardT,
+  TaskT,
+  SubtaskT,
+  useDataContext,
+} from "../../context/DataContext";
 import FormTemplate from "./FormTemplate";
 import TextInput from "../TextInput";
 import crossIcon from "../../assets/icon-cross.svg";
@@ -28,7 +33,10 @@ export default function AddTaskForm({
       : {
           title: "",
           description: "",
-          status: board.columns.length > 0 ? board.columns[0].name : "",
+          column:
+            board.columns.length > 0
+              ? { name: board.columns[0].name, id: board.columns[0].id }
+              : { name: "", id: "" },
           subtasks: [
             { title: "", isCompleted: false, id: uuid() },
             { title: "", isCompleted: false, id: uuid() },
@@ -36,6 +44,7 @@ export default function AddTaskForm({
           id: uuid(),
         }
   );
+  const { addTask } = useDataContext();
 
   const placeholderBank = [
     "e.g. Make coffee",
@@ -170,11 +179,11 @@ recharge the batteries a little.`}
       {/* Status */}
       <Dropdown
         name={"Status"}
-        options={board.columns.map((c) => c.name)}
-        selection={formData.status}
-        setSelection={(selection: string) => {
+        options={board.columns.map((c) => ({ name: c.name, id: c.id }))}
+        selection={formData.column}
+        setSelection={(selection: { name: string; id: string }) => {
           setFormData((prev) => {
-            return { ...prev, status: selection };
+            return { ...prev, column: selection };
           });
         }}
       />
@@ -203,7 +212,7 @@ recharge the batteries a little.`}
             if (task) {
               //edit task
             } else {
-              //add task
+              addTask(board.id, formData.column.id, formData);
             }
 
             if (submitAction) submitAction();

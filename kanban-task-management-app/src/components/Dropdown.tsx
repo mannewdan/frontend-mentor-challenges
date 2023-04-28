@@ -3,9 +3,9 @@ import useClickOutside from "../hooks/useClickOutside";
 
 type DropdownProps = {
   name: string;
-  options: Array<string>;
-  selection: string;
-  setSelection: (selection: string) => void;
+  options: Array<{ name: string; id: string }>;
+  selection: { name: string; id: string };
+  setSelection: (selection: { name: string; id: string }) => void;
 };
 
 export default function Dropdown({
@@ -29,15 +29,19 @@ export default function Dropdown({
       <select
         className="hidden"
         onChange={(e) => {
-          setSelection(e.target.value);
+          console.log(e.target.value);
+          const matchingOption = options.find(
+            (option) => option.id === e.target.value
+          );
+          setSelection(matchingOption ? matchingOption : { name: "", id: "" });
         }}
-        value={selection}
+        value={selection.id}
         name={name}
       >
         {options.map((item) => {
           return (
-            <option key={item} value={item}>
-              {item}
+            <option key={item.id} value={item.id}>
+              {item.name}
             </option>
           );
         })}
@@ -45,17 +49,17 @@ export default function Dropdown({
 
       <span className="text-b-m c-text-neutral">{name}</span>
       <div className="select-box">
-        <div className="selection text-b-l">{selection}</div>
+        <div className="selection text-b-l">{selection.name}</div>
         <div className="options-container"></div>
         <div className={`options ${expanded ? "expanded" : ""}`}>
           {options.map((item) => {
             return (
               <span
-                key={item}
+                key={item.id}
                 className="text-b-l"
                 onClick={() => setSelection(item)}
               >
-                {item}
+                {item.name}
               </span>
             );
           })}

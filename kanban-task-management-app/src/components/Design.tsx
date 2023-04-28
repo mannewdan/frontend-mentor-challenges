@@ -69,12 +69,14 @@ export default function Design() {
           isTextArea={true}
         />
 
-        <Dropdown
+        {/* 
+         <Dropdown
           name={"status"}
           options={sOptions}
           selection={selection}
           setSelection={setSelection}
-        />
+        />       
+        */}
       </div>
     </section>
   );

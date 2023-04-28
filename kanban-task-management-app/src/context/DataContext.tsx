@@ -12,6 +12,7 @@ type DataContextT = {
   showSidebar: () => void;
   setCurrentBoard: (index: number) => void;
   addBoard: (newBoard: BoardT) => void;
+  addTask: (boardID: string, columnID: string, newTask: TaskT) => void;
   editBoard: (id: string, newBoard: BoardT) => void;
   deleteBoard: (id: string) => void;
 };
@@ -34,7 +35,7 @@ export type ColumnT = {
 export type TaskT = {
   title: string;
   description: string;
-  status: string;
+  column: { name: string; id: string };
   subtasks: Array<SubtaskT>;
   id: string;
 };
@@ -51,12 +52,14 @@ const DefaultDataValues: DataT = {
       ...board,
       id: uuid(),
       columns: board.columns.map((column) => {
+        const columnID = uuid();
         return {
           ...column,
-          id: uuid(),
+          id: columnID,
           tasks: column.tasks.map((task) => {
             return {
               ...task,
+              column: { name: task.status, id: columnID },
               id: uuid(),
               subtasks: task.subtasks.map((subtask) => {
                 return { ...subtask, id: uuid() };
@@ -102,6 +105,25 @@ export default function DataContext({ children }: DataContextProps) {
   function addBoard(newBoard: BoardT) {
     setData((prev) => {
       return { ...prev, boards: [...prev.boards, newBoard] };
+    });
+  }
+  function addTask(boardID: string, columnID: string, newTask: TaskT) {
+    setData((prev) => {
+      return {
+        ...prev,
+        boards: prev.boards.map((board) => {
+          if (board.id === boardID) {
+            return {
+              ...board,
+              columns: board.columns.map((column) => {
+                if (column.id === columnID) {
+                  return { ...column, tasks: [...column.tasks, newTask] };
+                } else return column;
+              }),
+            };
+          } else return board;
+        }),
+      };
     });
   }
   function editBoard(id: string, newBoard: BoardT) {
@@ -168,6 +190,7 @@ export default function DataContext({ children }: DataContextProps) {
         showSidebar,
         setCurrentBoard,
         addBoard,
+        addTask,
         editBoard,
         deleteBoard,
       }}

@@ -520,12 +520,12 @@ label {
 
 select.hidden {
   position: absolute;
-  left: -100px;
+  left: -200vw;
   top: 0;
   width: 0;
   height: 0;
 }
-select.hidden:focus-visible + div {
+select.hidden:focus-visible ~ div {
   outline: 1px solid hsl(var(--c-text-main));
   border-radius: 4px;
 }
