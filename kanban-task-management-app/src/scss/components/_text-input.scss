@@ -20,10 +20,11 @@
   &.error {
     --content: "Can't be empty";
     &::before {
+      @extend .text-b-m;
       content: var(--content);
       position: absolute;
       right: 1.2308em;
-      bottom: 0.55em;
+      bottom: 1em;
       color: hsl(var(--c-accent-danger));
     }
     textarea,

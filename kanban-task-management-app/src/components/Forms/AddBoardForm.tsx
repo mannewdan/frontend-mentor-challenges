@@ -27,7 +27,7 @@ export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
 
   const columnEls = formData.columns.map((item, index) => {
     return (
-      <div key={item.id} className="column">
+      <div key={item.id} className="list-item">
         <TextInput
           text={item.name}
           setText={(text: string) => {
@@ -89,7 +89,7 @@ export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
       />
 
       {/* Columns */}
-      <div className="column-section">
+      <div className="list-section">
         {formData.columns.length > 0 && (
           <span className="text-b-m">Board Columns</span>
         )}

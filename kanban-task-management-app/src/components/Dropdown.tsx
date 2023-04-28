@@ -23,7 +23,7 @@ export default function Dropdown({
     <label
       ref={containerRef}
       htmlFor={name}
-      className={expanded ? "expanded" : ""}
+      className={`dropdown-label ${expanded ? "expanded" : ""}`}
       onClick={() => setExpanded((prev) => !prev)}
     >
       <select
@@ -43,12 +43,18 @@ export default function Dropdown({
         })}
       </select>
 
+      <span className="text-b-m c-text-neutral">{name}</span>
       <div className="select-box">
-        <span className="selection">{selection}</span>
-        <div className="options">
+        <div className="selection text-b-l">{selection}</div>
+        <div className="options-container"></div>
+        <div className={`options ${expanded ? "expanded" : ""}`}>
           {options.map((item) => {
             return (
-              <span key={item} onClick={() => setSelection(item)}>
+              <span
+                key={item}
+                className="text-b-l"
+                onClick={() => setSelection(item)}
+              >
                 {item}
               </span>
             );

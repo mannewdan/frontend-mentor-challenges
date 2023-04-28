@@ -1,6 +1,13 @@
+@use "../globals/utility" as *;
+
+.dropdown-label > span {
+  display: block;
+  margin-bottom: 0.5rem;
+}
 select.hidden {
   position: absolute;
   left: -100px;
+  top: 0;
   width: 0;
   height: 0;
 
@@ -11,24 +18,8 @@ select.hidden {
 }
 
 .select-box {
-  position: relative;
   cursor: pointer;
   z-index: 1;
-
-  &::after {
-    content: url("../assets/icon-chevron-down.svg");
-    position: absolute;
-    display: flex;
-    align-items: center;
-    height: 100%;
-    top: 0;
-    right: 1.2308em;
-
-    transition: transform 75ms ease-in-out;
-  }
-  .expanded &::after {
-    transform: rotate(-180deg);
-  }
 
   .selection {
     display: block;
@@ -39,19 +30,44 @@ select.hidden {
     border: 1px solid hsl(var(--c-neutral) / 25%);
     border-radius: 4px;
 
+    position: relative;
+    &::after {
+      content: url("../assets/icon-chevron-down.svg");
+      position: absolute;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      top: 0;
+      right: 1.2308em;
+
+      transition: transform 75ms ease-in-out;
+    }
+    .expanded &::after {
+      transform: rotate(-180deg);
+    }
     .expanded & {
       border-color: hsl(var(--c-accent-main));
     }
   }
   .options {
     cursor: default;
+    z-index: 1;
     position: absolute;
-    top: calc(100% + 0.3846em);
-    z-index: -1;
+    pointer-events: none;
+    &.expanded {
+      pointer-events: all;
+    }
+
+    top: calc(100% - 6rem);
+
+    @include customScrollbar;
+    overflow-y: auto;
+    max-height: 7.3125rem;
+    margin-top: 0.625rem;
 
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: calc(100% - 4rem);
     padding: 0.75rem;
     padding-inline: 1rem;
 
@@ -73,6 +89,7 @@ select.hidden {
       position: relative;
       padding-top: 0.308em;
       padding-bottom: 0.308em;
+      transition: color 75ms ease-out;
       &::before {
         content: "";
         position: absolute;
@@ -88,8 +105,8 @@ select.hidden {
       &:hover {
         color: hsl(var(--c-text-main));
         &::before {
-          opacity: 1;
-          transform: scaleX(1);
+          //   opacity: 1;
+          //   transform: scaleX(1);
         }
       }
     }

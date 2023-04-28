@@ -29,6 +29,17 @@
       overflow-y: auto;
       @include customScrollbar;
       padding: 2rem;
+      padding-right: 0;
+
+      & > * {
+        max-width: calc(min(calc(100vw - 2rem), 23.75rem) - 4rem);
+        @include breakpoint(medium) {
+          max-width: 26rem;
+        }
+      }
+    }
+    &.add-task .scrollable-area {
+      max-height: calc(100vh - 6rem);
     }
 
     background-color: hsl(var(--c-bg-main-light));
@@ -43,8 +54,16 @@
       margin-bottom: 1.3333em;
     }
 
-    &.add-board {
-      .column-section {
+    &.add-board,
+    &.add-task {
+      .text-input + .text-input {
+        margin-top: 1.5rem;
+      }
+      .select-box {
+        margin-bottom: 1.5rem;
+      }
+
+      .list-section {
         margin-top: 1.5rem;
         margin-bottom: 1.5rem;
 
@@ -63,7 +82,7 @@
           }
         }
 
-        .column {
+        .list-item {
           display: flex;
           justify-content: space-between;
           align-items: center;
