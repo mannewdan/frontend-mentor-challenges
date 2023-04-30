@@ -21,8 +21,6 @@ export default function ViewTaskForm({
 
   const { editTask } = useDataContext();
 
-  console.log(formData);
-
   const subtaskEls = formData.subtasks.map((subtask) => {
     return (
       <Checkbox
@@ -70,7 +68,11 @@ export default function ViewTaskForm({
           {
             name: "Delete Task",
             onClick: () => {
-              setFormInfo({ style: FormStyleE.DeleteTask });
+              setFormInfo({
+                style: FormStyleE.DeleteTask,
+                board,
+                task: formData,
+              });
             },
             danger: true,
           },

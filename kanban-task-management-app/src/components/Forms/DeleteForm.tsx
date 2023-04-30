@@ -14,7 +14,7 @@ export default function DeleteForm({
   submitAction,
   cancelAction,
 }: DeleteFormProps) {
-  const { deleteBoard } = useDataContext();
+  const { deleteBoard, deleteTask } = useDataContext();
 
   return (
     <FormTemplate
@@ -24,11 +24,11 @@ export default function DeleteForm({
     >
       {!task && (
         <p className="text-b-l">
-          {`Are you sure you want to delete the ‘Platform Launch’ board? This action will remove all columns and tasks and cannot be reversed.`}
+          {`Are you sure you want to delete the ‘${board.name}’ board? This action will remove all columns and tasks and cannot be reversed.`}
         </p>
       )}
       {task && (
-        <p className="text-b-l">{`Are you sure you want to delete the ‘Build settings UI’ task and its subtasks? This action cannot be reversed.`}</p>
+        <p className="text-b-l">{`Are you sure you want to delete the ‘${task.title}’ task and its subtasks? This action cannot be reversed.`}</p>
       )}
 
       <div className="button-container">
@@ -37,7 +37,11 @@ export default function DeleteForm({
           onClick={(e) => {
             e.preventDefault();
 
-            deleteBoard(board.id);
+            if (task) {
+              deleteTask(board.id, task);
+            } else {
+              deleteBoard(board.id);
+            }
 
             if (submitAction) submitAction();
           }}

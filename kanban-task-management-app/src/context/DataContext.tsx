@@ -16,6 +16,7 @@ type DataContextT = {
   deleteBoard: (id: string) => void;
   addTask: (boardID: string, columnID: string, newTask: TaskT) => void;
   editTask: (boardID: string, newTask: TaskT) => void;
+  deleteTask: (boardID: string, task: TaskT) => void;
 };
 type DataT = {
   darkMode: boolean;
@@ -203,6 +204,30 @@ export default function DataContext({ children }: DataContextProps) {
       };
     });
   }
+  function deleteTask(boardID: string, task: TaskT) {
+    setData((prev) => {
+      return {
+        ...prev,
+        boards: prev.boards.map((board) => {
+          if (board.id === boardID) {
+            return {
+              ...board,
+              columns: board.columns.map((column) => {
+                if (column.id === task.column.id) {
+                  return {
+                    ...column,
+                    tasks: column.tasks.filter((t) => {
+                      return t.id !== task.id;
+                    }),
+                  };
+                } else return column;
+              }),
+            };
+          } else return board;
+        }),
+      };
+    });
+  }
 
   //save/load
   React.useEffect(() => {
@@ -236,6 +261,7 @@ export default function DataContext({ children }: DataContextProps) {
         deleteBoard,
         addTask,
         editTask,
+        deleteTask,
       }}
     >
       {children}

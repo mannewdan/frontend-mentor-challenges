@@ -62,7 +62,18 @@ export default function FormHandler({
         );
       case FormStyleE.DeleteTask:
         if (!formInfo.board || !formInfo.task) return null;
-        return <>delete task</>;
+        return (
+          <DeleteForm
+            board={formInfo.board}
+            task={formInfo.task}
+            submitAction={closeForm}
+            cancelAction={() => {
+              setFormInfo((prev: FormInfoT) => {
+                return { ...prev, style: FormStyleE.ViewTask };
+              });
+            }}
+          />
+        );
       default:
         return null;
     }
