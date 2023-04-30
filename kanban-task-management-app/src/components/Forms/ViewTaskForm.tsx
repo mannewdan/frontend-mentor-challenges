@@ -21,13 +21,17 @@ export default function ViewTaskForm({
 
   const { editTask } = useDataContext();
 
+  console.log(formData);
+
   const subtaskEls = formData.subtasks.map((subtask) => {
     return (
       <Checkbox
         key={subtask.id}
         name={subtask.title}
+        id={subtask.id}
         checked={subtask.isCompleted}
         toggleChecked={() => {
+          console.log(subtask.id);
           setFormData((prev) => {
             return {
               ...prev,

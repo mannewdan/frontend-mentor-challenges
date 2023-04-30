@@ -1,11 +1,13 @@
 type CheckboxProps = {
   name: string;
+  id: string;
   checked: boolean;
   toggleChecked: () => void;
 };
 
 export default function Checkbox({
   name,
+  id,
   checked,
   toggleChecked,
 }: CheckboxProps) {
@@ -13,11 +15,11 @@ export default function Checkbox({
     <div className="checkbox">
       <input
         type="checkbox"
-        id={name}
+        id={id}
         checked={checked}
         onChange={() => toggleChecked()}
       ></input>
-      <label htmlFor={name}>
+      <label htmlFor={id}>
         <span>{name}</span>
         <span className="checkmark"></span>
       </label>
