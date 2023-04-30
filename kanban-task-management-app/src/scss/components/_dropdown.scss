@@ -31,6 +31,7 @@ select.hidden {
     border-radius: 4px;
 
     position: relative;
+    --rotationOffset: 0deg;
     &::after {
       content: url("../assets/icon-chevron-down.svg");
       position: absolute;
@@ -40,10 +41,11 @@ select.hidden {
       top: 0;
       right: 1.2308em;
 
+      transform: rotate(var(--rotationOffset));
       transition: transform 75ms ease-in-out;
     }
     .expanded &::after {
-      transform: rotate(-180deg);
+      transform: rotate(calc(-180deg + var(--rotationOffset)));
     }
     .expanded & {
       border-color: hsl(var(--c-accent-main));
@@ -54,16 +56,13 @@ select.hidden {
     z-index: 1;
     position: absolute;
     pointer-events: none;
-    &.expanded {
-      pointer-events: all;
-    }
 
-    top: calc(100% - 6rem);
+    --yOffset: 0px;
+    top: var(--yOffset);
 
     @include customScrollbar;
     overflow-y: auto;
     max-height: 7.3125rem;
-    margin-top: 0.625rem;
 
     display: flex;
     flex-direction: column;
@@ -76,10 +75,11 @@ select.hidden {
     border-radius: 8px;
 
     transform-origin: top;
-    transform: translateY(-2.6154em) scaleY(0.5);
+    transform: translateY(-2.5em) scaleY(0);
     opacity: 0;
     transition: transform 0ms ease-out 80ms, opacity 75ms ease-out;
-    .expanded & {
+    &.expanded {
+      pointer-events: all;
       transition: transform 150ms ease-out, opacity 150ms ease-out;
       transform: translateY(0) scaleY(1);
       opacity: 1;

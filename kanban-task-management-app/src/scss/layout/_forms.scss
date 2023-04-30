@@ -16,6 +16,7 @@
     pointer-events: all;
   }
 
+  & > div,
   .form {
     min-width: 16rem;
     width: 100%;
@@ -23,7 +24,8 @@
     @include breakpoint(medium) {
       max-width: 30rem;
     }
-
+  }
+  .form {
     .scrollable-area {
       max-height: calc(100vh - 4rem);
       overflow-y: auto;

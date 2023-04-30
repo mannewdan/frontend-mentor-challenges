@@ -9,7 +9,7 @@ import FormTemplate from "./FormTemplate";
 import TextInput from "../TextInput";
 import crossIcon from "../../assets/icon-cross.svg";
 import { v4 as uuid } from "uuid";
-import Dropdown from "../Dropdown";
+import FormDropdown from "./FormDropdown";
 import Icon from "../Icon";
 
 type AddTaskFormProps = {
@@ -45,6 +45,7 @@ export default function AddTaskForm({
         }
   );
   const { addTask } = useDataContext();
+  const containerRef = React.useRef<HTMLDivElement>(null);
 
   const placeholderBank = [
     "e.g. Make coffee",
@@ -110,118 +111,121 @@ export default function AddTaskForm({
   });
 
   return (
-    <FormTemplate
-      title={task ? "Edit Task" : "Add New Task"}
-      className="add-task"
-    >
-      {/* Name */}
-      <TextInput
-        label={"Title"}
-        placeholder="e.g. Take coffee break"
-        error={
-          titleError ? (formData.title ? "Duplicate title" : "") : undefined
-        }
-        text={formData.title}
-        setText={(text: string) => {
-          setTitleError(false);
-          setFormData((prev) => {
-            return { ...prev, title: text };
-          });
-        }}
-      />
-
-      {/* Description */}
-      <TextInput
-        label={"Description"}
-        placeholder={`e.g. It’s always good to take a break. This 15 minute break will 
-recharge the batteries a little.`}
-        text={formData.description}
-        setText={(text: string) => {
-          setFormData((prev) => {
-            return { ...prev, description: text };
-          });
-        }}
-        isTextArea={true}
-      />
-
-      {/* Subtasks */}
-      <div className="list-section">
-        {formData.subtasks.length > 0 && (
-          <span className="text-b-m">Subtasks</span>
-        )}
-
-        {subtaskEls}
-
-        <button
-          type={"button"}
-          onClick={(e) => {
-            e.preventDefault();
+    <div ref={containerRef}>
+      <FormTemplate
+        title={task ? "Edit Task" : "Add New Task"}
+        className="add-task"
+      >
+        {/* Name */}
+        <TextInput
+          label={"Title"}
+          placeholder="e.g. Take coffee break"
+          error={
+            titleError ? (formData.title ? "Duplicate title" : "") : undefined
+          }
+          text={formData.title}
+          setText={(text: string) => {
+            setTitleError(false);
             setFormData((prev) => {
-              return {
-                ...prev,
-                subtasks: [
-                  ...prev.subtasks,
-                  {
-                    title: ``,
-                    isCompleted: false,
-                    id: uuid(),
-                  },
-                ],
-              };
+              return { ...prev, title: text };
             });
           }}
-          className="button-secondary"
-        >
-          + Add New Subtask
-        </button>
-      </div>
+        />
 
-      {/* Status */}
-      <Dropdown
-        name={"Status"}
-        options={board.columns.map((c) => ({ name: c.name, id: c.id }))}
-        selection={formData.column}
-        setSelection={(selection: { name: string; id: string }) => {
-          setFormData((prev) => {
-            return { ...prev, column: selection };
-          });
-        }}
-      />
+        {/* Description */}
+        <TextInput
+          label={"Description"}
+          placeholder={`e.g. It’s always good to take a break. This 15 minute break will 
+recharge the batteries a little.`}
+          text={formData.description}
+          setText={(text: string) => {
+            setFormData((prev) => {
+              return { ...prev, description: text };
+            });
+          }}
+          isTextArea={true}
+        />
 
-      {/* Submit */}
-      <button
-        type={"submit"}
-        onClick={(e) => {
-          e.preventDefault();
+        {/* Subtasks */}
+        <div className="list-section">
+          {formData.subtasks.length > 0 && (
+            <span className="text-b-m">Subtasks</span>
+          )}
 
-          const titleError = !formData.title;
-          if (titleError) {
-            setTitleError(true);
-          }
-          let subtaskError = false;
-          const subtaskErrors = formData.subtasks.map((item) => {
-            if (!item.title) subtaskError = true;
-            return !item.title;
-          });
-          if (subtaskError) {
-            setSubtaskErrors(subtaskErrors);
-          }
+          {subtaskEls}
 
-          if (!titleError && !subtaskError) {
-            console.log("No errors");
-            if (task) {
-              //edit task
-            } else {
-              addTask(board.id, formData.column.id, formData);
+          <button
+            type={"button"}
+            onClick={(e) => {
+              e.preventDefault();
+              setFormData((prev) => {
+                return {
+                  ...prev,
+                  subtasks: [
+                    ...prev.subtasks,
+                    {
+                      title: ``,
+                      isCompleted: false,
+                      id: uuid(),
+                    },
+                  ],
+                };
+              });
+            }}
+            className="button-secondary"
+          >
+            + Add New Subtask
+          </button>
+        </div>
+
+        {/* Status */}
+        <FormDropdown
+          name={"Status"}
+          options={board.columns.map((c) => ({ name: c.name, id: c.id }))}
+          selection={formData.column}
+          setSelection={(selection: { name: string; id: string }) => {
+            setFormData((prev) => {
+              return { ...prev, column: selection };
+            });
+          }}
+          formTemplateContainer={containerRef}
+        />
+
+        {/* Submit */}
+        <button
+          type={"submit"}
+          onClick={(e) => {
+            e.preventDefault();
+
+            const titleError = !formData.title;
+            if (titleError) {
+              setTitleError(true);
+            }
+            let subtaskError = false;
+            const subtaskErrors = formData.subtasks.map((item) => {
+              if (!item.title) subtaskError = true;
+              return !item.title;
+            });
+            if (subtaskError) {
+              setSubtaskErrors(subtaskErrors);
             }
 
-            if (submitAction) submitAction();
-          }
-        }}
-        className="button-primary"
-      >
-        {task ? "Save Changes" : "Create Task"}
-      </button>
-    </FormTemplate>
+            if (!titleError && !subtaskError) {
+              console.log("No errors");
+              if (task) {
+                //edit task
+              } else {
+                addTask(board.id, formData.column.id, formData);
+              }
+
+              if (submitAction) submitAction();
+            }
+          }}
+          className="button-primary"
+        >
+          {task ? "Save Changes" : "Create Task"}
+        </button>
+      </FormTemplate>
+    </div>
   );
 }

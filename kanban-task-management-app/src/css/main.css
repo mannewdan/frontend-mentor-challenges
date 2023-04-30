@@ -542,6 +542,7 @@ select.hidden:focus-visible ~ div {
   border: 1px solid hsl(var(--c-neutral)/25%);
   border-radius: 4px;
   position: relative;
+  --rotationOffset: 0deg;
 }
 .select-box .selection::after {
   content: url("../assets/icon-chevron-down.svg");
@@ -551,10 +552,11 @@ select.hidden:focus-visible ~ div {
   height: 100%;
   top: 0;
   right: 1.2308em;
+  transform: rotate(var(--rotationOffset));
   transition: transform 75ms ease-in-out;
 }
 .expanded .select-box .selection::after {
-  transform: rotate(-180deg);
+  transform: rotate(calc(-180deg + var(--rotationOffset)));
 }
 .expanded .select-box .selection {
   border-color: hsl(var(--c-accent-main));
@@ -564,12 +566,12 @@ select.hidden:focus-visible ~ div {
   z-index: 1;
   position: absolute;
   pointer-events: none;
-  top: calc(100% - 6rem);
+  --yOffset: 0px;
+  top: var(--yOffset);
   scrollbar-width: thin;
   scrollbar-color: hsl(var(--c-accent-main)) hsl(var(--c-lines-main));
   overflow-y: auto;
   max-height: 7.3125rem;
-  margin-top: 0.625rem;
   display: flex;
   flex-direction: column;
   width: calc(100% - 4rem);
@@ -579,12 +581,9 @@ select.hidden:focus-visible ~ div {
   background: hsl(var(--c-bg-main));
   border-radius: 8px;
   transform-origin: top;
-  transform: translateY(-2.6154em) scaleY(0.5);
+  transform: translateY(-2.5em) scaleY(0);
   opacity: 0;
   transition: transform 0ms ease-out 80ms, opacity 75ms ease-out;
-}
-.select-box .options.expanded {
-  pointer-events: all;
 }
 .select-box .options::-webkit-scrollbar {
   width: 7px;
@@ -610,7 +609,8 @@ select.hidden:focus-visible ~ div {
 .select-box .options::-webkit-scrollbar-corner {
   background: transparent;
 }
-.expanded .select-box .options {
+.select-box .options.expanded {
+  pointer-events: all;
   transition: transform 150ms ease-out, opacity 150ms ease-out;
   transform: translateY(0) scaleY(1);
   opacity: 1;
@@ -1315,21 +1315,25 @@ select.hidden:focus-visible ~ div {
 .form-positioner > * {
   pointer-events: all;
 }
+.form-positioner > div,
 .form-positioner .form {
   min-width: 16rem;
   width: 100%;
   max-width: min(100vw - 2rem, 23.75rem);
+}
+@media (min-width: 43.75em) {
+  .form-positioner > div,
+  .form-positioner .form {
+    max-width: 30rem;
+  }
+}
+.form-positioner .form {
   background-color: hsl(var(--c-bg-main-light));
   border-radius: 0.375rem;
   animation: form-fade-in;
   animation-duration: 125ms;
   animation-timing-function: ease-out;
   animation-fill-mode: both;
-}
-@media (min-width: 43.75em) {
-  .form-positioner .form {
-    max-width: 30rem;
-  }
 }
 .form-positioner .form .scrollable-area {
   max-height: calc(100vh - 4rem);
