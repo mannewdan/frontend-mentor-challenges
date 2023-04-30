@@ -586,7 +586,8 @@ select.hidden:focus-visible ~ div {
   padding-inline: 1rem;
   color: hsl(var(--c-neutral));
   background: hsl(var(--c-bg-main));
-  border-radius: 8px;
+  box-shadow: 0 0 2px hsla(0, 0%, 0%, 0.15);
+  border-radius: 0.25rem;
   transform-origin: top;
   transform: translateY(-2.5em) scaleY(0);
   opacity: 0;
@@ -642,6 +643,12 @@ select.hidden:focus-visible ~ div {
 }
 .select-box .options span:hover {
   color: hsl(var(--c-text-main));
+}
+.select-box .options span.selected {
+  color: hsl(var(--c-accent-main));
+}
+.select-box .options span.selected:hover {
+  color: hsl(var(--c-accent-main-light));
 }
 
 .icon-mask {

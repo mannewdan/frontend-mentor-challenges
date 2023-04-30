@@ -55,13 +55,14 @@ const DefaultDataValues: DataT = {
       id: uuid(),
       columns: board.columns.map((column) => {
         const columnID = uuid();
+        const columnName = column.name;
         return {
           ...column,
           id: columnID,
           tasks: column.tasks.map((task) => {
             return {
               ...task,
-              column: { name: task.status, id: columnID },
+              column: { name: column.name, id: columnID },
               id: uuid(),
               subtasks: task.subtasks.map((subtask) => {
                 return { ...subtask, id: uuid() };

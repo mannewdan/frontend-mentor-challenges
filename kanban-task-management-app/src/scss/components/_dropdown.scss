@@ -72,7 +72,8 @@ select.hidden {
 
     color: hsl(var(--c-neutral));
     background: hsl(var(--c-bg-main));
-    border-radius: 8px;
+    box-shadow: 0 0 2px hsl(0 0% 0% / 15%);
+    border-radius: 0.25rem;
 
     transform-origin: top;
     transform: translateY(-2.5em) scaleY(0);
@@ -104,6 +105,13 @@ select.hidden {
       }
       &:hover {
         color: hsl(var(--c-text-main));
+      }
+      &.selected {
+        color: hsl(var(--c-accent-main));
+
+        &:hover {
+          color: hsl(var(--c-accent-main-light));
+        }
       }
     }
   }

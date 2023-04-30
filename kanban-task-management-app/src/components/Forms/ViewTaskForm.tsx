@@ -84,7 +84,7 @@ export default function ViewTaskForm({
           </p>
         )}
 
-        {formData.subtasks.length && (
+        {formData.subtasks.length > 0 && (
           <>
             <p className="subtasks-label text-b-m">{`Subtasks (${formData.subtasks.reduce(
               (acc, item) => {

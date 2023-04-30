@@ -122,7 +122,9 @@ export default function FormDropdown({
             return (
               <span
                 key={item.id}
-                className="text-b-l"
+                className={`text-b-l ${
+                  item.id === selection.id ? "selected" : ""
+                }`}
                 onClick={() => setSelection(item)}
               >
                 {item.name}
