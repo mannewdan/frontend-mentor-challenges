@@ -3,7 +3,7 @@ import ModalFade from "./components/ModalFade";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import Content from "./components/Content";
-import FormHandler from "./components/FormHandler";
+import FormHandler from "./components/Forms/FormHandler";
 import { useDataContext } from "./context/DataContext";
 import useWindowSize from "./hooks/useWindowSize";
 import { BoardT, TaskT } from "./context/DataContext";

@@ -1,9 +1,9 @@
-import AddBoardForm from "./Forms/AddBoardForm";
-import ViewTaskForm from "./Forms/ViewTaskForm";
-import DeleteForm from "./Forms/DeleteForm";
-import AddTaskForm from "./Forms/AddTaskForm";
-import ModalFade from "./ModalFade";
-import { FormInfoT, FormStyleE } from "../App";
+import AddBoardForm from "./AddBoardForm";
+import ViewTaskForm from "./ViewTaskForm";
+import DeleteForm from "./DeleteForm";
+import AddTaskForm from "./AddTaskForm";
+import ModalFade from "../ModalFade";
+import { FormInfoT, FormStyleE } from "../../App";
 
 type FormHandlerProps = {
   formInfo: FormInfoT;
@@ -34,8 +34,8 @@ export default function FormHandler({
           />
         );
       case FormStyleE.ViewTask:
-        //validate board & task
-        return <ViewTaskForm />;
+        if (!formInfo.board || !formInfo.task) return null;
+        return <ViewTaskForm board={formInfo.board} task={formInfo.task} />;
       case FormStyleE.AddTask:
         if (!formInfo.board) return null;
         return <AddTaskForm board={formInfo.board} submitAction={closeForm} />;

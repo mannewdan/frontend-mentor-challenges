@@ -4,9 +4,11 @@ import useClickOutside from "../hooks/useClickOutside";
 
 type DotMenuProps = {
   buttons: Array<{ name: string; onClick: () => void; danger?: boolean }>;
+  shorterDistance?: boolean;
 };
 
-export default function DotMenu({ buttons }: DotMenuProps) {
+export default function DotMenu({ buttons, shorterDistance }: DotMenuProps) {
+  console.log(shorterDistance);
   const [open, setOpen] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -15,8 +17,10 @@ export default function DotMenu({ buttons }: DotMenuProps) {
   const buttonEls = buttons.map((button) => {
     return (
       <button
+        type="button"
         key={button.name}
-        onClick={() => {
+        onClick={(e) => {
+          e.preventDefault();
           button.onClick();
           setOpen(false);
         }}
@@ -27,8 +31,17 @@ export default function DotMenu({ buttons }: DotMenuProps) {
     );
   });
   return (
-    <div className="dot-menu" ref={containerRef}>
-      <button onClick={() => setOpen((prev) => !prev)}>
+    <div
+      className={`dot-menu ${shorterDistance ? "short" : ""}`}
+      ref={containerRef}
+    >
+      <button
+        type="button"
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((prev) => !prev);
+        }}
+      >
         <img className="" src={vertEllipsis}></img>
       </button>
 

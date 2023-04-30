@@ -1,8 +1,8 @@
-import { ColumnT } from "../context/DataContext";
+import { BoardT, ColumnT } from "../context/DataContext";
 import { FormInfoT, FormStyleE } from "../App";
 
 type ColumnProps = {
-  boardName: string;
+  board: BoardT;
   column: ColumnT;
   formInfo: FormInfoT;
   setFormInfo: (info: FormInfoT) => void;
@@ -10,7 +10,7 @@ type ColumnProps = {
 };
 
 export default function Column({
-  boardName,
+  board,
   column,
   formInfo,
   setFormInfo,
@@ -23,12 +23,12 @@ export default function Column({
         onClick={() => {
           setFormInfo({
             style: FormStyleE.ViewTask,
-            board: boardName,
-            task: item.title,
+            board,
+            task: item,
           });
         }}
         className={`task suppress-transitions ${
-          boardName === formInfo.board && item.title === formInfo.task
+          board.id === formInfo.board?.id && item.id === formInfo.task?.id
             ? "active"
             : ""
         }`}

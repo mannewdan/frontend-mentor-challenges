@@ -18,11 +18,14 @@
     }
   }
 
+  &.short .menu {
+    top: calc(100% + 1rem);
+  }
   .menu {
     @extend .text-b-l;
     position: absolute;
     right: 0;
-    top: 100%;
+    top: calc(100% + 2rem);
 
     display: flex;
     flex-direction: column;
@@ -35,6 +38,9 @@
 
     @include modeTransition(transform 250ms ease-out, opacity 50ms ease-out);
     background: hsl(var(--c-bg-main-light));
+    .dark & {
+      background: hsl(var(--c-bg-main));
+    }
     border-radius: 0.5rem;
 
     opacity: 0;

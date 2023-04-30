@@ -16,7 +16,7 @@ export default function Content({ formInfo, setFormInfo }: ContentProps) {
       return (
         <Column
           key={item.id}
-          boardName={data.boards[data.currentBoard].name}
+          board={data.boards[data.currentBoard]}
           column={item}
           formInfo={formInfo}
           setFormInfo={setFormInfo}
