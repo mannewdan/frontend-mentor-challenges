@@ -17,13 +17,16 @@
   right: 0;
   margin-inline: auto;
 
-  transform: translateY(-75%) scaleY(25%);
+  transform: translateY(-10%) translateX(-5%) scale(85%);
+  transform-origin: top left;
+  opacity: 0;
   &.hide {
     pointer-events: none;
   }
   &.mobile-show {
-    @include modeTransition(transform 225ms ease-out);
-    transform: translateY(0%) scaleY(1);
+    @include modeTransition(transform 150ms ease-out, opacity 225ms ease-out);
+    transform: translateY(0%) scale(100%);
+    opacity: 1;
     pointer-events: all;
   }
 
@@ -32,6 +35,7 @@
   border-color: hsl(var(--c-lines-main));
   @include breakpoint(medium) {
     @include modeTransition;
+    opacity: 1;
     z-index: 4;
     transform: scale(1);
     top: 0;

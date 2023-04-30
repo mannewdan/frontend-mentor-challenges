@@ -878,7 +878,9 @@ select.hidden:focus-visible ~ div {
   left: 0;
   right: 0;
   margin-inline: auto;
-  transform: translateY(-75%) scaleY(25%);
+  transform: translateY(-10%) translateX(-5%) scale(85%);
+  transform-origin: top left;
+  opacity: 0;
   color: hsl(var(--c-neutral));
   border-radius: 0.5rem;
   border-color: hsl(var(--c-lines-main));
@@ -887,13 +889,15 @@ select.hidden:focus-visible ~ div {
   pointer-events: none;
 }
 .sidebar.mobile-show {
-  transition: background-color 250ms ease-out, color 120ms ease-out, border-color 250ms ease-out, transform 225ms ease-out;
-  transform: translateY(0%) scaleY(1);
+  transition: background-color 250ms ease-out, color 120ms ease-out, border-color 250ms ease-out, transform 150ms ease-out, opacity 225ms ease-out;
+  transform: translateY(0%) scale(100%);
+  opacity: 1;
   pointer-events: all;
 }
 @media (min-width: 43.75em) {
   .sidebar {
     transition: background-color 250ms ease-out, color 120ms ease-out, border-color 250ms ease-out;
+    opacity: 1;
     z-index: 4;
     transform: scale(1);
     top: 0;
