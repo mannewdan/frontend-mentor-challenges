@@ -3,13 +3,19 @@ import { BoardT, TaskT, useDataContext } from "../../context/DataContext";
 import FormDropdown from "./FormDropdown";
 import FormTemplate from "./FormTemplate";
 import Checkbox from "../Checkbox";
+import { FormInfoT, FormStyleE } from "../../App";
 
 type ViewTaskFormProps = {
   board: BoardT;
   task: TaskT;
+  setFormInfo: (info: FormInfoT | ((prev: FormInfoT) => FormInfoT)) => void;
 };
 
-export default function ViewTaskForm({ board, task }: ViewTaskFormProps) {
+export default function ViewTaskForm({
+  board,
+  task,
+  setFormInfo,
+}: ViewTaskFormProps) {
   const [formData, setFormData] = React.useState(task);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -18,12 +24,10 @@ export default function ViewTaskForm({ board, task }: ViewTaskFormProps) {
   const subtaskEls = formData.subtasks.map((subtask) => {
     return (
       <Checkbox
+        key={subtask.id}
         name={subtask.title}
         checked={subtask.isCompleted}
         toggleChecked={() => {
-          //update formData
-          console.log("checked");
-
           setFormData((prev) => {
             return {
               ...prev,
@@ -52,13 +56,17 @@ export default function ViewTaskForm({ board, task }: ViewTaskFormProps) {
           {
             name: "Edit Task",
             onClick: () => {
-              console.log("edit task");
+              setFormInfo({
+                style: FormStyleE.EditTask,
+                board,
+                task: formData,
+              });
             },
           },
           {
             name: "Delete Task",
             onClick: () => {
-              console.log("delete task");
+              setFormInfo({ style: FormStyleE.DeleteTask });
             },
             danger: true,
           },

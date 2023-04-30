@@ -11,17 +11,20 @@ import crossIcon from "../../assets/icon-cross.svg";
 import { v4 as uuid } from "uuid";
 import FormDropdown from "./FormDropdown";
 import Icon from "../Icon";
+import { FormInfoT, FormStyleE } from "../../App";
 
 type AddTaskFormProps = {
   board: BoardT;
   task?: TaskT;
   submitAction?: () => void;
+  setFormInfo: (info: FormInfoT | ((prev: FormInfoT) => FormInfoT)) => void;
 };
 
 export default function AddTaskForm({
   board,
   task,
   submitAction,
+  setFormInfo,
 }: AddTaskFormProps) {
   const [titleError, setTitleError] = React.useState(false);
   const [subtaskErrors, setSubtaskErrors] = React.useState(
@@ -44,7 +47,7 @@ export default function AddTaskForm({
           id: uuid(),
         }
   );
-  const { addTask } = useDataContext();
+  const { addTask, editTask } = useDataContext();
   const containerRef = React.useRef<HTMLDivElement>(null);
 
   const placeholderBank = [
@@ -211,9 +214,13 @@ recharge the batteries a little.`}
             }
 
             if (!titleError && !subtaskError) {
-              console.log("No errors");
               if (task) {
-                //edit task
+                editTask(board.id, formData);
+                setFormInfo({
+                  style: FormStyleE.ViewTask,
+                  board,
+                  task: formData,
+                });
               } else {
                 addTask(board.id, formData.column.id, formData);
               }

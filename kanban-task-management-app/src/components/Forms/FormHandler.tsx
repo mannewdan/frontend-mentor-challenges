@@ -35,15 +35,33 @@ export default function FormHandler({
         );
       case FormStyleE.ViewTask:
         if (!formInfo.board || !formInfo.task) return null;
-        return <ViewTaskForm board={formInfo.board} task={formInfo.task} />;
+        return (
+          <ViewTaskForm
+            board={formInfo.board}
+            task={formInfo.task}
+            setFormInfo={setFormInfo}
+          />
+        );
       case FormStyleE.AddTask:
         if (!formInfo.board) return null;
-        return <AddTaskForm board={formInfo.board} submitAction={closeForm} />;
+        return (
+          <AddTaskForm
+            board={formInfo.board}
+            submitAction={closeForm}
+            setFormInfo={setFormInfo}
+          />
+        );
       case FormStyleE.EditTask:
-        //validate board & task
-        return <>edit task</>;
+        if (!formInfo.board || !formInfo.task) return null;
+        return (
+          <AddTaskForm
+            board={formInfo.board}
+            task={formInfo.task}
+            setFormInfo={setFormInfo}
+          />
+        );
       case FormStyleE.DeleteTask:
-        //validate board & task
+        if (!formInfo.board || !formInfo.task) return null;
         return <>delete task</>;
       default:
         return null;
