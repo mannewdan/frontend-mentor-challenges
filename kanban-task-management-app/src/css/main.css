@@ -1402,6 +1402,18 @@ select.hidden:focus-visible ~ div {
 .form-positioner .form .title-container .dot-menu {
   grid-row: 2;
 }
+.form-positioner .form.view-task .description {
+  margin-bottom: 1.5rem;
+}
+.form-positioner .form.view-task .subtasks-label {
+  margin-bottom: 1rem;
+}
+.form-positioner .form.view-task .checkbox:not(:last-of-type) {
+  margin-bottom: 0.5rem;
+}
+.form-positioner .form.view-task .checkbox:last-of-type {
+  margin-bottom: 1.5rem;
+}
 .form-positioner .form.add-board .text-input + .text-input, .form-positioner .form.add-task .text-input + .text-input {
   margin-top: 1.5rem;
 }

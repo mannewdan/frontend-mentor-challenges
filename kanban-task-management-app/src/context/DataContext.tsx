@@ -12,9 +12,10 @@ type DataContextT = {
   showSidebar: () => void;
   setCurrentBoard: (index: number) => void;
   addBoard: (newBoard: BoardT) => void;
-  addTask: (boardID: string, columnID: string, newTask: TaskT) => void;
   editBoard: (id: string, newBoard: BoardT) => void;
   deleteBoard: (id: string) => void;
+  addTask: (boardID: string, columnID: string, newTask: TaskT) => void;
+  editTask: (boardID: string, newTask: TaskT) => void;
 };
 type DataT = {
   darkMode: boolean;
@@ -107,25 +108,6 @@ export default function DataContext({ children }: DataContextProps) {
       return { ...prev, boards: [...prev.boards, newBoard] };
     });
   }
-  function addTask(boardID: string, columnID: string, newTask: TaskT) {
-    setData((prev) => {
-      return {
-        ...prev,
-        boards: prev.boards.map((board) => {
-          if (board.id === boardID) {
-            return {
-              ...board,
-              columns: board.columns.map((column) => {
-                if (column.id === columnID) {
-                  return { ...column, tasks: [...column.tasks, newTask] };
-                } else return column;
-              }),
-            };
-          } else return board;
-        }),
-      };
-    });
-  }
   function editBoard(id: string, newBoard: BoardT) {
     setData((prev) => {
       return {
@@ -161,6 +143,66 @@ export default function DataContext({ children }: DataContextProps) {
       setCurrentBoard(index);
     }
   }
+  function addTask(boardID: string, columnID: string, newTask: TaskT) {
+    setData((prev) => {
+      return {
+        ...prev,
+        boards: prev.boards.map((board) => {
+          if (board.id === boardID) {
+            return {
+              ...board,
+              columns: board.columns.map((column) => {
+                if (column.id === columnID) {
+                  return { ...column, tasks: [...column.tasks, newTask] };
+                } else return column;
+              }),
+            };
+          } else return board;
+        }),
+      };
+    });
+  }
+  function editTask(boardID: string, newTask: TaskT) {
+    setData((prev) => {
+      return {
+        ...prev,
+        boards: prev.boards.map((board) => {
+          if (board.id === boardID) {
+            return {
+              ...board,
+              columns: board.columns.map((column) => {
+                if (column.id === newTask.column.id) {
+                  if (
+                    column.tasks.find((task) => {
+                      return task.id === newTask.id;
+                    })
+                  ) {
+                    return {
+                      ...column,
+                      tasks: column.tasks.map((task) => {
+                        if (task.id === newTask.id) {
+                          return newTask;
+                        } else return task;
+                      }),
+                    };
+                  } else {
+                    return { ...column, tasks: [...column.tasks, newTask] };
+                  }
+                } else {
+                  return {
+                    ...column,
+                    tasks: column.tasks.filter((task) => {
+                      return task.id !== newTask.id;
+                    }),
+                  };
+                }
+              }),
+            };
+          } else return board;
+        }),
+      };
+    });
+  }
 
   //save/load
   React.useEffect(() => {
@@ -190,9 +232,10 @@ export default function DataContext({ children }: DataContextProps) {
         showSidebar,
         setCurrentBoard,
         addBoard,
-        addTask,
         editBoard,
         deleteBoard,
+        addTask,
+        editTask,
       }}
     >
       {children}

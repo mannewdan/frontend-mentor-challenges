@@ -73,6 +73,20 @@
       }
     }
 
+    &.view-task {
+      .description {
+        margin-bottom: 1.5rem;
+      }
+      .subtasks-label {
+        margin-bottom: 1rem;
+      }
+      .checkbox:not(:last-of-type) {
+        margin-bottom: 0.5rem;
+      }
+      .checkbox:last-of-type {
+        margin-bottom: 1.5rem;
+      }
+    }
     &.add-board,
     &.add-task {
       .text-input + .text-input {

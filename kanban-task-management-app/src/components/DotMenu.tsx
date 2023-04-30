@@ -8,7 +8,6 @@ type DotMenuProps = {
 };
 
 export default function DotMenu({ buttons, shorterDistance }: DotMenuProps) {
-  console.log(shorterDistance);
   const [open, setOpen] = React.useState(false);
   const containerRef = React.useRef<HTMLDivElement>(null);
 
