@@ -274,8 +274,8 @@ label {
 .button:focus-visible, .button-nav:focus-visible, .button-danger:focus-visible, .button-secondary:focus-visible, .button-primary:focus-visible, .button-primary-l:focus-visible {
   outline: 2px solid hsl(var(--c-text-main));
 }
-.button:not(.inactive), .button-nav:not(.inactive), .button-danger:not(.inactive), .button-secondary:not(.inactive), .button-primary:not(.inactive), .button-primary-l:not(.inactive) {
-  cursor: pointer;
+.button.inactive, .inactive.button-nav, .inactive.button-danger, .inactive.button-secondary, .inactive.button-primary, .inactive.button-primary-l {
+  cursor: initial;
 }
 .button-primary, .button-primary-l {
   background-color: hsl(var(--c-accent-main));
@@ -1243,6 +1243,19 @@ select.hidden:focus-visible ~ div {
 }
 .content .content-container::-webkit-scrollbar-corner {
   background: transparent;
+}
+.content .empty-notifier {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+}
+.content .empty-notifier button {
+  width: auto;
 }
 
 .content .column {

@@ -4,13 +4,19 @@ import { BoardT, ColumnT, useDataContext } from "../../context/DataContext";
 import crossIcon from "../../assets/icon-cross.svg";
 import { v4 as uuid } from "uuid";
 import FormTemplate from "./FormTemplate";
+import Icon from "../Icon";
 
 type AddBoardForm = {
   board?: BoardT;
+  makeNewColumn?: boolean;
   submitAction?: () => void;
 };
 
-export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
+export default function AddBoardForm({
+  board,
+  submitAction,
+  makeNewColumn,
+}: AddBoardForm) {
   const [nameError, setNameError] = React.useState(false);
   const [columnErrors, setColumnErrors] = React.useState([] as Array<boolean>);
   const [originalName] = React.useState(board ? board.name : "");
@@ -24,14 +30,41 @@ export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
         }
   );
   const { data, addBoard, editBoard, setCurrentBoard } = useDataContext();
+  const [focusLatestColumn, setFocusLatestColumn] = React.useState(false);
 
-  console.log(columnErrors);
+  //functions
+  function newColumn(name?: string) {
+    setFormData((prev) => {
+      return {
+        ...prev,
+        columns: [
+          ...prev.columns,
+          {
+            name:
+              name === undefined ? `Column ${prev.columns.length + 1}` : name,
+            tasks: [],
+            id: uuid(),
+          },
+        ],
+      };
+    });
+  }
 
+  React.useEffect(() => {
+    if (makeNewColumn) {
+      makeNewColumn = false;
+      newColumn("");
+      setFocusLatestColumn(true);
+    }
+  }, []);
+
+  //rendering
   const columnEls = formData.columns.map((item, index) => {
     return (
       <div key={item.id} className="list-item">
         <TextInput
           text={item.name}
+          focus={index === formData.columns.length - 1 && focusLatestColumn}
           error={
             columnErrors.length > 0 && columnErrors[index]
               ? "Can't be empty"
@@ -73,7 +106,7 @@ export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
             });
           }}
         >
-          <img src={crossIcon}></img>
+          <Icon url={crossIcon} />
         </button>
       </div>
     );
@@ -116,19 +149,8 @@ export default function AddBoardForm({ board, submitAction }: AddBoardForm) {
           type={"button"}
           onClick={(e) => {
             e.preventDefault();
-            setFormData((prev) => {
-              return {
-                ...prev,
-                columns: [
-                  ...prev.columns,
-                  {
-                    name: `Column ${prev.columns.length + 1}`,
-                    tasks: [],
-                    id: uuid(),
-                  },
-                ],
-              };
-            });
+            newColumn();
+            setFocusLatestColumn(false);
           }}
           className="button-secondary"
         >

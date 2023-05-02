@@ -13,6 +13,7 @@ export type FormInfoT = {
   board?: BoardT;
   task?: TaskT;
   skipBGFade?: boolean;
+  makeNewColumn?: boolean;
 };
 export enum FormStyleE {
   None,

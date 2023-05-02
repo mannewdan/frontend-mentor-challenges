@@ -1,6 +1,6 @@
 import { useDataContext } from "../context/DataContext";
 import Column from "./Column";
-import { FormInfoT } from "../App";
+import { FormInfoT, FormStyleE } from "../App";
 
 type ContentProps = {
   formInfo: FormInfoT;
@@ -9,6 +9,11 @@ type ContentProps = {
 
 export default function Content({ formInfo, setFormInfo }: ContentProps) {
   const { data } = useDataContext();
+  const currentBoard =
+    data.boards.length > data.currentBoard
+      ? data.boards[data.currentBoard]
+      : null;
+  const hasColumns = currentBoard ? currentBoard.columns.length > 0 : false;
 
   let columnEls = [] as Array<JSX.Element>;
   if (data.boards && data.boards.length > data.currentBoard) {
@@ -32,7 +37,26 @@ export default function Content({ formInfo, setFormInfo }: ContentProps) {
           data.showSidebar ? "" : "hide"
         }`}
       ></div>
-      <div className="content-container">{columnEls}</div>
+      <div className="content-container">
+        {hasColumns && columnEls}
+        {currentBoard && !hasColumns && (
+          <div className="empty-notifier">
+            <p className="text-h-l c-text-neutral">{`This board is empty. Create a new column to get started.`}</p>
+            <button
+              className="button-primary"
+              onClick={() => {
+                setFormInfo({
+                  style: FormStyleE.EditBoard,
+                  board: currentBoard,
+                  makeNewColumn: true,
+                });
+              }}
+            >
+              + Add New Column
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

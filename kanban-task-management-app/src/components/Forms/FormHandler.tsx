@@ -23,7 +23,13 @@ export default function FormHandler({
         return <AddBoardForm submitAction={closeForm} />;
       case FormStyleE.EditBoard:
         if (!formInfo.board) return null;
-        return <AddBoardForm board={formInfo.board} submitAction={closeForm} />;
+        return (
+          <AddBoardForm
+            board={formInfo.board}
+            submitAction={closeForm}
+            makeNewColumn={formInfo.makeNewColumn}
+          />
+        );
       case FormStyleE.DeleteBoard:
         if (!formInfo.board) return null;
         return (

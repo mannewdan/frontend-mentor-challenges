@@ -50,14 +50,22 @@ export default function Header({
 
       <button
         onClick={() => {
-          if (data.boards.length > data.currentBoard) {
+          if (
+            data.boards.length > data.currentBoard &&
+            data.boards[data.currentBoard].columns.length > 0
+          ) {
             setFormInfo({
               style: FormStyleE.AddTask,
               board: data.boards[data.currentBoard],
             });
           }
         }}
-        className="add-task button-primary"
+        className={`add-task button-primary ${
+          data.boards.length > data.currentBoard &&
+          data.boards[data.currentBoard].columns.length > 0
+            ? ""
+            : "inactive"
+        }`}
       >
         <img className="" src={addTask}></img>
         <span>+ Add New Task</span>
