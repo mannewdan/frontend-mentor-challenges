@@ -42,7 +42,13 @@ export default function Content({ formInfo, setFormInfo }: ContentProps) {
           <>
             {columnEls}
             <button
+              key={currentBoard?.id}
               className="column empty"
+              style={{
+                animationDelay: `${
+                  (currentBoard ? currentBoard.columns.length : 0) * 75
+                }ms`,
+              }}
               onClick={() => {
                 if (!currentBoard) return;
                 setFormInfo({
