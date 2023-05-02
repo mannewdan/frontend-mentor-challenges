@@ -20,9 +20,7 @@
   transform: translateY(-10%) translateX(-5%) scale(85%);
   transform-origin: top left;
   opacity: 0;
-  &.hide {
-    pointer-events: none;
-  }
+  pointer-events: none;
   &.mobile-show {
     @include modeTransition(transform 150ms ease-out, opacity 225ms ease-out);
     transform: translateY(0%) scale(100%);
@@ -43,6 +41,10 @@
     border-radius: 0;
     height: 100%;
     width: var(--sidebar-width-medium);
+    pointer-events: all;
+    &.hide {
+      pointer-events: none;
+    }
   }
   @include breakpoint(large) {
     width: var(--sidebar-width-large);

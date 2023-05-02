@@ -895,12 +895,10 @@ select.hidden:focus-visible ~ div {
   transform: translateY(-10%) translateX(-5%) scale(85%);
   transform-origin: top left;
   opacity: 0;
+  pointer-events: none;
   color: hsl(var(--c-neutral));
   border-radius: 0.5rem;
   border-color: hsl(var(--c-lines-main));
-}
-.sidebar.hide {
-  pointer-events: none;
 }
 .sidebar.mobile-show {
   transition: background-color 250ms ease-out, color 120ms ease-out, border-color 250ms ease-out, transform 150ms ease-out, opacity 225ms ease-out;
@@ -919,6 +917,10 @@ select.hidden:focus-visible ~ div {
     border-radius: 0;
     height: 100%;
     width: var(--sidebar-width-medium);
+    pointer-events: all;
+  }
+  .sidebar.hide {
+    pointer-events: none;
   }
 }
 @media (min-width: 56.25em) {
