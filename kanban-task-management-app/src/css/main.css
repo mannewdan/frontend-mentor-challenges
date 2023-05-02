@@ -1318,6 +1318,26 @@ select.hidden:focus-visible ~ div {
 .content .column .task.active {
   outline: 1px solid hsl(var(--c-accent-main-light));
 }
+.content .column.empty {
+  transition: background-color 250ms ease-out, color 120ms ease-out, border-color 250ms ease-out;
+  margin-top: 2.4375rem;
+  height: calc(100% - 2.4375rem);
+  background-color: hsla(220, 63%, 75%, 0.1);
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.dark .content .column.empty {
+  background-color: hsl(var(--c-neutral)/2%);
+}
+.content .column.empty p {
+  transition: background-color 125ms ease-out, color 60ms ease-out, border-color 125ms ease-out;
+}
+.content .column.empty:hover p {
+  color: hsl(var(--c-accent-main));
+}
 
 @keyframes column-fade-in {
   0% {

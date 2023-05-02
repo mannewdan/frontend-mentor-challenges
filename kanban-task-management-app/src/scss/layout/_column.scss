@@ -58,6 +58,31 @@
       outline: 1px solid hsl(var(--c-accent-main-light));
     }
   }
+
+  &.empty {
+    @include modeTransition;
+    margin-top: 2.4375rem;
+    height: calc(100% - 2.4375rem);
+    background-color: hsl(220 63% 75% / 10%);
+    .dark & {
+      background-color: hsl(var(--c-neutral) / 2%);
+    }
+
+    border-radius: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    p {
+      @include halfTransition;
+    }
+    &:hover p {
+      color: hsl(var(--c-accent-main));
+    }
+  }
 }
 @keyframes column-fade-in {
   0% {

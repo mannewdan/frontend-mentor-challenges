@@ -38,7 +38,24 @@ export default function Content({ formInfo, setFormInfo }: ContentProps) {
         }`}
       ></div>
       <div className="content-container">
-        {hasColumns && columnEls}
+        {hasColumns && (
+          <>
+            {columnEls}
+            <button
+              className="column empty"
+              onClick={() => {
+                if (!currentBoard) return;
+                setFormInfo({
+                  style: FormStyleE.EditBoard,
+                  board: currentBoard,
+                  makeNewColumn: true,
+                });
+              }}
+            >
+              <p className="text-h-xl c-text-neutral">+ New Column</p>
+            </button>
+          </>
+        )}
         {currentBoard && !hasColumns && (
           <div className="empty-notifier">
             <p className="text-h-l c-text-neutral">{`This board is empty. Create a new column to get started.`}</p>
