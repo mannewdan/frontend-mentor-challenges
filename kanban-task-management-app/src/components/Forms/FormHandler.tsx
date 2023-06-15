@@ -4,6 +4,7 @@ import DeleteForm from "./DeleteForm";
 import AddTaskForm from "./AddTaskForm";
 import ModalFade from "../ModalFade";
 import { FormInfoT, FormStyleE } from "../../App";
+import React from "react";
 
 type FormHandlerProps = {
   formInfo: FormInfoT;
@@ -17,6 +18,14 @@ export default function FormHandler({
   const closeForm = () => {
     setFormInfo({ style: FormStyleE.None });
   };
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (!containerRef.current) return;
+
+    containerRef.current.focus();
+  }, [formInfo.style]);
+
   function selectFormEl() {
     switch (formInfo.style) {
       case FormStyleE.AddBoard:
@@ -106,7 +115,11 @@ export default function FormHandler({
           }}
         />
       )}
-      {formEl !== null && <div className="form-positioner">{formEl}</div>}
+      {formEl !== null && (
+        <div ref={containerRef} tabIndex={-1} className="form-positioner">
+          {formEl}
+        </div>
+      )}
     </>
   );
 }

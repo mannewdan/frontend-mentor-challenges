@@ -23,6 +23,7 @@ export default function DotMenu({ buttons, shorterDistance }: DotMenuProps) {
           button.onClick();
           setOpen(false);
         }}
+        tabIndex={open ? 0 : -1}
         className={button.danger ? "danger" : ""}
       >
         {button.name}
